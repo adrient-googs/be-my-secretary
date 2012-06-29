@@ -1,4 +1,4 @@
-application: helloworld
+application: bemysecretary
 version: 1
 runtime: python27
 api_version: 1
@@ -15,11 +15,11 @@ handlers:
   - url: /libs
     static_dir: libs
 
-  - url: /libs/blitzer
-    static_dir: libs/blitzer
+  # - url: /libs/blitzer
+  #   static_dir: libs/blitzer
 
-  - url: /libs/blitzer/images
-    static_dir: libs/blitzer/images
+  # - url: /libs/blitzer/images
+  #   static_dir: libs/blitzer/images
 
   # - url: /admin.*
   #   script: main.app

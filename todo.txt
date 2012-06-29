@@ -1,0 +1,52 @@
+trying:
+  
+[ ] design new simple channel architecture
+  [ ] using a delegate
+[ ] server side
+
+transition: 
+
+[ ] clean out
+[ ] move to github
+[ ] do mockups
+  [ ] MAIN question: what's the minimal interface which has "magic"?!?!
+
+prototype:
+
+[ ] then do fun stuff with this -- a real calendar  
+
+someday:
+
+[ ] access permissions for get/post/put/delete
+  [ ] RemoteModel
+  [ ] RemoteMethod
+
+
+
+
+<!-- [x] test out history API
+  [x] can this be used as a router? - YES .. but some weirdness to figure out
+
+[ ] do the whole remote model thing
+
+
+[ ] test out the channel API
+  [ ] do I want to wrap it?
+  [ ] perhaps as a remote function call?
+  
+[ ] start to write the game
+
+[ ] create game mockups (keynote?)
+[ ] CMU stuff
+[ ] move to github
+  [ ] recursive copy to a new folder
+  [ ] clear out the bad files (including tmproj)
+  [ ] main.coffee/html -> game.coffee/html
+  [ ] submit to github
+  [ ] add tmproj
+[ ] start coding a mockup of the game
+
+
+variable naming conventions:
+
+*_json -> a python object which can be serialized with json.dumps -->

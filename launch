@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# order in which to compile coffee files
+COMPILE_ORDER=""
+COMPILE_ORDER="${COMPILE_ORDER} coffee/util.coffee"
+COMPILE_ORDER="${COMPILE_ORDER} coffee/chatter/chatter.coffee"
+COMPILE_ORDER="${COMPILE_ORDER} coffee/chatter/remote.coffee"
+COMPILE_ORDER="${COMPILE_ORDER} coffee/chatter/channel.coffee"
+COMPILE_ORDER="${COMPILE_ORDER} coffee/widget.coffee"
+COMPILE_ORDER="${COMPILE_ORDER} coffee/gameChannel.coffee"
+COMPILE_ORDER="${COMPILE_ORDER} coffee/test.coffee"
+
+echo "Coffeescript Compilation Order:${COMPILE_ORDER}"
+coffee --compile --watch --join coffeetest/js/coffeetest.js ${COMPILE_ORDER} &
+dev_appserver.py coffeetest
+
+

@@ -1,0 +1,5 @@
+curl http://www.corp.google.com/~ndirekova/Assistant/v%205/1.png                 > 1.png
+curl http://www.corp.google.com/~ndirekova/Assistant/v%205/2.png                 > 2.png                
+curl http://www.corp.google.com/~ndirekova/Assistant/v%205/3.png                 > 3.png                
+curl http://www.corp.google.com/~ndirekova/Assistant/v%205/lightwood-texture.jpg > lightwood-texture.jpg
+curl http://www.corp.google.com/~ndirekova/Assistant/v%205/samples.png           > samples.png          

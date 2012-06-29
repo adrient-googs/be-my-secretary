@@ -1,2 +1,1 @@
-be-my-secretary
-===============
+a little experiment in how to use github

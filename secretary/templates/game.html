@@ -16,6 +16,7 @@
 
 <!-- PAGE CSS -->
 
+<link rel="stylesheet" type="text/css" href="libs/smoothness/jquery-ui-1.8.21.custom.css"/>
 <link rel="stylesheet" type="text/css" href="css/game.css"/>
 <link rel="stylesheet" type="text/css" href="css/event.css"/>
   
@@ -24,25 +25,26 @@
 <body>  
 <!-- test game -->
 <div id="testBackground" class="gameArea">
-  <div id="username" class="test_blue">
+  <div id="username" class="test-blue">
     {{nickname}}
   </div>
-  <div id="logout" class="test_blue">
+  <div id="logout" class="test-blue">
     (<a href="{{logout_url}}">Logout</a>)
   </div>
-  <div id="calendarArea" class="test_blue">
+  <div id="calendarArea" class="test-purple">
   </div>
 </div>
 
 <!-- game element prototypes -->
 <div id="prototypes">
   
-  <div class="calEventView test_blue">
+  <div class="calEventView test-blue">
     <div id="data">
-      <div id="name" class="test_green">Name</div>
-      <div id="title" class="test_red">Title</div>
+      <div id="name" class="test-green">Name</div>
+      <div id="title" class="test-red">Title</div>
+      <div id="time" class="test-yellow">Time</div>
     </div>
-    <img id="avatar" class="test_yellow"/>
+    <img id="avatar" class="test-yellow"/>
   </div>
 
 </div>  

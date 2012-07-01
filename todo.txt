@@ -1,18 +1,18 @@
 ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
-
-items 90 (day) x 40 (hour)
+  
+[ ] get two supplicants rendered
+[ ] shower
+[ ] laundry
+[ ] R letter
   
 [ ] three main modes - implement
   [ ] test mode
+    [ ] basic requests
+    [ ] link: request <-> event  
   [ ] type mode
   [ ] do mode (wizard of oz)
   [ ] do mode (real)
 
-[ ] basic background
-[ ] basic user management
-[ ] basic calendar events
-[ ] basic requests
-[ ] link: request <-> event
 
 before launch:
 

@@ -1,0 +1,9 @@
+#supplicantGroup {
+  left: 161px;
+  top: 90px;
+  width: 246px;
+  height: 182px;
+
+  overflow-x: hidden;
+  overflow-y: scroll;
+}

@@ -3,8 +3,8 @@ Enables serialization (wrapping) and deserialization (unwrapping) of
 arbitrary objects according to the chatter protocol.
 ###
 
-# create a module
-chatter = {}
+# create a "module"
+chatter = chatter ? {}
 
 # table used to map back to types
 chatter.unwrap_table = {}

@@ -5,6 +5,16 @@ $ ->
   $('#calendarArea').append(e.view.el)
   # debug - end
 
+  # debug - begin - create a supplicant
+  group = new SupplicantGroup
+  group.addRandomSupplicant()
+  
+  # s = new Supplicant
+  # # $('#calendarArea').append(e.view.el)
+  # console.log 'supplicant'
+  # console.log s
+  # debug - end
+
   # showLayout() # <- debug
   
 # this debug function draws a background behind every visible element

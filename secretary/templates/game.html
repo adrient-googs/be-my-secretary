@@ -7,6 +7,7 @@
 <!-- PAGE JAVASCRIPT -->
 
 <script src="libs/jquery-1.7.2.min.js"></script>
+<script src="libs/jquery-ui-1.8.21.custom.min.js"></script>
 <script src="libs/underscore-min.js"></script>
 <script src="libs/backbone-0.9.2.min.js"></script>
 
@@ -16,25 +17,35 @@
 <!-- PAGE CSS -->
 
 <link rel="stylesheet" type="text/css" href="css/game.css"/>
+<link rel="stylesheet" type="text/css" href="css/event.css"/>
   
 </head>
 
-<body>
-  <!-- <div>This is a static block</div>
-  <div>
-  <div id="dynamic"></div> -->
-  
-  
+<body>  
 <!-- test game -->
 <div id="testBackground" class="gameArea">
-  <div id="username" class="test:blue">
+  <div id="username" class="test_blue">
     {{nickname}}
   </div>
-  <div id="logout" class="test:blue">
+  <div id="logout" class="test_blue">
     (<a href="{{logout_url}}">Logout</a>)
-  </div>  
+  </div>
+  <div id="calendarArea" class="test_blue">
+  </div>
 </div>
+
+<!-- game element prototypes -->
+<div id="prototypes">
   
+  <div class="calEventView test_blue">
+    <div id="data">
+      <div id="name" class="test_green">Name</div>
+      <div id="title" class="test_red">Title</div>
+    </div>
+    <img id="avatar" class="test_yellow"/>
+  </div>
+
+</div>  
 </body>
 
 </html>

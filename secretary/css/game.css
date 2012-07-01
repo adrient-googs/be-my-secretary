@@ -1,9 +1,6 @@
-body {
-}
-
 /* game area for all games */
 
-div.gameArea {
+.gameArea {
   position: absolute;
 
   width: 1058px;
@@ -16,11 +13,11 @@ div.gameArea {
   font-family: "Helvetica", Helvetica, sans-serif;
 }
 
-div.gameArea div {
+.gameArea div {
   position: inherit;
 }
 
-div.gameArea #username {
+.gameArea #username {
   left: 454px;
   top: 23px;
 
@@ -31,15 +28,24 @@ div.gameArea #username {
   text-align: right;
 }
 
-div.gameArea #logout {
+.gameArea #logout {
   left: 959px;
   top: 26px;
   font-size: 20px;
   color: white;
 }
 
-div.gameArea #logout a {
+.gameArea #logout a {
   color: white;
+}
+
+#calendarArea {
+  left: 10px;
+  top: 10px;
+  width: 630px;
+  height: 320px;
+  left: 82px;
+  top: 313px;
 }
 
 /* test game */
@@ -47,3 +53,10 @@ div.gameArea #logout a {
 #testBackground {
  background-image:url('/imgs/background-test.png');
 }
+
+/* game elements */
+
+#prototypes {
+  visibility: hidden;
+}
+

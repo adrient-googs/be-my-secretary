@@ -27,6 +27,6 @@ util.isInteger = (obj) ->
   _.isNumber(obj) and (obj % 1 == 0)
   
 # pick a random element from an array
-util.choice = (array) ->
+util.choose = (array) ->
   index = Math.floor(Math.random() * array.length)
   return array[index]

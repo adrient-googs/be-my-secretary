@@ -1,0 +1,61 @@
+.supplicantView {
+  width: 220px;
+  height: 46px;
+
+/*  left: 12px;
+  top: 0px;
+*/
+  border: 1px solid #515151;
+  overflow: visible !important;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 14px;
+  position: static !important;
+}
+
+/*.supplicantView {
+  width: 220px;
+  height: 46px;
+
+  left: 12px;
+  top: 0px;
+
+  border: 1px solid #515151;
+  overflow: visible !important;
+}
+*/
+.supplicantView div {
+  font-weight: bold;
+  color: black;
+}
+
+.supplicantView #name {
+  position: relative;
+  font-size: 20pt;
+}
+
+.supplicantView #points {
+  font-size: 16pt;
+}
+
+.supplicantView #title {
+  font-size: 14pt;
+}
+
+.supplicantView #constraints {
+  font-size: 14pt;
+}
+
+.supplicantView #mood {
+  font-size: 14pt;  
+}
+
+.supplicantView #avatar {
+  width: 48px;
+  height: 48px;
+
+  left: -11px;
+  top:-1px;
+  
+  position: relative;
+}

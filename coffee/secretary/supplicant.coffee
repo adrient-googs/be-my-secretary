@@ -9,8 +9,12 @@ class Supplicant extends Backbone.Model
     @cid = args.name
     util.assertion (@cid of Supplicant.NAMES_AND_AVATARS),
       "Unknown name: #{@cid}."
-    util.assertion (@get 'group')?, 'Must define group.'
     @view = new SupplicantView model:@
+    
+  @avatarImage: (name) ->
+    img_file = Supplicant.NAMES_AND_AVATARS[name]
+    return "/imgs/Face-Avatars-by-deleket/#{img_file}"
+    
     
 class SupplicantView extends Backbone.View
   events:
@@ -19,8 +23,33 @@ class SupplicantView extends Backbone.View
   
   # constructor
   constructor: (args) ->
-    args.el = $('#prototypes .calEventView').clone()[0]
+    args.el = $('#prototypes .supplicantView').clone()[0]
     super args
+    
+  # after construction
+  initialize: (args) ->
+    # set the avatar
+    @$el.find('#avatar').attr
+      src: Supplicant.avatarImage(@model.get 'name')
+      
+    # set the vertical position
+    @on 'append:view', (supplicants) =>
+      console.log 'SupplicantView onAppend'
+      # position after all previous elements
+      @$el.css top: (supplicants.length - 1) * 60
+      console.log "nSup: #{(supplicants.length)}"
+      console.log "top: #{(supplicants.length - 1) * 60}"
+      # bottoms = for sup in supplicants when sup isnt @model
+      #   sup.view.$el.position().top + sup.view.$el.height()
+      # @$el.css top:
+      #   if _.isEmpty(bottoms) then 0
+      #   else (_.max(bottoms) + 14)
+      # console.log 'bottoms'
+      # console.log bottoms
+      # console.log _.max(bottoms) + 14
+      # @$el.css top: _.max(bottoms) + 14
+      # console.log "pos: (#{@$el.position().left}, #{@$el.position().top})"
+      # console.log "height: #{@$el.height()}"
   
 # list of all possible supplicants and thier avatrs
 Supplicant.NAMES_AND_AVATARS =

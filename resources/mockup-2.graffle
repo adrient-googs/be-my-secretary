@@ -10009,7 +10009,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2012-07-01 16:35:30 +0000</string>
+	<string>2012-07-01 23:21:38 +0000</string>
 	<key>Modifier</key>
 	<string>Adrien Treuille</string>
 	<key>NotesVisible</key>
@@ -10062,7 +10062,7 @@
 	<array>
 		<dict>
 			<key>ActiveLayerIndex</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>AutoAdjust</key>
 			<false/>
 			<key>BackgroundGraphic</key>
@@ -17971,7 +17971,7 @@ Please add Nadya for a teeth cleanin}</string>
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{172.453, 100.86848}, {219, 46.394917}}</string>
+					<string>{{172, 97.947426}, {219, 46.394917}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FontInfo</key>
@@ -20909,7 +20909,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
-					<string>YES</string>
+					<string>NO</string>
 				</dict>
 				<dict>
 					<key>Lock</key>
@@ -20949,7 +20949,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
-					<string>NO</string>
+					<string>YES</string>
 				</dict>
 				<dict>
 					<key>Lock</key>
@@ -20959,7 +20959,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
-					<string>NO</string>
+					<string>YES</string>
 				</dict>
 				<dict>
 					<key>Lock</key>

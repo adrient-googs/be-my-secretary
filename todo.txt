@@ -1,9 +1,9 @@
 ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
   
 [ ] get two supplicants rendered
-[ ] shower
-[ ] laundry
-[ ] R letter
+  [ ] add avatar image
+  [ ] layout the rest of the elements
+
   
 [ ] three main modes - implement
   [ ] test mode

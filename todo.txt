@@ -1,28 +1,29 @@
-trying:
+ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
+
+items 90 (day) x 40 (hour)
   
-[ ] design new simple channel architecture
-  [ ] using a delegate
-[ ] server side
+[ ] three main modes - implement
+  [ ] test mode
+  [ ] type mode
+  [ ] do mode (wizard of oz)
+  [ ] do mode (real)
 
-transition: 
+[ ] basic background
+[ ] basic user management
+[ ] basic calendar events
+[ ] basic requests
+[ ] link: request <-> event
 
-[ ] clean out
-[ ] move to github
-[ ] do mockups
-  [ ] MAIN question: what's the minimal interface which has "magic"?!?!
-
-prototype:
-
-[ ] then do fun stuff with this -- a real calendar  
-
-someday:
+before launch:
 
 [ ] access permissions for get/post/put/delete
   [ ] RemoteModel
   [ ] RemoteMethod
 
+# NOTES #
 
-
+icons:
+http://www.iconarchive.com/show/face-avatars-icons-by-deleket.html
 
 <!-- [x] test out history API
   [x] can this be used as a router? - YES .. but some weirdness to figure out

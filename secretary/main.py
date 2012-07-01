@@ -15,8 +15,9 @@ class MainPage(webapp2.RequestHandler):
   def get(self):
     user = users.get_current_user()
     if user:
-      path = os.path.join(os.path.dirname(__file__), 'templates/main.html')
+      path = os.path.join(os.path.dirname(__file__), 'templates/game.html')
       template_values = {
+        'nickname': user.nickname(),
         'logout_url': users.create_logout_url('/'),
       }
       self.response.headers['Content-Type'] = 'text/html'

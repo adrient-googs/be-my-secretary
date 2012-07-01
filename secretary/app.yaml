@@ -15,8 +15,11 @@ handlers:
   - url: /libs
     static_dir: libs
 
-  # - url: /libs/blitzer
-  #   static_dir: libs/blitzer
+  - url: /css
+    static_dir: css
+
+  - url: /imgs
+    static_dir: imgs
 
   # - url: /libs/blitzer/images
   #   static_dir: libs/blitzer/images
@@ -25,7 +28,7 @@ handlers:
   #   script: main.app
   #   login: admin
 
-  - url: .*
+  - url: /
     script: main.app
 
 libraries:

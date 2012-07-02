@@ -1,7 +1,6 @@
 ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
   
 [ ] event management
-  [ ]
   [ ] add event -> click on calendar
 [ ] better requests
   [ ] add constraints

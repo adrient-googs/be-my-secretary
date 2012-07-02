@@ -9,7 +9,34 @@ class CalEvent extends Backbone.Model
   
   # constructor
   initialize: ->
+    # create a view
     @view = new CalEventView model:@
+
+  # validate this event
+  validate: (attribs) ->
+    # invalid in case of overlap
+    if @parent.overlaps attribs, @
+      return 'overlap'
+      
+  ###
+  Returns true if this event overaps another.
+  Overlaps happen because of shared name or overlapping time.
+  ###
+  overlaps: (ev) ->
+    attribs = ev.attributes ? ev
+    # check for name overlap
+    return true if attribs.name is @get('name')
+    
+    # check for day overlap
+    return false if attribs.day isnt @get('day')
+    
+    # check for time overlap
+    {time:start1, length:len1} = @.attributes
+    {time:start2, length:len2} = attribs
+    [end1, end2] = [start1 + len1, start2 + len2]
+    return true if start1 <= start2 < end1
+    return true if start2 <= start1 < end2
+    return false
     
 class CalEventView extends Backbone.View
   # constants
@@ -44,53 +71,55 @@ class CalEventView extends Backbone.View
     # make it draggable and resizable
     @$el.draggable
       containment: 'parent'
-      drag: => @posToCoords()
-      stop: => @model.set @posToCoords()
+      drag: => @posToDate()
+      stop: => @trigger 'stop'
     @$el.resizable
       minWidth: CalEventView.DAY_WIDTH_PIXELS
       maxWidth: CalEventView.DAY_WIDTH_PIXELS
       minHeight: CalEventView.HOUR_HEIGHT_PIXELS
       containment: 'parent'
       handles: 'n,s,se'
-      resize: => @posToCoords()
-      stop: => @model.set @posToCoords()
-      
+      resize: => @posToDate()
+      stop: => @trigger 'stop'
+
     # bind events
     @model.on 'change', (model, arg) => @onChange arg.changes
+    @model.on 'error', (model, type) => @onError type 
+    @on 'stop', => @model.set @posToDate()
           
   # converts position to day/time/length
-  posToCoords: ->
+  posToDate: ->
     # get the position
     x = @$el.position().left
     y = @$el.position().top
     h = @$el.height()
     
     # convert to coordinates
-    new_coords = 
+    new_date = 
       day:    Math.floor(x / CalEventView.DAY_WIDTH_PIXELS + 0.5)
       time:   Math.floor(2 * y / CalEventView.HOUR_HEIGHT_PIXELS + 0.5) / 2 + 9
       length: Math.floor(2 * h / CalEventView.HOUR_HEIGHT_PIXELS + 0.5) / 2
-    new_coords.length = Math.max(new_coords.length, 1.0)
-    @renderTime new_coords
-    return new_coords
+    new_date.length = Math.max(new_date.length, 1.0)
+    @renderTime new_date
+    return new_date
     
   # converts day/time/length to position
-  coordsToPos: (coords) -> 
-    coords = coords ? @model.attributes
+  dateToPos: (date) -> 
+    date = date ? @model.attributes
 
     # stop any animations to prevent flicker
     @$el.stop true
 
     # start a new animation
     @$el.animate
-      left: coords.day * CalEventView.DAY_WIDTH_PIXELS
-      top: (coords.time - 9) * CalEventView.HOUR_HEIGHT_PIXELS
+      left: date.day * CalEventView.DAY_WIDTH_PIXELS
+      top: (date.time - 9) * CalEventView.HOUR_HEIGHT_PIXELS
       width: CalEventView.DAY_WIDTH_PIXELS
-      height: coords.length * CalEventView.HOUR_HEIGHT_PIXELS,
+      height: date.length * CalEventView.HOUR_HEIGHT_PIXELS,
       500, 'easeOutExpo'
       
   # render the time
-  renderTime: (coords) ->
+  renderTime: (date) ->
     timeStr = (hour) ->
       return 'noon' if hour == 12
       [hour, suf] = 
@@ -99,18 +128,23 @@ class CalEventView extends Backbone.View
         else [hour - 12, 'pm'] 
       if util.isInteger(hour) then "#{hour}#{suf}"
       else "#{Math.floor(hour)}:30#{suf}"
-    from_time = timeStr(coords.time)
-    to_time = timeStr(coords.time + coords.length)
+    from_time = timeStr(date.time)
+    to_time = timeStr(date.time + date.length)
     days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-    coord_str = "#{days[coords.day]} #{from_time} - #{to_time}"
-    @$el.find('#time').text coord_str
+    coord_str = "#{days[date.day]} #{from_time} - #{to_time}"
+    @$el.find('#time').text coord_str    
     
   # called when something changed
   onChange: (changes) -> 
-    changes = _.keys(changes)
-    
     # if the day/time/length changed, then move the event
+    changes = _.keys(changes)
     time_changes = ['day', 'time', 'length']
     unless _.isEmpty _.intersection(changes, time_changes)
       @renderTime @model.attributes
-      @coordsToPos()
+      @dateToPos()
+      
+  # called when there's an error
+  onError: (type) ->
+    console.log "CalEventView: Error type: #{type}"
+    # revert to previous position
+    @dateToPos() if type == 'overlap'

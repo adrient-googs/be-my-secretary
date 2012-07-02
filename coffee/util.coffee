@@ -26,10 +26,12 @@ util.flip = (func) ->
 util.isInteger = (obj) ->
   _.isNumber(obj) and (obj % 1 == 0)
   
-# pick a random element from an array
-util.choose = (array) ->
-  index = Math.floor(Math.random() * array.length)
-  return array[index]
+# pick a random element from an array not in the exclude array
+util.choose = (array, exclude=[]) ->
+  loop
+    index = Math.floor(Math.random() * array.length)
+    elt = array[index]
+    return elt unless elt in exclude
   
 ###
   Appends an element to a div assuming all elements are laid out as follows:

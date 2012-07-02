@@ -1,5 +1,14 @@
 # main function
 $ ->
+  # m1 = new Backbone.Model an_int:123
+  # console.log m1.get 'an_int'
+  # m1.on 'change', (model, options) ->
+  #   console.log "CHANGE"
+  #   console.log m1.get 'an_int'
+  #   console.log m1.previousAttributes()
+  # m1.set 'an_int', 777
+  # return
+  
   # debug - begin - create a supplicant
   group = new SupplicantGroup
   group.addRandomSupplicant()
@@ -11,15 +20,13 @@ $ ->
   # debug - begin - create a calendar and add an event
   c = new Calendar
   console.log "created calendar #{c}"
-  c.add new CalEvent 
-  # $('#calendar').append(e.view.el)
+  c.addNewEvent()
   # debug - end
   
   # set up the addEvent button
   $('button#bigAddEvent').on 'click', ->
-    c.add new CalEvent
-    # showLayout()
-    return false
+      c.addNewEvent()
+      return false
   
   # s = new Supplicant
   # # $('#calendar').append(e.view.el)

@@ -30,3 +30,21 @@ util.isInteger = (obj) ->
 util.choose = (array) ->
   index = Math.floor(Math.random() * array.length)
   return array[index]
+  
+###
+  Appends an element to a div assuming all elements are laid out as follows:
+    ELT   height
+    SPACE vertical_margin
+    ELT   height
+    SPACE vertical_margin
+    ELT   height
+  Also, resizes the containing div.
+###
+util.vertical_append = (elt, container, height, vertical_margin) ->
+  n_children = container.children().length
+  elt.css
+    height: height
+    top: n_children * (height + vertical_margin)
+  container.css height: 
+    height * (n_children + 1) + vertical_margin * n_children
+  container.append(elt)

@@ -3,20 +3,21 @@ class Supplicant extends Backbone.Model
   defaults:
     group: undefined    # parent group
     name: undefined     # string name
+    mood: 'happy'
+    points: 100
     
   # after initilization
   initialize: (args) ->
     @cid = args.name
-    util.assertion (@cid of Supplicant.NAMES_AND_AVATARS),
+    util.assertion (@cid of SupplicantView.NAMES_AND_AVATARS),
       "Unknown name: #{@cid}."
-    @view = new SupplicantView model:@
-    
-  @avatarImage: (name) ->
-    img_file = Supplicant.NAMES_AND_AVATARS[name]
-    return "/imgs/Face-Avatars-by-deleket/#{img_file}"
-    
+    @view = new SupplicantView model:@    
     
 class SupplicantView extends Backbone.View
+  # manually specify CSS properties for vertical add
+  @HEIGHT: 46
+  @VERTICAL_MARGIN: 14
+  
   events:
     undefined
     # 'change' : => @change
@@ -28,31 +29,19 @@ class SupplicantView extends Backbone.View
     
   # after construction
   initialize: (args) ->
-    # set the avatar
+    @$el.find('#name').text @model.get 'name'
+    @$el.find('#points').text "#{@model.get 'points'} pts"
     @$el.find('#avatar').attr
-      src: Supplicant.avatarImage(@model.get 'name')
+      src: SupplicantView.avatarImage(@model.get 'name')
+    @$el.css backgroundColor: switch @model.get 'mood'
+      when 'happy' then 'rgb(132, 186, 101)'
       
-    # set the vertical position
-    @on 'append:view', (supplicants) =>
-      console.log 'SupplicantView onAppend'
-      # position after all previous elements
-      @$el.css top: (supplicants.length - 1) * 60
-      console.log "nSup: #{(supplicants.length)}"
-      console.log "top: #{(supplicants.length - 1) * 60}"
-      # bottoms = for sup in supplicants when sup isnt @model
-      #   sup.view.$el.position().top + sup.view.$el.height()
-      # @$el.css top:
-      #   if _.isEmpty(bottoms) then 0
-      #   else (_.max(bottoms) + 14)
-      # console.log 'bottoms'
-      # console.log bottoms
-      # console.log _.max(bottoms) + 14
-      # @$el.css top: _.max(bottoms) + 14
-      # console.log "pos: (#{@$el.position().left}, #{@$el.position().top})"
-      # console.log "height: #{@$el.height()}"
+  @avatarImage: (name) ->
+    img_file = SupplicantView.NAMES_AND_AVATARS[name]
+    return "/imgs/Face-Avatars-by-deleket/#{img_file}"
   
 # list of all possible supplicants and thier avatrs
-Supplicant.NAMES_AND_AVATARS =
+SupplicantView.NAMES_AND_AVATARS =
   Joel:    'Males/A01.png'
   Seth:    'Males/A02.png'
   James:   'Males/A03.png'

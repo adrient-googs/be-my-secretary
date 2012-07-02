@@ -18,7 +18,7 @@ $ ->
   # console.log s
   # debug - end
 
-  showLayout() # <- debug
+  # showLayout() # <- debug
   
 # this debug function draws a background behind every visible element
 # so that they can be laid out

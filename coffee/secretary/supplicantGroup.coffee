@@ -22,7 +22,7 @@ class SupplicantGroup extends Backbone.Model
     
   # adds a random supplicant (not in the group)
   addRandomSupplicant: ->
-    possibilities = _.keys Supplicant.NAMES_AND_AVATARS
+    possibilities = _.keys SupplicantView.NAMES_AND_AVATARS
     supplicants = @get 'supplicants'
     loop
       name = util.choose possibilities
@@ -47,8 +47,7 @@ class SupplicantGroupView extends Backbone.View
     
   # called when a upplicant is added
   onAddSupplicant: (sup) ->
-    # tell the supplicant view it's being appended
-    sup.view.trigger 'append:view', @model.supplicants.models
-    @$el.append(sup.view.el)
-    
+    util.vertical_append sup.view.$el, @$el,
+      SupplicantView.HEIGHT
+      SupplicantView.VERTICAL_MARGIN    
   

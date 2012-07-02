@@ -1,4 +1,4 @@
-#supplicantGroup {
+#supplicantContainer {
   left: 161px;
   top: 90px;
   width: 246px;
@@ -6,4 +6,9 @@
 
   overflow-x: visible !important;
   overflow-y: scroll;
+}
+
+#supplicantGroup {
+  width: 100%;
+  height: 0px; /* will be set by util.addVertical() */
 }

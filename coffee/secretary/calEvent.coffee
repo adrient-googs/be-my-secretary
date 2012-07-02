@@ -31,9 +31,8 @@ class CalEventView extends Backbone.View
     super model: model
       
     # avatar
-    img_file = Supplicant.NAMES_AND_AVATARS[@model.get('name')]
     @$el.find('#avatar').attr
-      src: "/imgs/Face-Avatars-by-deleket/#{img_file}"
+      src: SupplicantView.avatarImage @model.get 'name'
     @$el.find('#name').text @model.get('name')
     
     # set the background color

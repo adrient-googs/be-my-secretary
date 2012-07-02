@@ -1,61 +1,50 @@
 .supplicantView {
-  width: 220px;
-  height: 46px;
-
-/*  left: 12px;
-  top: 0px;
-*/
-  border: 1px solid #515151;
-  overflow: visible !important;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 14px;
-  position: static !important;
-}
-
-/*.supplicantView {
-  width: 220px;
-  height: 46px;
-
   left: 12px;
-  top: 0px;
-
-  border: 1px solid #515151;
+  width: 220px;
   overflow: visible !important;
+  border: 1px solid #515151;
 }
-*/
+
 .supplicantView div {
   font-weight: bold;
   color: black;
 }
 
 .supplicantView #name {
-  position: relative;
-  font-size: 20pt;
+  font-size: 20px;
+  top: 0px;
+  left: 34px;
 }
 
 .supplicantView #points {
-  font-size: 16pt;
+  font-size: 16px;
+  left: 34px;
+  top: 25px;
 }
 
 .supplicantView #title {
-  font-size: 14pt;
+  font-size: 14px;
+  top: 0px;
+  left: 114px;
 }
 
 .supplicantView #constraints {
-  font-size: 14pt;
+  font-size: 14px;
+  top: 15px;
+  left: 114px;
 }
 
 .supplicantView #mood {
-  font-size: 14pt;  
+  font-size: 14px; 
+  top: 30px;
+  left: 114px; 
 }
 
 .supplicantView #avatar {
   width: 48px;
   height: 48px;
 
-  left: -11px;
+  position: absolute;
+  left: -12px;
   top:-1px;
-  
-  position: relative;
 }

@@ -57,10 +57,7 @@ class CalEventView extends Backbone.View
       
     # bind events
     @model.on 'change', (model, arg) => @onChange arg.changes
-    
-    # initial placement
-    @onChange @model.attributes
-      
+          
   # converts position to day/time/length
   posToCoords: ->
     # get the position

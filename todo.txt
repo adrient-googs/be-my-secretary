@@ -1,9 +1,15 @@
 ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
   
-[ ] get two supplicants rendered
-  [ ] add avatar image
-  [ ] layout the rest of the elements
-
+[ ] event management
+  [ ]
+  [ ] add event -> click on calendar
+[ ] better requests
+  [ ] add constraints
+  [ ] show constraints
+  [ ] connect constraints + requests
+  [ ] periodic add
+  [ ] score
+  [ ] timer
   
 [ ] three main modes - implement
   [ ] test mode

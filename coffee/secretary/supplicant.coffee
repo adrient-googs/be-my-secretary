@@ -1,10 +1,13 @@
 # represents someone asking something
 class Supplicant extends Backbone.Model
   defaults:
-    group: undefined    # parent group
     name: undefined     # string name
     mood: 'happy'
     points: 100
+    
+  # constructor
+  constructor: (args...) ->
+    super args...
     
   # after initilization
   initialize: (args) ->
@@ -14,7 +17,7 @@ class Supplicant extends Backbone.Model
     @view = new SupplicantView model:@    
     
 class SupplicantView extends Backbone.View
-  # manually specify CSS properties for vertical add
+  # manually specify CSS properties for util.verticalAppend
   @HEIGHT: 46
   @VERTICAL_MARGIN: 14
   
@@ -39,6 +42,58 @@ class SupplicantView extends Backbone.View
   @avatarImage: (name) ->
     img_file = SupplicantView.NAMES_AND_AVATARS[name]
     return "/imgs/Face-Avatars-by-deleket/#{img_file}"
+
+class SupplicantGroup extends Backbone.Model
+  defaults:
+    supplicants: undefined
+
+  # constructor
+  initialize: ->
+    # manage supplicants property through private collection
+    @supplicants = new Backbone.Collection
+    @supplicants.comparator = (sup) -> sup.get 'name'
+    @set 'supplicants', @supplicants.models
+    @supplicants.on 'all', (args...) => @trigger args...
+
+    # create the view
+    @view = new SupplicantGroupView model:@
+
+  # add a supplicant
+  add: (sup) ->
+    sup.parent = @
+    @supplicants.add sup
+
+  # adds a random supplicant (not in the group)
+  addRandomSupplicant: ->
+    possibilities = _.keys SupplicantView.NAMES_AND_AVATARS
+    supplicants = @get 'supplicants'
+    loop
+      name = util.choose possibilities
+      break if name not of supplicants
+    @add new Supplicant name:name
+
+class SupplicantGroupView extends Backbone.View
+  # constructor
+  constructor: (args) ->
+    args.el = $('#supplicantGroup')
+    super args
+
+  # after all elements have been set
+  initialize: ->
+    @model.on 'add', (sup) => @onAddSupplicant sup
+
+    # # debug - begin
+    # @model.on 'all', (args...) =>
+    #   console.log 'SupplicantGroupView event'
+    #   console.log args
+    # # debug - end
+
+  # called when a upplicant is added
+  onAddSupplicant: (sup) ->
+    util.verticalAppend sup.view.$el, @$el,
+      SupplicantView.HEIGHT
+      SupplicantView.VERTICAL_MARGIN    
+
   
 # list of all possible supplicants and thier avatrs
 SupplicantView.NAMES_AND_AVATARS =

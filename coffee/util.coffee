@@ -40,7 +40,7 @@ util.choose = (array) ->
     ELT   height
   Also, resizes the containing div.
 ###
-util.vertical_append = (elt, container, height, vertical_margin) ->
+util.verticalAppend = (elt, container, height, vertical_margin) ->
   n_children = container.children().length
   elt.css
     height: height

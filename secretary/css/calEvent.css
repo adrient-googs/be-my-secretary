@@ -9,6 +9,7 @@
   border: 1px rgb(64, 64, 64) solid;
   
   overflow: visible !important;
+  position: absolute !important;
 }
 
 .calEventView .ui-resizable-handle {
@@ -48,4 +49,5 @@
   top: 0%;
   margin-top: -7px;
   margin-left: -25px;
+  z-index: 2000;
 }

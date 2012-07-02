@@ -1,19 +1,28 @@
 # main function
 $ ->
-  # debug - begin - create a calendar event
-  e = new CalEvent 
-  $('#calendarArea').append(e.view.el)
-  # debug - end
-
   # debug - begin - create a supplicant
   group = new SupplicantGroup
   group.addRandomSupplicant()
   group.addRandomSupplicant()
   group.addRandomSupplicant()
   group.addRandomSupplicant()
+  # debug - end
+  
+  # debug - begin - create a calendar and add an event
+  c = new Calendar
+  console.log "created calendar #{c}"
+  c.add new CalEvent 
+  # $('#calendar').append(e.view.el)
+  # debug - end
+  
+  # set up the addEvent button
+  $('button#bigAddEvent').on 'click', ->
+    c.add new CalEvent
+    # showLayout()
+    return false
   
   # s = new Supplicant
-  # # $('#calendarArea').append(e.view.el)
+  # # $('#calendar').append(e.view.el)
   # console.log 'supplicant'
   # console.log s
   # debug - end

@@ -214,43 +214,6 @@ class RemoteModel(db.Model):
   
   def __init__(self, *args, **kwargs):
     db.Model.__init__(self, *args, **kwargs)    
-  
-
-        
-  # @classmethod
-  # def correctlyTypeJSON(cls, self_json):
-  #   """Takes a json object:
-  #   
-  #   {key1:string, key2:string, ...}
-  #   
-  #   and updates the object in place to:
-  #   
-  #   {key1:type1, key2:type2, ...}
-  #   
-  #   where type1, type2... reflect this entity's properties
-  #   """
-  #   for key, value in self_json.items():
-  #     if key == 'id':
-  #       type_converter = db.Key
-  #     else:
-  #       property_type = type(getattr(cls, key))
-  #       logging.error('converting %s using %s' % (key, property_type))
-  #       if property_type == db.StringProperty:
-  #         type_converter = unicode
-  #       elif property_type == db.BooleanProperty:
-  #         type_converter = RemoteModel.parseBool
-  #       elif property_type == JSONProperty:
-  #         type_converter = lambda x: x
-  #       else:
-  #         type_converter = property_type.data_type
-  #     self_json[key] = type_converter(value)
-  #     
-  # @staticmethod
-  # def parseBool(s):
-  #   """Parses the strings 'false', and 'true' to the python bool
-  #   type (from a JSON string)."""
-  #   return {'false':False, 'true':True}[s]
-    
 
 def getAllRemoteHandlers():
   """Returns a list with elements of type (url_string,

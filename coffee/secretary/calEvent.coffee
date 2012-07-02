@@ -9,8 +9,9 @@ class CalEvent extends Backbone.Model
   
   # constructor
   initialize: ->
-    # create a view
+    # create the various views
     @view = new CalEventView model:@
+    @edit_view = new EditCalEventView model:@
 
   # validate this event
   validate: (attribs) ->
@@ -148,3 +149,38 @@ class CalEventView extends Backbone.View
     console.log "CalEventView: Error type: #{type}"
     # revert to previous position
     @dateToPos() if type == 'overlap'
+    
+# dialog so that the user can edit an event
+class EditCalEventView extends Backbone.View
+  # constructor
+  constructor: (options) ->
+    options.el = $('#prototypes .editCalEventView').clone()[0]
+    super options
+    
+  # after construction
+  initialize: ->
+    @$el.find('input#title').autocomplete
+      source: CalEvent.TITLES
+    
+CalEvent.TITLES = [
+  'Dress Up'
+  'Snack'
+  'People Watch'
+  'Swings'
+  'Tennis'
+  'Pedicure'
+  'Climb a Tree.'
+  'Breakfast'
+  'Lunch'
+  'Henna Tattoos'
+  'Listening to Music'
+  'Paint'
+  'Argue All Day'
+  'Ice Cream'
+  'Long Walk'
+  'Picnic'
+  'Water Drinking Contest'
+  'Scavenger Hunt'
+  'Play Catch'
+  'Fruit Smoothies'
+]

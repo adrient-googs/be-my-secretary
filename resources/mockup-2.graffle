@@ -20,9 +20,113 @@
 	<key>GuidesVisible</key>
 	<string>YES</string>
 	<key>ImageCounter</key>
-	<integer>7</integer>
+	<integer>8</integer>
 	<key>Images</key>
 	<array>
+		<dict>
+			<key>Extension</key>
+			<string>tiff</string>
+			<key>ID</key>
+			<integer>7</integer>
+			<key>RawData</key>
+			<data>
+			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
+			AAgACAABAAEAAQAB
+			</data>
+		</dict>
 		<dict>
 			<key>Extension</key>
 			<string>png</string>
@@ -10009,7 +10113,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2012-07-02 09:50:39 +0000</string>
+	<string>2012-07-02 15:43:09 +0000</string>
 	<key>Modifier</key>
 	<string>Adrien Treuille</string>
 	<key>NotesVisible</key>
@@ -10062,7 +10166,7 @@
 	<array>
 		<dict>
 			<key>ActiveLayerIndex</key>
-			<integer>1</integer>
+			<integer>2</integer>
 			<key>AutoAdjust</key>
 			<false/>
 			<key>BackgroundGraphic</key>
@@ -10111,7 +10215,7 @@
 			<key>CanvasSize</key>
 			<string>{1058, 676}</string>
 			<key>ColumnAlign</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>ColumnSpacing</key>
 			<real>36</real>
 			<key>DisplayScale</key>
@@ -11778,6 +11882,562 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
+					<string>{{461.87848, 496.3623}, {127.24304, 26.775421}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>483</integer>
+					<key>Layer</key>
+					<integer>2</integer>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Align</key>
+						<integer>0</integer>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs24 \cf0 nadya and you}</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{464.5, 528}, {122, 23}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>482</integer>
+					<key>ImageID</key>
+					<integer>7</integer>
+					<key>Layer</key>
+					<integer>2</integer>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>fill</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+						<key>stroke</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{461.87848, 441.8623}, {127.24304, 26.775421}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>ID</key>
+					<integer>481</integer>
+					<key>Layer</key>
+					<integer>2</integer>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+					<key>Text</key>
+					<dict>
+						<key>Align</key>
+						<integer>0</integer>
+						<key>Text</key>
+						<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs24 \cf0 teeth cleaning}</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>Class</key>
+					<string>Group</string>
+					<key>Graphics</key>
+					<array>
+						<dict>
+							<key>Bounds</key>
+							<string>{{461.87848, 419}, {60, 18}}</string>
+							<key>Class</key>
+							<string>ShapedGraphic</string>
+							<key>FitText</key>
+							<string>YES</string>
+							<key>Flow</key>
+							<string>Resize</string>
+							<key>FontInfo</key>
+							<dict>
+								<key>Color</key>
+								<dict>
+									<key>archive</key>
+									<data>
+								YnBsaXN0MDDU
+								AQIDBAUIISJU
+								JHRvcFgkb2Jq
+								ZWN0c1gkdmVy
+								c2lvblkkYXJj
+								aGl2ZXLRBgdU
+								cm9vdIABpQkK
+								ExceVSRudWxs
+								1AsMDQ4PEBES
+								XxASTlNDdXN0
+								b21Db2xvclNw
+								YWNlV05TV2hp
+								dGVcTlNDb2xv
+								clNwYWNlViRj
+								bGFzc4ACRTAu
+								MjUAEAOABNIU
+								DhUWVE5TSUQQ
+								AoAD0hgZGh1Y
+								JGNsYXNzZXNa
+								JGNsYXNzbmFt
+								ZaIbHFxOU0Nv
+								bG9yU3BhY2VY
+								TlNPYmplY3Rc
+								TlNDb2xvclNw
+								YWNl0hgZHyCi
+								IBxXTlNDb2xv
+								chIAAYagXxAP
+								TlNLZXllZEFy
+								Y2hpdmVyAAgA
+								EQAWAB8AKAAy
+								ADUAOgA8AEIA
+								SABRAGYAbgB7
+								AIIAhACKAIwA
+								jgCTAJgAmgCc
+								AKEAqgC1ALgA
+								xQDOANsA4ADj
+								AOsA8AAAAAAA
+								AAIBAAAAAAAA
+								ACMAAAAAAAAA
+								AAAAAAAAAAEC
+									</data>
+									<key>b</key>
+									<string>0.25</string>
+									<key>g</key>
+									<string>0.25</string>
+									<key>r</key>
+									<string>0.25</string>
+								</dict>
+								<key>Font</key>
+								<string>Helvetica</string>
+								<key>Size</key>
+								<real>15</real>
+							</dict>
+							<key>ID</key>
+							<integer>486</integer>
+							<key>Shape</key>
+							<string>Rectangle</string>
+							<key>Style</key>
+							<dict>
+								<key>fill</key>
+								<dict>
+									<key>Draws</key>
+									<string>NO</string>
+								</dict>
+								<key>shadow</key>
+								<dict>
+									<key>Draws</key>
+									<string>NO</string>
+								</dict>
+								<key>stroke</key>
+								<dict>
+									<key>Draws</key>
+									<string>NO</string>
+								</dict>
+							</dict>
+							<key>Text</key>
+							<dict>
+								<key>Pad</key>
+								<integer>0</integer>
+								<key>RTFD</key>
+								<data>
+								BAtzdHJlYW10
+								eXBlZIHoA4QB
+								QISEhBJOU0F0
+								dHJpYnV0ZWRT
+								dHJpbmcAhIQI
+								TlNPYmplY3QA
+								hZKEhIQITlNT
+								dHJpbmcBlIQB
+								KwlBY3Rpdml0
+								eTqGhAJpSQEJ
+								koSEhAxOU0Rp
+								Y3Rpb25hcnkA
+								lIQBaQOShJaW
+								B05TQ29sb3KG
+								koSEhAdOU0Nv
+								bG9yAJSEAWMD
+								hAJmZoMAAIA+
+								AYaShJaWEE5T
+								UGFyYWdyYXBo
+								U3R5bGWGkoSE
+								hBBOU1BhcmFn
+								cmFwaFN0eWxl
+								AJSEBENDQFMC
+								AISEhAdOU0Fy
+								cmF5AJSZDJKE
+								hIQJTlNUZXh0
+								VGFiAJSEAkNm
+								AByGkoSioQA4
+								hpKEoqEAVIaS
+								hKKhAHCGkoSi
+								oQCBjACGkoSi
+								oQCBqACGkoSi
+								oQCBxACGkoSi
+								oQCB4ACGkoSi
+								oQCB/ACGkoSi
+								oQCBGAGGkoSi
+								oQCBNAGGkoSi
+								oQCBUAGGhgCG
+								koSWlgZOU0Zv
+								bnSGkoSEhAZO
+								U0ZvbnQelJko
+								hAVbNDBjXQYA
+								AAAeAAAA//5I
+								AGUAbAB2AGUA
+								dABpAGMAYQAt
+								AEIAbwBsAGQA
+								AACEAWYPmwCb
+								AZsAmwCGhoY=
+								</data>
+								<key>Text</key>
+								<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red64\green64\blue64;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\b\fs30 \cf2 Activity:}</string>
+								<key>VerticalPad</key>
+								<integer>0</integer>
+							</dict>
+							<key>Wrap</key>
+							<string>NO</string>
+						</dict>
+						<dict>
+							<key>Bounds</key>
+							<string>{{461.87848, 473.5}, {78, 18}}</string>
+							<key>Class</key>
+							<string>ShapedGraphic</string>
+							<key>FitText</key>
+							<string>YES</string>
+							<key>Flow</key>
+							<string>Resize</string>
+							<key>FontInfo</key>
+							<dict>
+								<key>Color</key>
+								<dict>
+									<key>archive</key>
+									<data>
+								YnBsaXN0MDDU
+								AQIDBAUIISJU
+								JHRvcFgkb2Jq
+								ZWN0c1gkdmVy
+								c2lvblkkYXJj
+								aGl2ZXLRBgdU
+								cm9vdIABpQkK
+								ExceVSRudWxs
+								1AsMDQ4PEBES
+								XxASTlNDdXN0
+								b21Db2xvclNw
+								YWNlV05TV2hp
+								dGVcTlNDb2xv
+								clNwYWNlViRj
+								bGFzc4ACRTAu
+								MjUAEAOABNIU
+								DhUWVE5TSUQQ
+								AoAD0hgZGh1Y
+								JGNsYXNzZXNa
+								JGNsYXNzbmFt
+								ZaIbHFxOU0Nv
+								bG9yU3BhY2VY
+								TlNPYmplY3Rc
+								TlNDb2xvclNw
+								YWNl0hgZHyCi
+								IBxXTlNDb2xv
+								chIAAYagXxAP
+								TlNLZXllZEFy
+								Y2hpdmVyAAgA
+								EQAWAB8AKAAy
+								ADUAOgA8AEIA
+								SABRAGYAbgB7
+								AIIAhACKAIwA
+								jgCTAJgAmgCc
+								AKEAqgC1ALgA
+								xQDOANsA4ADj
+								AOsA8AAAAAAA
+								AAIBAAAAAAAA
+								ACMAAAAAAAAA
+								AAAAAAAAAAEC
+									</data>
+									<key>b</key>
+									<string>0.25</string>
+									<key>g</key>
+									<string>0.25</string>
+									<key>r</key>
+									<string>0.25</string>
+								</dict>
+								<key>Font</key>
+								<string>Helvetica-Bold</string>
+								<key>Size</key>
+								<real>15</real>
+							</dict>
+							<key>ID</key>
+							<integer>487</integer>
+							<key>Shape</key>
+							<string>Rectangle</string>
+							<key>Style</key>
+							<dict>
+								<key>fill</key>
+								<dict>
+									<key>Draws</key>
+									<string>NO</string>
+								</dict>
+								<key>shadow</key>
+								<dict>
+									<key>Draws</key>
+									<string>NO</string>
+								</dict>
+								<key>stroke</key>
+								<dict>
+									<key>Draws</key>
+									<string>NO</string>
+								</dict>
+							</dict>
+							<key>Text</key>
+							<dict>
+								<key>Pad</key>
+								<integer>0</integer>
+								<key>RTFD</key>
+								<data>
+								BAtzdHJlYW10
+								eXBlZIHoA4QB
+								QISEhBJOU0F0
+								dHJpYnV0ZWRT
+								dHJpbmcAhIQI
+								TlNPYmplY3QA
+								hZKEhIQITlNT
+								dHJpbmcBlIQB
+								KwpBdHRlbmRl
+								ZXM6hoQCaUkB
+								CpKEhIQMTlNE
+								aWN0aW9uYXJ5
+								AJSEAWkDkoSW
+								lgdOU0NvbG9y
+								hpKEhIQHTlND
+								b2xvcgCUhAFj
+								A4QCZmaDAACA
+								PgGGkoSWlhBO
+								U1BhcmFncmFw
+								aFN0eWxlhpKE
+								hIQQTlNQYXJh
+								Z3JhcGhTdHls
+								ZQCUhARDQ0BT
+								AgCEhIQHTlNB
+								cnJheQCUmQyS
+								hISECU5TVGV4
+								dFRhYgCUhAJD
+								ZgAchpKEoqEA
+								OIaShKKhAFSG
+								koSioQBwhpKE
+								oqEAgYwAhpKE
+								oqEAgagAhpKE
+								oqEAgcQAhpKE
+								oqEAgeAAhpKE
+								oqEAgfwAhpKE
+								oqEAgRgBhpKE
+								oqEAgTQBhpKE
+								oqEAgVABhoYA
+								hpKElpYGTlNG
+								b250hpKEhIQG
+								TlNGb250HpSZ
+								KIQFWzQwY10G
+								AAAAHgAAAP/+
+								SABlAGwAdgBl
+								AHQAaQBjAGEA
+								LQBCAG8AbABk
+								AAAAhAFmD5sA
+								mwGbAJsAhoaG
+								</data>
+								<key>Text</key>
+								<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red64\green64\blue64;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\b\fs30 \cf2 Attendees:}</string>
+								<key>VerticalPad</key>
+								<integer>0</integer>
+							</dict>
+							<key>Wrap</key>
+							<string>NO</string>
+						</dict>
+						<dict>
+							<key>Bounds</key>
+							<string>{{454.16699, 413}, {142.66605, 145}}</string>
+							<key>Class</key>
+							<string>ShapedGraphic</string>
+							<key>ID</key>
+							<integer>488</integer>
+							<key>Shape</key>
+							<string>Rectangle</string>
+							<key>Style</key>
+							<dict>
+								<key>fill</key>
+								<dict>
+									<key>Color</key>
+									<dict>
+										<key>b</key>
+										<string>0.666667</string>
+										<key>g</key>
+										<string>0.611765</string>
+										<key>r</key>
+										<string>0.619608</string>
+									</dict>
+								</dict>
+								<key>shadow</key>
+								<dict>
+									<key>Draws</key>
+									<string>NO</string>
+								</dict>
+								<key>stroke</key>
+								<dict>
+									<key>CornerRadius</key>
+									<real>9</real>
+									<key>Draws</key>
+									<string>NO</string>
+								</dict>
+							</dict>
+						</dict>
+						<dict>
+							<key>Bounds</key>
+							<string>{{435.15347, 461.9285}, {20.571533, 41.143005}}</string>
+							<key>Class</key>
+							<string>ShapedGraphic</string>
+							<key>ID</key>
+							<integer>489</integer>
+							<key>Shape</key>
+							<string>Bezier</string>
+							<key>ShapeData</key>
+							<dict>
+								<key>UnitPoints</key>
+								<array>
+									<string>{-0.5, -6.6757202e-06}</string>
+									<string>{-0.50001049, -6.6757202e-06}</string>
+									<string>{0.50000191, -0.49999714}</string>
+									<string>{0.49999142, -0.49999905}</string>
+									<string>{0.49998951, -0.49999428}</string>
+									<string>{0.5, 0.50002193}</string>
+									<string>{0.5, 0.50000095}</string>
+									<string>{0.50000286, 0.50000095}</string>
+									<string>{-0.50000572, -6.6757202e-06}</string>
+								</array>
+							</dict>
+							<key>Style</key>
+							<dict>
+								<key>fill</key>
+								<dict>
+									<key>Color</key>
+									<dict>
+										<key>b</key>
+										<string>0.666667</string>
+										<key>g</key>
+										<string>0.611765</string>
+										<key>r</key>
+										<string>0.619608</string>
+									</dict>
+								</dict>
+								<key>shadow</key>
+								<dict>
+									<key>Draws</key>
+									<string>NO</string>
+								</dict>
+								<key>stroke</key>
+								<dict>
+									<key>Draws</key>
+									<string>NO</string>
+								</dict>
+							</dict>
+						</dict>
+					</array>
+					<key>ID</key>
+					<integer>485</integer>
+					<key>Layer</key>
+					<integer>3</integer>
+				</dict>
+				<dict>
+					<key>Bounds</key>
+					<string>{{82, 314}, {629.05212, 120}}</string>
+					<key>Class</key>
+					<string>ShapedGraphic</string>
+					<key>FontInfo</key>
+					<dict>
+						<key>Font</key>
+						<string>Helvetica</string>
+						<key>Size</key>
+						<real>11</real>
+					</dict>
+					<key>ID</key>
+					<integer>185</integer>
+					<key>Layer</key>
+					<integer>4</integer>
+					<key>Shape</key>
+					<string>Rectangle</string>
+					<key>Style</key>
+					<dict>
+						<key>fill</key>
+						<dict>
+							<key>Color</key>
+							<dict>
+								<key>a</key>
+								<string>0.25</string>
+								<key>b</key>
+								<string>0.327272</string>
+								<key>g</key>
+								<string>0.656456</string>
+								<key>r</key>
+								<string>0.50701</string>
+							</dict>
+						</dict>
+						<key>shadow</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+						<key>stroke</key>
+						<dict>
+							<key>Draws</key>
+							<string>NO</string>
+						</dict>
+					</dict>
+				</dict>
+				<dict>
+					<key>Bounds</key>
 					<string>{{355, 455.77542}, {74, 13}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
@@ -11800,7 +12460,7 @@
 					<key>ID</key>
 					<integer>289</integer>
 					<key>Layer</key>
-					<integer>2</integer>
+					<integer>4</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -11864,7 +12524,7 @@
 					<key>ID</key>
 					<integer>288</integer>
 					<key>Layer</key>
-					<integer>2</integer>
+					<integer>4</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -11914,7 +12574,7 @@
 					<key>ImageID</key>
 					<integer>2</integer>
 					<key>Layer</key>
-					<integer>2</integer>
+					<integer>4</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -11956,7 +12616,7 @@
 					<key>ID</key>
 					<integer>286</integer>
 					<key>Layer</key>
-					<integer>2</integer>
+					<integer>4</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -12059,7 +12719,7 @@
 					<key>ID</key>
 					<integer>285</integer>
 					<key>Layer</key>
-					<integer>2</integer>
+					<integer>4</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -12123,7 +12783,7 @@
 					<key>ID</key>
 					<integer>284</integer>
 					<key>Layer</key>
-					<integer>2</integer>
+					<integer>4</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -12173,7 +12833,7 @@
 					<key>ImageID</key>
 					<integer>2</integer>
 					<key>Layer</key>
-					<integer>2</integer>
+					<integer>4</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -12215,7 +12875,7 @@
 					<key>ID</key>
 					<integer>282</integer>
 					<key>Layer</key>
-					<integer>2</integer>
+					<integer>4</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -12318,7 +12978,7 @@
 					<key>ID</key>
 					<integer>281</integer>
 					<key>Layer</key>
-					<integer>2</integer>
+					<integer>4</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -12382,7 +13042,7 @@
 					<key>ID</key>
 					<integer>280</integer>
 					<key>Layer</key>
-					<integer>2</integer>
+					<integer>4</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -12432,7 +13092,7 @@
 					<key>ImageID</key>
 					<integer>2</integer>
 					<key>Layer</key>
-					<integer>2</integer>
+					<integer>4</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -12474,7 +13134,7 @@
 					<key>ID</key>
 					<integer>278</integer>
 					<key>Layer</key>
-					<integer>2</integer>
+					<integer>4</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -12555,52 +13215,6 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{82, 314}, {629.05212, 120}}</string>
-					<key>Class</key>
-					<string>ShapedGraphic</string>
-					<key>FontInfo</key>
-					<dict>
-						<key>Font</key>
-						<string>Helvetica</string>
-						<key>Size</key>
-						<real>12</real>
-					</dict>
-					<key>ID</key>
-					<integer>185</integer>
-					<key>Layer</key>
-					<integer>2</integer>
-					<key>Shape</key>
-					<string>Rectangle</string>
-					<key>Style</key>
-					<dict>
-						<key>fill</key>
-						<dict>
-							<key>Color</key>
-							<dict>
-								<key>a</key>
-								<string>0.25</string>
-								<key>b</key>
-								<string>0.327272</string>
-								<key>g</key>
-								<string>0.656456</string>
-								<key>r</key>
-								<string>0.50701</string>
-							</dict>
-						</dict>
-						<key>shadow</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-						<key>stroke</key>
-						<dict>
-							<key>Draws</key>
-							<string>NO</string>
-						</dict>
-					</dict>
-				</dict>
-				<dict>
-					<key>Bounds</key>
 					<string>{{-47.740334, 56.736473}, {248.56287, 49}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
@@ -12614,7 +13228,7 @@
 					<key>ID</key>
 					<integer>458</integer>
 					<key>Layer</key>
-					<integer>3</integer>
+					<integer>5</integer>
 					<key>Rotation</key>
 					<real>332.68447875976562</real>
 					<key>Shape</key>
@@ -12665,7 +13279,7 @@
 					<key>ID</key>
 					<integer>290</integer>
 					<key>Layer</key>
-					<integer>4</integer>
+					<integer>6</integer>
 					<key>Rotation</key>
 					<real>332.68447875976562</real>
 					<key>Shape</key>
@@ -12709,7 +13323,7 @@
 					<key>ID</key>
 					<integer>454</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -12780,7 +13394,7 @@
 					<key>ID</key>
 					<integer>453</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -12862,7 +13476,7 @@
 					<key>ID</key>
 					<integer>456</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -12935,7 +13549,7 @@
 					<key>ID</key>
 					<integer>402</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -13008,7 +13622,7 @@
 					<key>ID</key>
 					<integer>403</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -13081,7 +13695,7 @@
 					<key>ID</key>
 					<integer>404</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -13154,7 +13768,7 @@
 					<key>ID</key>
 					<integer>405</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -13225,7 +13839,7 @@
 					<key>ID</key>
 					<integer>406</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -13321,7 +13935,7 @@
 					<key>ID</key>
 					<integer>372</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -13394,7 +14008,7 @@
 					<key>ID</key>
 					<integer>373</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -13469,7 +14083,7 @@
 					<key>ID</key>
 					<integer>374</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -13542,7 +14156,7 @@
 					<key>ID</key>
 					<integer>375</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -13615,7 +14229,7 @@
 					<key>ID</key>
 					<integer>376</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -13686,7 +14300,7 @@
 					<key>ID</key>
 					<integer>378</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -13759,7 +14373,7 @@
 					<key>ID</key>
 					<integer>379</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -13832,7 +14446,7 @@
 					<key>ID</key>
 					<integer>380</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -13905,7 +14519,7 @@
 					<key>ID</key>
 					<integer>381</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -13978,7 +14592,7 @@
 					<key>ID</key>
 					<integer>382</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -14049,7 +14663,7 @@
 					<key>ID</key>
 					<integer>384</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -14122,7 +14736,7 @@
 					<key>ID</key>
 					<integer>385</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -14195,7 +14809,7 @@
 					<key>ID</key>
 					<integer>386</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -14268,7 +14882,7 @@
 					<key>ID</key>
 					<integer>387</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -14341,7 +14955,7 @@
 					<key>ID</key>
 					<integer>388</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -14412,7 +15026,7 @@
 					<key>ID</key>
 					<integer>390</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -14485,7 +15099,7 @@
 					<key>ID</key>
 					<integer>391</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -14558,7 +15172,7 @@
 					<key>ID</key>
 					<integer>392</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -14631,7 +15245,7 @@
 					<key>ID</key>
 					<integer>393</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -14702,7 +15316,7 @@
 					<key>ID</key>
 					<integer>396</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -14775,7 +15389,7 @@
 					<key>ID</key>
 					<integer>397</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -14848,7 +15462,7 @@
 					<key>ID</key>
 					<integer>398</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -14921,7 +15535,7 @@
 					<key>ID</key>
 					<integer>399</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -15003,7 +15617,7 @@
 					<key>ID</key>
 					<integer>333</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -15086,7 +15700,7 @@
 					<key>ID</key>
 					<integer>332</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -15172,7 +15786,7 @@
 					<key>ID</key>
 					<integer>331</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -15258,7 +15872,7 @@
 					<key>ID</key>
 					<integer>330</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -15305,7 +15919,7 @@
 					<key>ID</key>
 					<integer>455</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Bezier</string>
 					<key>ShapeData</key>
@@ -15360,7 +15974,7 @@
 					<key>ID</key>
 					<integer>324</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -15450,7 +16064,7 @@
 					<key>ID</key>
 					<integer>322</integer>
 					<key>Layer</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -15531,7 +16145,7 @@
 					<key>ID</key>
 					<integer>327</integer>
 					<key>Layer</key>
-					<integer>6</integer>
+					<integer>8</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -15587,7 +16201,7 @@
 					<key>ID</key>
 					<integer>326</integer>
 					<key>Layer</key>
-					<integer>6</integer>
+					<integer>8</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -15652,7 +16266,7 @@
 					<key>ID</key>
 					<integer>323</integer>
 					<key>Layer</key>
-					<integer>6</integer>
+					<integer>8</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -15739,7 +16353,7 @@
 					<key>ID</key>
 					<integer>321</integer>
 					<key>Layer</key>
-					<integer>6</integer>
+					<integer>8</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -15816,7 +16430,7 @@
 					<key>ID</key>
 					<integer>320</integer>
 					<key>Layer</key>
-					<integer>6</integer>
+					<integer>8</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -15855,7 +16469,7 @@
 					<key>ID</key>
 					<integer>325</integer>
 					<key>Layer</key>
-					<integer>6</integer>
+					<integer>8</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -15901,7 +16515,7 @@
 					<key>ID</key>
 					<integer>148</integer>
 					<key>Layer</key>
-					<integer>7</integer>
+					<integer>9</integer>
 					<key>Rotation</key>
 					<real>332.68447875976562</real>
 					<key>Shape</key>
@@ -15961,7 +16575,7 @@
 					<key>ID</key>
 					<integer>414</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -16047,7 +16661,7 @@
 					<key>ID</key>
 					<integer>412</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -16133,7 +16747,7 @@
 					<key>ID</key>
 					<integer>275</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -16197,7 +16811,7 @@
 					<key>ID</key>
 					<integer>276</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -16261,7 +16875,7 @@
 					<key>ID</key>
 					<integer>277</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -16325,7 +16939,7 @@
 					<key>ID</key>
 					<integer>271</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -16389,7 +17003,7 @@
 					<key>ID</key>
 					<integer>272</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -16453,7 +17067,7 @@
 					<key>ID</key>
 					<integer>273</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -16517,7 +17131,7 @@
 					<key>ID</key>
 					<integer>267</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -16581,7 +17195,7 @@
 					<key>ID</key>
 					<integer>268</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -16645,7 +17259,7 @@
 					<key>ID</key>
 					<integer>269</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -16695,7 +17309,7 @@
 					<key>ImageID</key>
 					<integer>6</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -16727,7 +17341,7 @@
 					<key>ImageID</key>
 					<integer>5</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -16773,7 +17387,7 @@
 					<key>ID</key>
 					<integer>259</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -16834,7 +17448,7 @@
 					<key>ID</key>
 					<integer>262</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -16898,7 +17512,7 @@
 					<key>ID</key>
 					<integer>254</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -16959,7 +17573,7 @@
 					<key>ID</key>
 					<integer>257</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -17009,7 +17623,7 @@
 					<key>ImageID</key>
 					<integer>2</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -17055,7 +17669,7 @@
 					<key>ID</key>
 					<integer>249</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -17116,7 +17730,7 @@
 					<key>ID</key>
 					<integer>252</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -17211,7 +17825,7 @@
 					<key>ID</key>
 					<integer>218</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -17280,7 +17894,7 @@
 					<key>ID</key>
 					<integer>219</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -17383,7 +17997,7 @@
 					<key>ID</key>
 					<integer>220</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -17452,7 +18066,7 @@
 					<key>ID</key>
 					<integer>221</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -17531,7 +18145,7 @@
 					<key>ID</key>
 					<integer>222</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -17591,7 +18205,7 @@
 					<key>ID</key>
 					<integer>223</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -17681,7 +18295,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>224</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -17735,7 +18349,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>225</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -17791,7 +18405,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>242</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -17890,7 +18504,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>243</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -17989,7 +18603,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>244</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -18092,7 +18706,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>156</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -18178,7 +18792,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>153</integer>
 					<key>Layer</key>
-					<integer>8</integer>
+					<integer>10</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -18265,7 +18879,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>413</integer>
 					<key>Layer</key>
-					<integer>9</integer>
+					<integer>11</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -18352,7 +18966,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>411</integer>
 					<key>Layer</key>
-					<integer>9</integer>
+					<integer>11</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -18429,7 +19043,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>237</integer>
 					<key>Layer</key>
-					<integer>9</integer>
+					<integer>11</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -18485,7 +19099,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>226</integer>
 					<key>Layer</key>
-					<integer>9</integer>
+					<integer>11</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -18534,7 +19148,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>227</integer>
 					<key>Layer</key>
-					<integer>9</integer>
+					<integer>11</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -18589,7 +19203,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>154</integer>
 					<key>Layer</key>
-					<integer>9</integer>
+					<integer>11</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -18676,7 +19290,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>152</integer>
 					<key>Layer</key>
-					<integer>9</integer>
+					<integer>11</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -18750,7 +19364,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>238</integer>
 					<key>Layer</key>
-					<integer>9</integer>
+					<integer>11</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -18809,7 +19423,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>132</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -18875,7 +19489,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>131</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -18941,7 +19555,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>130</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -19007,7 +19621,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>129</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -19073,7 +19687,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>128</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -19139,7 +19753,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>127</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -19205,7 +19819,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>126</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -19249,7 +19863,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>125</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{622.00006, 633}</string>
@@ -19281,7 +19895,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>124</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{532.00006, 633}</string>
@@ -19313,7 +19927,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>123</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{442.00006, 633}</string>
@@ -19345,7 +19959,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>122</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{352.00006, 633}</string>
@@ -19377,7 +19991,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>121</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{262.00006, 633}</string>
@@ -19409,7 +20023,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>120</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{172.00006, 633}</string>
@@ -19441,7 +20055,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>119</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82.000061, 634}</string>
@@ -19482,7 +20096,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>118</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{712.00006, 633}</string>
@@ -19523,7 +20137,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>117</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 613}</string>
@@ -19559,7 +20173,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>116</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 573}</string>
@@ -19595,7 +20209,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>115</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 533}</string>
@@ -19631,7 +20245,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>114</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 493}</string>
@@ -19667,7 +20281,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>113</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 453}</string>
@@ -19703,7 +20317,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>111</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 413}</string>
@@ -19739,7 +20353,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>110</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 373}</string>
@@ -19775,7 +20389,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>108</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 333}</string>
@@ -19811,7 +20425,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>106</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 633}</string>
@@ -19845,7 +20459,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>105</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 593}</string>
@@ -19879,7 +20493,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>104</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 553}</string>
@@ -19913,7 +20527,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>103</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 513}</string>
@@ -19947,7 +20561,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>102</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 473}</string>
@@ -19981,7 +20595,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>101</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 433}</string>
@@ -20015,7 +20629,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>100</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 393}</string>
@@ -20049,7 +20663,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>99</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 353}</string>
@@ -20083,7 +20697,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>39</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Points</key>
 					<array>
 						<string>{82, 313}</string>
@@ -20139,7 +20753,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>90</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -20205,7 +20819,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>91</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -20271,7 +20885,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>92</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -20335,7 +20949,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>93</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -20400,7 +21014,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>94</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -20467,7 +21081,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>95</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -20533,7 +21147,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>96</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -20599,7 +21213,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>97</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -20665,7 +21279,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>98</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -20713,7 +21327,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>21</integer>
 					<key>Layer</key>
-					<integer>10</integer>
+					<integer>12</integer>
 					<key>Line</key>
 					<dict>
 						<key>ID</key>
@@ -20766,7 +21380,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>4</integer>
 					<key>Layer</key>
-					<integer>11</integer>
+					<integer>13</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -20798,7 +21412,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ID</key>
 					<integer>1</integer>
 					<key>Layer</key>
-					<integer>11</integer>
+					<integer>13</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -20825,7 +21439,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>ImageID</key>
 					<integer>1</integer>
 					<key>Layer</key>
-					<integer>11</integer>
+					<integer>13</integer>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
@@ -20885,11 +21499,31 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>Lock</key>
 					<string>NO</string>
 					<key>Name</key>
-					<string>Both: Events</string>
+					<string>BothL EditForeground</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
 					<string>NO</string>
+				</dict>
+				<dict>
+					<key>Lock</key>
+					<string>NO</string>
+					<key>Name</key>
+					<string>Both: EditBackground</string>
+					<key>Print</key>
+					<string>YES</string>
+					<key>View</key>
+					<string>YES</string>
+				</dict>
+				<dict>
+					<key>Lock</key>
+					<string>YES</string>
+					<key>Name</key>
+					<string>Both: Events</string>
+					<key>Print</key>
+					<string>YES</string>
+					<key>View</key>
+					<string>YES</string>
 				</dict>
 				<dict>
 					<key>Lock</key>
@@ -20899,7 +21533,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
-					<string>YES</string>
+					<string>NO</string>
 				</dict>
 				<dict>
 					<key>Lock</key>
@@ -20909,7 +21543,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
-					<string>NO</string>
+					<string>YES</string>
 				</dict>
 				<dict>
 					<key>Lock</key>
@@ -20919,17 +21553,17 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
-					<string>NO</string>
+					<string>YES</string>
 				</dict>
 				<dict>
 					<key>Lock</key>
-					<string>YES</string>
+					<string>NO</string>
 					<key>Name</key>
 					<string>Do: Background</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
-					<string>NO</string>
+					<string>YES</string>
 				</dict>
 				<dict>
 					<key>Lock</key>
@@ -20959,7 +21593,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
-					<string>YES</string>
+					<string>NO</string>
 				</dict>
 				<dict>
 					<key>Lock</key>

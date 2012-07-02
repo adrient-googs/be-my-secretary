@@ -51,3 +51,18 @@
   margin-left: -25px;
   z-index: 2000;
 }
+
+.editCalEventView {
+  position: absolute !important;
+  width: 162px;
+  height: 145px;
+  background-image:url('/imgs/editCalEvent.png');
+}
+
+.editCalEventView input#title {
+  position: absolute;
+  left: 27px;
+  font-size: 16;
+  top: 29px;
+  width: 128px;
+}

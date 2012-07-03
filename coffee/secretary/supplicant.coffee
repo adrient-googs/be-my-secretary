@@ -1,7 +1,7 @@
 # represents someone asking something
 class Supplicant extends Backbone.Model
   defaults:
-    mood: 'happy'
+    status: 'unmatched'
     points: 100
     
   # constructor
@@ -15,6 +15,16 @@ class Supplicant extends Backbone.Model
       "Unknown name: #{@cid}."
     @view = new SupplicantView model:@    
     @constraint_view = new SupplicantConstraintView model:@
+    
+    # event handlers
+    @on 'change:calEvent', (sup, calEvent) =>
+      @onCalEventChange calEvent
+
+    # # debug - begin
+    # @on 'all', (args...) =>
+    #   console.log 'SUPPLICANT EVENT'
+    #   console.log args
+    # # debug - end  
     
   # returns all [day, time] pairs which satisfy this Supplicant
   getAllSatisfyingDates: ->
@@ -40,11 +50,32 @@ class Supplicant extends Backbone.Model
     )
     return true
     
+  onCalEventChange: (calEvent) ->
+    console.log "onCalEventChange (#{@get 'name'}): #{calEvent?.get 'name'}"
+    old_status = @get 'status'
+    console.log "old_status: #{old_status}"
+    if !calEvent?
+      @set 'status', 'unmatched'
+    else if @isSatifiedBy calEvent.attributes
+      console.log "setting status satisfied"
+      @set 'status', 'satisfied'
+    else
+      console.log "setting status unmatched"
+      @set 'status', 'matched'
+
+    console.log "new_status: #{@get 'status'}"
+    
 # shows a little box that summarizes the supplicant
 class SupplicantView extends Backbone.View
   # manually specify CSS properties for util.verticalAppend
   @HEIGHT: 46
   @VERTICAL_MARGIN: 14
+  
+  # status table
+  @STATUS_COLORS:
+    'unmatched': 'rgb(223, 90, 54)'    # not matched to any event
+    'matched':   'rgb(240, 144, 0)'    # matched but not satisfied
+    'satisfied': 'rgb(132, 186, 101)'  # matched and satisfied
   
   # returns the filename for a particular avatar
   @avatarImage: (name) ->
@@ -64,14 +95,17 @@ class SupplicantView extends Backbone.View
     @$el.find('#avatar').attr
       src: SupplicantView.avatarImage(@model.get 'name')
     @$el.find('#title').text @model.get 'title'
-    @$el.find('#constraint1').text "#{@model.get 'time_str'} (#{@model.get 'length_str'})"
-    @$el.find('#constraint2').text @model.get 'day_str'
-    @$el.css backgroundColor: switch @model.get 'mood'
-      when 'happy' then 'rgb(132, 186, 101)'
+    @$el.find('#constraint1').text "Duration: #{@model.get 'length_str'}"
+    @$el.find('#constraint2').text "#{@model.get 'day_str'} #{@model.get 'time_str'}"
+    # @$el.find('#constraint1').text "#{@model.get 'time_str'} (#{@model.get 'length_str'})"
+    # @$el.find('#constraint2').text @model.get 'day_str'
+    @$el.css backgroundColor: SupplicantView.STATUS_COLORS[@model.get 'status']
       
     # event callbacks
     @$el.on 'mouseenter', (event) => @onMouseEnter event
     @$el.on 'mouseleave', (event) => @onMouseLeave event
+    @model.on 'change:status', (sup, status) =>
+      @onChangeStatus status
     
   # fade in the constraints on hover
   onMouseEnter: (event) ->
@@ -79,6 +113,16 @@ class SupplicantView extends Backbone.View
     
   onMouseLeave: (event) ->
     @model.constraint_view.fadeOut()
+  
+  onChangeStatus: (status) ->
+    css =
+      backgroundColor: SupplicantView.STATUS_COLORS[status]
+    @$el.css css
+    console.log "changing background on #{@model.get('calEvent')?.get('name')}"
+    console.log @model.get('calEvent')?.view.$el.css 'background-color'
+    @model.get('calEvent')?.view.setStatus status
+    console.log @model.get('calEvent')?.view.$el.css 'background-color'
+    console.log css
     
 # show an outline of possible constraints on the calendar
 class SupplicantConstraintView extends Backbone.View
@@ -120,10 +164,11 @@ class SupplicantConstraintView extends Backbone.View
 
 # the set of supplicants making requests
 class SupplicantGroup extends Backbone.Model
-  defaults:
-    supplicants: undefined
-
   # constructor
+  constructor: (@calendar) ->
+    super
+  
+  # after construction
   initialize: ->
     # manage supplicants property through private collection
     @supplicants = new Backbone.Collection
@@ -133,7 +178,10 @@ class SupplicantGroup extends Backbone.Model
 
     # create the view
     @view = new SupplicantGroupView model:@
-
+    
+    # event handlers
+    @calendar.calEvents.on 'add remove change:name', => @resetMapping()
+    
   # add a supplicant
   add: (sup) ->
     sup.parent = @
@@ -154,13 +202,13 @@ class SupplicantGroup extends Backbone.Model
     
     # day and time
     util.withProbability [
-      0.8, ->
+      0.9, ->
         # normal day
         [attribs.days, attribs.day_str] =
           util.withProbability [
             0.40, -> ['12345', 'Weekday'    ]
             0.15, -> ['06'   , 'Weekend'    ]
-            0.15, -> ['135'  , 'Mon/Wed/Fri']
+            0.15, -> ['135'  , 'M/W/F']
             0.15, -> ['24'   , 'Tue/Thu'    ]
             0.15, -> ['45'   , 'Thu/Fri'    ]
           ]
@@ -169,10 +217,10 @@ class SupplicantGroup extends Backbone.Model
             0.25, -> [ 9, 12, 'Morning']
             0.25, -> [11, 14, 'Midday' ]
             0.25, -> [15, 17, 'Late'   ]
-            0.25, -> [ 9, 17, 'All day']
+            0.25, -> [ 9, 17, 'Any Time']
           ]
       null, ->
-        # weird time
+        # otherwise, pick a weird time
         attribs.days = "#{util.choose [0...7]}"
         attribs.day_str = util.WEEKDAYS[parseInt attribs.days]
         attribs.start = util.choose [9...17]
@@ -185,10 +233,40 @@ class SupplicantGroup extends Backbone.Model
     util.assertion 1 <= attribs.length <= attribs.end - attribs.start,
       "Invalid length: #{attribs.length} (start:#{attribs.start} end:#{attribs.end})"
     attribs.length_str = if attribs.length == 1 then "1 hr" else "#{attribs.length} hrs"
-    console.log attribs
     
     # add it in
     @add new Supplicant attribs
+    
+  # compute the mapping between supplicants and calEvents
+  resetMapping: ->
+    # call this function to link/unlink a supplicant/calEvent pair
+    link = (sup, calEvent) ->
+      if !calEvent?
+        # unlink calEvent from supplicant
+        sup.unset 'calEvent'
+        sup.constraint_view.fadeOut()
+      else if !sup?        
+        # unlink supplicant from calEvent
+        calEvent.view.setStatus 'unmatched'
+        calEvent.off 'change', Supplicant::onCalEventChange
+        calEvent.view.$el.off 'mouseenter'
+        calEvent.view.$el.off 'mouseleave'
+      else 
+        # link supplicant and calEvent
+        console.log "linking #{sup.get 'name'} <-> #{calEvent.get 'name'}"
+        sup.set 'calEvent', calEvent
+        calEvent.on 'change', Supplicant::onCalEventChange, sup
+        calEvent.view.$el.on 'mouseenter', => sup.constraint_view.fadeIn()
+        calEvent.view.$el.on 'mouseleave', => sup.constraint_view.fadeOut()
+   
+    # clear the previous mapping
+    for sup in @supplicants.models
+      link sup, undefined
+    
+    # construct a new mapping
+    for calEvent in @calendar.calEvents.models
+      sup = @supplicants.getByCid calEvent.get 'name'
+      link sup, calEvent
 
 class SupplicantGroupView extends Backbone.View
   # constructor

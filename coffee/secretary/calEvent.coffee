@@ -4,7 +4,6 @@ class CalEvent extends Backbone.Model
     day: 0
     time: 9
     length: 2
-    mode: 'satisfied'
     name: 'Alan'
     title: 'No Activity'
   
@@ -39,16 +38,13 @@ class CalEvent extends Backbone.Model
     return true if start1 <= start2 < end1
     return true if start2 <= start1 < end2
     return false
+  
     
 class CalEventView extends Backbone.View
   # constants
   @DAY_WIDTH_PIXELS: 90
   @HOUR_HEIGHT_PIXELS: 40
-  
-  events:
-    undefined
-    # 'change' : => @change
-  
+    
   # constructor
   constructor: (args) ->
     args.el = $('#prototypes .calEventView').clone()[0]
@@ -56,8 +52,8 @@ class CalEventView extends Backbone.View
   
   # called after all variables are set
   initialize: (model) ->
-    # set the model
-    super model: model
+    # unsatisfied by default
+    @setStatus 'unmatched'
 
     # make it draggable and resizable
     @$el.draggable
@@ -72,9 +68,10 @@ class CalEventView extends Backbone.View
       handles: 'n,s,se'
       resize: => @posToDate()
       stop: => @trigger 'stop'
+    @$el.css position: 'absolute'
 
     # bind events
-    @model.on 'change', (model, arg) => @onChange arg.changes
+    @model.on 'change', (model, arg) => @onModelChange arg.changes
     @model.on 'error', (model, type) => @onError type 
     @on 'stop', => @model.set @posToDate()
     @$el.on 'click', (event) => @onClick(event)
@@ -118,8 +115,14 @@ class CalEventView extends Backbone.View
     coord_str = "#{util.WEEKDAYS[date.day]} #{from_time} - #{to_time}"
     @$el.find('#time').text coord_str    
     
+  setStatus: (status) ->
+    console.log "SETTING STATUS (#{@model.get 'name'}): #{status}"
+    console.log "new background color: #{SupplicantView.STATUS_COLORS[status]}"
+    # based on the mood
+    @$el.css backgroundColor: SupplicantView.STATUS_COLORS[status]
+    
   # called when something changed
-  onChange: (changes) -> 
+  onModelChange: (changes) -> 
     # if the day/time/length changed, then move the event
     changes = _.keys(changes)
     
@@ -127,10 +130,6 @@ class CalEventView extends Backbone.View
       @$el.find('#avatar').attr
         src: SupplicantView.avatarImage @model.get 'name'
       @$el.find('#name').text @model.get('name')
-    
-    if 'mode' in changes
-      @$el.css backgroundColor: switch @model.get 'mode'
-        when 'satisfied' then 'rgb(132, 186, 101)'
         
     if 'title' in changes
       @$el.find('#title').text @model.get('title')
@@ -156,8 +155,8 @@ class EditCalEventView extends Backbone.View
   events:
     'click #ok'    : 'onClickOk'
     'click #delete': 'onClickDelete'
-    'change #title': 'onChange'
-    'change #name' : 'onChange'
+    'change #title': 'onModelChange'
+    'change #name' : 'onModelChange'
 
   # constructor
   constructor: (options) ->
@@ -193,10 +192,10 @@ class EditCalEventView extends Backbone.View
     @title_possibe_values = CalEvent.TITLES
     @name_possibe_values = available_names
     @title_input.autocomplete
-      select: => @onChange()
+      select: => @onModelChange()
       source: @title_possibe_values
     @name_input.autocomplete
-      select: => @onChange()
+      select: => @onModelChange()
       source: @name_possibe_values
     
     # set the dialog position
@@ -251,7 +250,7 @@ class EditCalEventView extends Backbone.View
     
   # Sets the model attributes and updates the view to indicate input
   # validity. Returns true if all fields are valid.
-  onChange: ->
+  onModelChange: ->
     # assume all fields are valid
     @$el.find('#ok').removeAttr 'disabled'
     @$el.find('input').css backgroundColor: 'white'

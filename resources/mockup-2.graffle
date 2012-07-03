@@ -10113,7 +10113,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2012-07-03 08:55:09 +0000</string>
+	<string>2012-07-03 20:40:13 +0000</string>
 	<key>Modifier</key>
 	<string>Adrien Treuille</string>
 	<key>NotesVisible</key>
@@ -12590,11 +12590,11 @@
 							<key>Color</key>
 							<dict>
 								<key>b</key>
-								<string>0.327272</string>
+								<string>0.144014</string>
 								<key>g</key>
-								<string>0.656456</string>
+								<string>0.50197</string>
 								<key>r</key>
-								<string>0.50701</string>
+								<string>0.859142</string>
 							</dict>
 						</dict>
 						<key>shadow</key>
@@ -21477,7 +21477,7 @@ Please add Nadya for a teeth cleanin}</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
-					<string>YES</string>
+					<string>NO</string>
 				</dict>
 				<dict>
 					<key>Lock</key>
@@ -21541,7 +21541,7 @@ Please add Nadya for a teeth cleanin}</string>
 				</dict>
 				<dict>
 					<key>Lock</key>
-					<string>YES</string>
+					<string>NO</string>
 					<key>Name</key>
 					<string>Type: Widgets</string>
 					<key>Print</key>

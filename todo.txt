@@ -8,14 +8,22 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
   [x] they have constraints
   [x] constraints visible on hover
     [x] fix the add event problem (check how we're figure out where)
-  [ ] they become linked
-    [ ] get rid of moods
-  [ ] other connections
-    [ ] hover event
+
+  [x] they become linked
+    [x] get rid of moods
+    [x] hover event
+
+  [ ] fix satisfaction bug
+
+  [ ] fixes to eventEditView
+    [ ] tab trigger on edit event
+    [ ] double click to launch view
   [ ] they come in
   [ ] timer
   [ ] points - SCORE VARIATION : length ** 1.5 / num_slots (??)
   [ ] they talk to you?
+
+  [ ] SHOW LENGTH SATISFACTION
     
 [ ] networked version
   -- BASIC wizard of oz mode

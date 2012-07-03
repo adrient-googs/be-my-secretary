@@ -78,8 +78,6 @@ class Calendar extends Backbone.Model
     return false
     
 class CalendarView extends Backbone.View
-  undefined # <- debug
-  
   # constructor
   constructor: (args) ->
     args.el = $('#calendar')
@@ -96,7 +94,7 @@ class CalendarView extends Backbone.View
     # calEvent.view
     @$el.append(calEvent.view.el)
     # force change event
-    calEvent.view.onChange calEvent.attributes
+    calEvent.view.onModelChange calEvent.attributes
     
   # removes a calendar event
   removeEvent: (calEvent) ->

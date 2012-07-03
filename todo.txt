@@ -7,13 +7,14 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
   [x] they have title
   [x] they have constraints
   [ ] constraints visible on hover
+    [ ] fix the add event problem (check how we're figure out where)
   [ ] they become linked
   [ ] they have moods
   [ ] other connections
     [ ] hover event
   [ ] they come in
   [ ] timer
-  [ ] points - SCORE VARIATION
+  [ ] points - SCORE VARIATION : length ** 1.5 / num_slots (??)
     
 [ ] networked version
   -- BASIC wizard of oz mode

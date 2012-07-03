@@ -46,9 +46,10 @@ class SupplicantView extends Backbone.View
   @HEIGHT: 46
   @VERTICAL_MARGIN: 14
   
-  events:
-    undefined
-    # 'change' : => @change
+  # returns the filename for a particular avatar
+  @avatarImage: (name) ->
+    img_file = SupplicantView.NAMES_AND_AVATARS[name]
+    return "/imgs/Face-Avatars-by-deleket/#{img_file}"
   
   # constructor
   constructor: (args) ->
@@ -57,6 +58,7 @@ class SupplicantView extends Backbone.View
     
   # after construction
   initialize: (args) ->
+    # set all elements
     @$el.find('#name').text @model.get 'name'
     @$el.find('#points').text "#{@model.get 'points'} pts"
     @$el.find('#avatar').attr
@@ -67,24 +69,54 @@ class SupplicantView extends Backbone.View
     @$el.css backgroundColor: switch @model.get 'mood'
       when 'happy' then 'rgb(132, 186, 101)'
       
-  # returns the filename for a particular avatar
-  @avatarImage: (name) ->
-    img_file = SupplicantView.NAMES_AND_AVATARS[name]
-    return "/imgs/Face-Avatars-by-deleket/#{img_file}"
+    # event callbacks
+    @$el.on 'mouseenter', (event) => @onMouseEnter event
+    @$el.on 'mouseleave', (event) => @onMouseLeave event
+    
+  # fade in the constraints on hover
+  onMouseEnter: (event) ->
+    @model.constraint_view.fadeIn()
+    
+  onMouseLeave: (event) ->
+    @model.constraint_view.fadeOut()
     
 # show an outline of possible constraints on the calendar
 class SupplicantConstraintView extends Backbone.View
   # constructor
   constructor: (args) ->
-    args.el = $('#prototypes .supplicantConstraintView')
+    args.el = $('<div class="supplicantConstraintView">')
     super args
     
   # after construction
   initialize: (args) ->
+    # give this element an id
+    @$el.attr id: @model.get 'name'
+    
+    # highlight all satisfying dates
     for date in @model.getAllSatisfyingDates()
       @$el.append $('<div class="satisfyingDate">').css
         left: date.day * CalEventView.DAY_WIDTH_PIXELS
         top: (date.time - 9) * CalEventView.HOUR_HEIGHT_PIXELS
+
+    # initially invisible
+    @$el.css opacity: 0
+    
+  # fades the constraint view in
+  fadeIn: ->
+    # fade in this view while disappearing all others
+    constraint_views = $('.supplicantConstraintView')
+    for view in constraint_views
+      view = $(view)
+      view.stop true
+      if view.attr('id') == @model.get('name')
+        view.animate opacity: 0.25, 200
+      else
+        view.css opacity: 0
+        
+  # fades out the constraint
+  fadeOut: ->
+    @$el.stop true
+    @$el.animate opacity: 0, 200
 
 # the set of supplicants making requests
 class SupplicantGroup extends Backbone.Model

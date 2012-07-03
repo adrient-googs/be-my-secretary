@@ -10113,7 +10113,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2012-07-03 01:13:19 +0000</string>
+	<string>2012-07-03 08:55:09 +0000</string>
 	<key>Modifier</key>
 	<string>Adrien Treuille</string>
 	<key>NotesVisible</key>
@@ -21481,7 +21481,7 @@ Please add Nadya for a teeth cleanin}</string>
 				</dict>
 				<dict>
 					<key>Lock</key>
-					<string>YES</string>
+					<string>NO</string>
 					<key>Name</key>
 					<string>Both: Events</string>
 					<key>Print</key>

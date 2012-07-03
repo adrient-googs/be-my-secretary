@@ -1,8 +1,8 @@
 ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
-  
-(I've been violating that)
 
-[ ] edit event dialog  
+[ ] edit event dialog
+  [ ] get the delete button to work
+  [ ] test duplicate name entry
 [ ] better requests
   [ ] add constraints
   [ ] show constraints

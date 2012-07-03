@@ -50,3 +50,9 @@ util.verticalAppend = (elt, container, height, vertical_margin) ->
   container.css height: 
     height * (n_children + 1) + vertical_margin * n_children
   container.append(elt)
+  
+# converts a string To Title Case
+util.titleCase = (str) ->
+  str.replace /\w\S*/g, (txt) ->
+    txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+    

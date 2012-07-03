@@ -68,6 +68,20 @@
   height: 100%;
 */}
 
+/* covers up other elements */
+
+#cover {
+  position: absolute;
+  left: 30px;
+  top: 55px;
+  z-index: 3000;
+  width: 700px;
+  height: 600px;
+  opacity: 0.65;
+  background-color: white;
+  visibility: hidden;
+}
+
 /* game elements */
 
 #prototypes {

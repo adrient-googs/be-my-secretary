@@ -52,17 +52,65 @@
   z-index: 2000;
 }
 
-.editCalEventView {
+/* edit event dialog */
+
+/*.editCalEventView {
   position: absolute !important;
   width: 162px;
   height: 145px;
   background-image:url('/imgs/editCalEvent.png');
+  background-size: 100% 100%;
+  z-index: 4000;
+}
+*/
+
+.editCalEventView {
+  position: absolute !important;
+  width: 180px;
+  height: 163px;
+  background-image:url('/imgs/editCalEventWithShadow.png');
+  background-size: 100% 100%;
+  z-index: 4000;
+}
+
+.editCalEventView input#name {
+  position: absolute;
+  left: 36px;
+  font-size: 16px;
+  top: 34px;
+  width: 128px;
 }
 
 .editCalEventView input#title {
   position: absolute;
-  left: 27px;
-  font-size: 16;
-  top: 29px;
+  left: 36px;
+  font-size: 16px;
+  top: 88px;
   width: 128px;
+}
+
+.editCalEventView #buttonArea {
+  position: absolute;
+  left: 36px;
+  top: 121px;
+  width: 128px;
+  height: 25px;
+  text-align: center;
+}
+
+.editCalEventView #buttonArea button {
+  margin: 4px;
+  margin-top: 0px;
+}
+
+/*.editCalEventView #buttonArea span {
+  position: absolute;
+  left: 27px;
+  top: 116px;
+  width: 128px;
+  height: 25px;
+}*/
+
+ul.ui-autocomplete {
+  font-size: 14px;
 }

@@ -93,7 +93,6 @@ class CalendarView extends Backbone.View
   # add a new calendar event
   addEvent: (calEvent) ->
     @$el.append(calEvent.view.el)
-    $("body").append(calEvent.edit_view.el)
     # force change event
     calEvent.view.onChange calEvent.attributes
     

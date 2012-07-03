@@ -6,6 +6,7 @@ class CalEvent extends Backbone.Model
     length: 2
     mode: 'satisfied'
     name: 'Alan'
+    title: 'Do Nothing'
   
   # constructor
   initialize: ->
@@ -57,18 +58,7 @@ class CalEventView extends Backbone.View
   initialize: (model) ->
     # set the model
     super model: model
-      
-    # avatar
-    @$el.find('#avatar').attr
-      src: SupplicantView.avatarImage @model.get 'name'
-    @$el.find('#name').text @model.get('name')
-    
-    # set the background color
-    background_colors =
-      satisfied: 'rgb(132, 186, 101)'
-    @$el.css
-      backgroundColor: background_colors[@model.get('mode')]
-      
+
     # make it draggable and resizable
     @$el.draggable
       containment: 'parent'
@@ -87,6 +77,7 @@ class CalEventView extends Backbone.View
     @model.on 'change', (model, arg) => @onChange arg.changes
     @model.on 'error', (model, type) => @onError type 
     @on 'stop', => @model.set @posToDate()
+    @$el.on 'click', (event) => @onClick(event)
           
   # converts position to day/time/length
   posToDate: ->
@@ -139,6 +130,19 @@ class CalEventView extends Backbone.View
   onChange: (changes) -> 
     # if the day/time/length changed, then move the event
     changes = _.keys(changes)
+    
+    if 'name' in changes
+      @$el.find('#avatar').attr
+        src: SupplicantView.avatarImage @model.get 'name'
+      @$el.find('#name').text @model.get('name')
+    
+    if 'mode' in changes
+      @$el.css backgroundColor: switch @model.get 'mode'
+        when 'satisfied' then 'rgb(132, 186, 101)'
+        
+    if 'title' in changes
+      @$el.find('#title').text @model.get('title')
+    
     time_changes = ['day', 'time', 'length']
     unless _.isEmpty _.intersection(changes, time_changes)
       @renderTime @model.attributes
@@ -149,9 +153,20 @@ class CalEventView extends Backbone.View
     console.log "CalEventView: Error type: #{type}"
     # revert to previous position
     @dateToPos() if type == 'overlap'
+  
+  # called when the user clicks on this event
+  onClick: (event) ->
+    @model.edit_view.show()
+    return false
     
 # dialog so that the user can edit an event
 class EditCalEventView extends Backbone.View
+  events:
+    'click #ok'    : 'onClickOk'
+    'click #delete': 'onClickDelete'
+    'change #title': 'onChange'
+    'change #name' : 'onChange'
+
   # constructor
   constructor: (options) ->
     options.el = $('#prototypes .editCalEventView').clone()[0]
@@ -159,27 +174,122 @@ class EditCalEventView extends Backbone.View
     
   # after construction
   initialize: ->
-    @$el.find('input#title').autocomplete
-      source: CalEvent.TITLES
+    @title_input = @$el.find('input#title')
+    @name_input = @$el.find('input#name')
+    
+  # shows this dialog
+  show: ->
+    # cover the rest of the screen
+    $('#cover').css visibility: 'visible'
+    
+    # force change event to set the fields
+    @title_input.val @model.get 'title'
+    @name_input.val @model.get 'name'
+    
+    # construct the set of names
+    all_names = _.keys SupplicantView.NAMES_AND_AVATARS
+    used_names = @model.parent.calEvents.pluck('name')
+    available_names = _.difference all_names, used_names
+    available_names.push @model.get 'name'
+    
+    # set autocomplete
+    @title_possibe_values = CalEvent.TITLES
+    @name_possibe_values = available_names
+    @title_input.autocomplete
+      select: => @onChange()
+      source: @title_possibe_values
+    @name_input.autocomplete
+      select: => @onChange()
+      source: @name_possibe_values
+    
+    # set the dialog position
+    view = @model.view.$el
+    view_middle = view.offset().top + view.height() / 2
+    @$el.css
+      top: view_middle - 72
+      left: view.offset().left + view.width() - 3
+    $("body").append(@el)
+      
+    # make the dialog bounce in
+    container = @$el.find('#widgets')
+    container.css visibility: 'hidden'
+    @$el.effect 'scale',
+      origin: ['middle','center'],
+      from: {width: 0,height: 0}
+      percent: 100, 
+      easing: 'easeOutBounce'
+      500, => 
+        container.css visibility: 'visible'
+        @name_input.select()
+
+  # hides this dialog
+  hide: ->
+    # get rid of autocomplete
+    @title_input.autocomplete('destroy')
+    @name_input.autocomplete('destroy')
+    
+    # make it bounce away
+    container = @$el.find('#widgets')
+    container.css visibility: 'hidden'
+    original_size = 
+      width: @$el.css 'width'
+      height: @$el.css 'height'
+    @$el.effect 'scale'
+        origin: ['middle','center']
+        percent: 0
+        easing: "easeInBack"
+        300, =>
+          @$el.detach()
+          @$el.css original_size
+          $('#cover').css visibility: 'hidden'    
+  
+  # when the user clicks ok
+  onClickOk: ->
+    @hide()
+    
+  # when the user clicks delete
+  onClickDelete: ->
+    console.log 'onClickDelete'
+    console.log @
+    @onChange()
+    
+  # Sets the model attributes and updates the view to indicate input
+  # validity. Returns true if all fields are valid.
+  onChange: ->
+    # assume all fields are valid
+    @$el.find('#ok').removeAttr 'disabled'
+    @$el.find('input').css backgroundColor: 'white'
+    
+    # invalidate fields if necessary
+    for field in ['title', 'name']
+      input = @["#{field}_input"]
+      input.val util.titleCase input.val()
+      if input.val() in @["#{field}_possibe_values"]
+        @model.set field, input.val()
+      else
+        input.css backgroundColor: 'rgb(223, 188, 178)'
+        @$el.find('#ok').attr disabled: 'disabled'
+        valid = false
+    return false
     
 CalEvent.TITLES = [
+  'Do Nothing'
   'Dress Up'
   'Snack'
   'People Watch'
-  'Swings'
   'Tennis'
   'Pedicure'
-  'Climb a Tree.'
+  'Climb A Tree'
   'Breakfast'
   'Lunch'
   'Henna Tattoos'
-  'Listening to Music'
+  'Opera'
   'Paint'
   'Argue All Day'
   'Ice Cream'
   'Long Walk'
   'Picnic'
-  'Water Drinking Contest'
+  'Drinking Contest'
   'Scavenger Hunt'
   'Play Catch'
   'Fruit Smoothies'

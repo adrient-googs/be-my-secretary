@@ -43,7 +43,12 @@
     <button id="bigAddEvent">Click To Add Event</button>
   </form>
   <!-- debug - end -->
+
+  <!-- covers the rest of the UI for dialogs -->
+  <div id="cover" class="test-orange"></div>
+  
 </div>
+
 
 <!-- game element prototypes -->
 <div id="prototypes">
@@ -60,12 +65,14 @@
   
   <!-- calendar event edit dialog -->
   <div class="editCalEventView">
-    <input id="title" type="text"/>
-    <!-- <input id="attendees" type="text"/> -->
-    <!-- <div id="buttonPanel" class="test-blue">
-      <button id="ok">Ok</button>
-      <button id="cancel">Cancel</button>
-    </div> -->
+    <div id="widgets">
+      <input id="name" type="text"/>
+      <input id="title" type="text"/>
+      <div id="buttonArea" class="test-blue">
+          <button id="ok">Ok</button>
+          <button id="delete">Delete</button>
+      </div>
+    </div>
   </div>  
   
   <!-- a supplicant -->
@@ -75,7 +82,7 @@
     <div id="title" class="test-red">Title</div>
     <div id="constraints" class="test-yellow">Constraints</div>
     <div id="mood" class="test-orange">Mood</div>
-    <img id="avatar"> <!-- class="test-green"> -->
+    <img id="avatar">
   </div>
 </div>  
 

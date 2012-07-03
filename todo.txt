@@ -1,8 +1,22 @@
 ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
 
-[ ] edit event dialog
-  [ ] get the delete button to work
-  [ ] test duplicate name entry
+-- what do I want for tomorrow --
+
+[ ] requests come in
+  [ ] they have constraints
+  [ ] constraints visible on hover
+  [ ] they become linked
+  [ ] they have moods
+  [ ] other connections
+    [ ] hover event
+  [ ] they come in
+  [ ] timer
+  [ ] points
+    
+[ ] networked version
+  -- BASIC wizard of oz mode
+
+
 [ ] better requests
   [ ] add constraints
   [ ] show constraints
@@ -11,6 +25,8 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
   [ ] score
   [ ] timer
   
+-- later --
+  
 [ ] three main modes - implement
   [ ] test mode
     [ ] basic requests
@@ -18,7 +34,6 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
   [ ] type mode
   [ ] do mode (wizard of oz)
   [ ] do mode (real)
-
 
 before launch:
 

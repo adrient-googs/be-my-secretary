@@ -56,3 +56,6 @@ util.titleCase = (str) ->
   str.replace /\w\S*/g, (txt) ->
     txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
     
+# perform an action later (in 1ms), but not in the current thread
+util.later = (func) ->
+  setTimeout func, 1

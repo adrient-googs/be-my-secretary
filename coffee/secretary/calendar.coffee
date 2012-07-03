@@ -87,7 +87,8 @@ class CalendarView extends Backbone.View
   
   # after construction
   initialize: ->
-    @model.on 'add', (event) => @addEvent event
+    @model.on 'add', (calEvent) => @addEvent calEvent
+    @model.on 'remove', (calEvent) => @removeEvent calEvent
     @$el.on 'click', (args...) => @onClick args...
       
   # add a new calendar event
@@ -95,6 +96,10 @@ class CalendarView extends Backbone.View
     @$el.append(calEvent.view.el)
     # force change event
     calEvent.view.onChange calEvent.attributes
+    
+  # removes a calendar event
+  removeEvent: (calEvent) ->
+    calEvent.view.$el.remove()
     
   # called when the user clicks on the calendar
   onClick: (event) ->

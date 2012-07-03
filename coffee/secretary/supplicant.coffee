@@ -159,7 +159,7 @@ SupplicantView.NAMES_AND_AVATARS =
   Mario:   'Males/L05.png'
   Chris:   'Males/M01.png'
   Keith:   'Males/M02.png'
-  Jesus:   'Males/M03.png'
+  Jalen:   'Males/M03.png'
   Craig:   'Males/M04.png'
   Edwin:   'Males/M05.png'
   Terry:   'Males/N01.png'

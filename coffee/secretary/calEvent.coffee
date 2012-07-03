@@ -6,7 +6,7 @@ class CalEvent extends Backbone.Model
     length: 2
     mode: 'satisfied'
     name: 'Alan'
-    title: 'Do Nothing'
+    title: 'No Activity'
   
   # constructor
   initialize: ->
@@ -81,6 +81,9 @@ class CalEventView extends Backbone.View
           
   # converts position to day/time/length
   posToDate: ->
+    # stop any animations to prevent flicker
+    @$el.stop true
+    
     # get the position
     x = @$el.position().left
     y = @$el.position().top
@@ -98,17 +101,15 @@ class CalEventView extends Backbone.View
   # converts day/time/length to position
   dateToPos: (date) -> 
     date = date ? @model.attributes
-
-    # stop any animations to prevent flicker
-    @$el.stop true
-
+    
     # start a new animation
-    @$el.animate
-      left: date.day * CalEventView.DAY_WIDTH_PIXELS
-      top: (date.time - 9) * CalEventView.HOUR_HEIGHT_PIXELS
-      width: CalEventView.DAY_WIDTH_PIXELS
-      height: date.length * CalEventView.HOUR_HEIGHT_PIXELS,
-      500, 'easeOutExpo'
+    util.later =>
+      @$el.animate
+        left: date.day * CalEventView.DAY_WIDTH_PIXELS
+        top: (date.time - 9) * CalEventView.HOUR_HEIGHT_PIXELS
+        width: CalEventView.DAY_WIDTH_PIXELS
+        height: date.length * CalEventView.HOUR_HEIGHT_PIXELS,
+        500, 'easeOutExpo'
       
   # render the time
   renderTime: (date) ->
@@ -176,6 +177,11 @@ class EditCalEventView extends Backbone.View
   initialize: ->
     @title_input = @$el.find('input#title')
     @name_input = @$el.find('input#name')
+    
+    # get tab cycling to work properly
+    @$el.find('#delete').on 'keydown', (event) =>
+      if event.keyCode == 9 # tab
+        @name_input.select() ; false
     
   # shows this dialog
   show: ->
@@ -249,9 +255,8 @@ class EditCalEventView extends Backbone.View
     
   # when the user clicks delete
   onClickDelete: ->
-    console.log 'onClickDelete'
-    console.log @
-    @onChange()
+    @model.parent.calEvents.remove @model
+    @hide()
     
   # Sets the model attributes and updates the view to indicate input
   # validity. Returns true if all fields are valid.
@@ -270,10 +275,10 @@ class EditCalEventView extends Backbone.View
         input.css backgroundColor: 'rgb(223, 188, 178)'
         @$el.find('#ok').attr disabled: 'disabled'
         valid = false
-    return false
+    return false    
     
 CalEvent.TITLES = [
-  'Do Nothing'
+  'No Activity'
   'Dress Up'
   'Snack'
   'People Watch'

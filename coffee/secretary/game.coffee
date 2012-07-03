@@ -2,7 +2,7 @@
 $ ->
   cal = new Calendar
   
-  supplicants = new SupplicantGroup cal
+  supplicants = new Rabble cal
   supplicants.addRandomSupplicant()
     
   # set up the addEvent button

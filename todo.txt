@@ -13,7 +13,7 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
     [x] get rid of moods
     [x] hover event
 
-  [ ] separate out supplicantGroup -> rabble
+  [ ] separate out rabble -> rabble
   [ ] fix satisfaction bug
   
   [ ] scroll to show supplicant

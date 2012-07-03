@@ -211,7 +211,7 @@ class SupplicantGroupView extends Backbone.View
     util.verticalAppend sup.view.$el, @$el,
       SupplicantView.HEIGHT
       SupplicantView.VERTICAL_MARGIN
-    $('#calendar').append(sup.constraint_view.el)
+    $('#calendar').prepend(sup.constraint_view.el)
 
   
 # list of all possible supplicants and thier avatrs

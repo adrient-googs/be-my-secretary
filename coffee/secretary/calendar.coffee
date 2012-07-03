@@ -93,6 +93,7 @@ class CalendarView extends Backbone.View
       
   # add a new calendar event
   addEvent: (calEvent) ->
+    # calEvent.view
     @$el.append(calEvent.view.el)
     # force change event
     calEvent.view.onChange calEvent.attributes
@@ -103,7 +104,12 @@ class CalendarView extends Backbone.View
     
   # called when the user clicks on the calendar
   onClick: (event) ->
+    # figure out where the click happened
+    {left: cal_x, top: cal_y} = $('#calendar').offset()
+    click_x = event.pageX - cal_x
+    click_y = event.pageY - cal_y
     new_event = @model.addNewEvent
-      day: Math.floor(event.offsetX / CalEventView.DAY_WIDTH_PIXELS)
-      time: Math.floor(2 * event.offsetY / CalEventView.HOUR_HEIGHT_PIXELS) / 2 + 9
+      day: Math.floor(click_x / CalEventView.DAY_WIDTH_PIXELS)
+      time: Math.floor(2 * click_y / CalEventView.HOUR_HEIGHT_PIXELS) / 2 + 9
     alert 'Insufficient space to add event.' unless new_event?
+    return false

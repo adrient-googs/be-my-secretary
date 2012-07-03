@@ -1,4 +1,4 @@
-# represents someone asking something
+# A supplicant wants the user to insert a CalEvent subject to certain constraints.
 class Supplicant extends Backbone.Model
   defaults:
     status: 'unmatched'
@@ -31,39 +31,61 @@ class Supplicant extends Backbone.Model
     satisfying_dates = 
       for day in [0...7]
         for time in [9...17]
-          unless @isSatifiedBy {day:day, time:time, length:1}
-            continue
-          {day:day, time:time}
+          date = day:day, time:time
+          this_time_works = (@checkStatus(date) == 'satisfies')
+          continue unless this_time_works
+          date
     return _.flatten satisfying_dates
     
-  # returns true if this date satifies the constraints
-  isSatifiedBy: (date) ->
-    # console.log 'isSatifiedBy'
-    # console.log @attributes
-    [days, start, end, length] = 
-      @get(val) for val in ['days', 'start', 'end', 'length']
-    return false unless (
-      "#{date.day}" in days.split('') and
-      date.length <= length and
-      date.time >= start and
-      date.time + date.length <= end
-    )
-    return true
+  # Input:
+  #   either a date ({day:., time:.}) or a CalEvent
+  # Returns:
+  #   unmatched      - names don't match
+  #   error:title    - title doesn't match
+  #   error:length   - length doesn't match
+  #   error:date     - date doesn't match
+  #   satisfies      - satisfies all constraints
+  checkStatus: (x) ->
+    # make the code cleaner by directly accessig attributes
+    [name, title, days, start, end, length] = 
+      @get(val) for val in \
+        ['name', 'title', 'days', 'start', 'end', 'length']
+
+    # check CalEvent attribs and length
+    if util.typeName(x) == 'CalEvent'
+      console.log "MATCHING: #{x.get 'name'} AND #{name}"
+      return 'unmatched' if name != x.get 'name'
+      return 'error:title' if title != x.get 'title'
+      return 'error:length' if length != x.get 'length'
+      date = x.attributes
+    else
+      date = _.extend length:1, x
+      return 'error:length' if date.length > length
+
+    # check day/time
+    return 'error:date' if "#{date.day}" not in days.split('')
+    return 'error:date' if date.time < start
+    return 'error:date' if date.time + date.length > end
+    return 'satisfies'
     
   onCalEventChange: (calEvent) ->
     console.log "onCalEventChange (#{@get 'name'}): #{calEvent?.get 'name'}"
     old_status = @get 'status'
-    console.log "old_status: #{old_status}"
+    console.log "old_status: #{old_status}" # <- debug
     if !calEvent?
       @set 'status', 'unmatched'
-    else if @isSatifiedBy calEvent.attributes
-      console.log "setting status satisfied"
-      @set 'status', 'satisfied'
-    else
-      console.log "setting status unmatched"
-      @set 'status', 'matched'
-
-    console.log "new_status: #{@get 'status'}"
+    else 
+      status = @checkStatus calEvent
+      calEvent.view.setStatus status
+      @set 'status', status
+      
+      # debug - begin
+      console.log "CHECKING STATUS"
+      console.log @
+      console.log calEvent
+      console.log @get 'status'
+      # debug - end
+    console.log "new_status: #{@get 'status'}" # <- debug
     
 # shows a little box that summarizes the supplicant
 class SupplicantView extends Backbone.View
@@ -71,11 +93,11 @@ class SupplicantView extends Backbone.View
   @HEIGHT: 46
   @VERTICAL_MARGIN: 14
   
-  # status table
-  @STATUS_COLORS:
-    'unmatched': 'rgb(223, 90, 54)'    # not matched to any event
-    'matched':   'rgb(240, 144, 0)'    # matched but not satisfied
-    'satisfied': 'rgb(132, 186, 101)'  # matched and satisfied
+  # # status table
+  # @STATUS_COLORS:
+  #   'unmatched': 'rgb(223, 90, 54)'    # not matched to any event
+  #   'matched':   'rgb(240, 144, 0)'    # matched but not satisfied
+  #   'satisfied': 'rgb(132, 186, 101)'  # matched and satisfied
   
   # returns the filename for a particular avatar
   @avatarImage: (name) ->
@@ -97,9 +119,7 @@ class SupplicantView extends Backbone.View
     @$el.find('#title').text @model.get 'title'
     @$el.find('#constraint1').text "Duration: #{@model.get 'length_str'}"
     @$el.find('#constraint2').text "#{@model.get 'day_str'} #{@model.get 'time_str'}"
-    # @$el.find('#constraint1').text "#{@model.get 'time_str'} (#{@model.get 'length_str'})"
-    # @$el.find('#constraint2').text @model.get 'day_str'
-    @$el.css backgroundColor: SupplicantView.STATUS_COLORS[@model.get 'status']
+    @onChangeStatus @model.get 'status'
       
     # event callbacks
     @$el.on 'mouseenter', (event) => @onMouseEnter event
@@ -115,14 +135,20 @@ class SupplicantView extends Backbone.View
     @model.constraint_view.fadeOut()
   
   onChangeStatus: (status) ->
-    css =
-      backgroundColor: SupplicantView.STATUS_COLORS[status]
-    @$el.css css
-    console.log "changing background on #{@model.get('calEvent')?.get('name')}"
-    console.log @model.get('calEvent')?.view.$el.css 'background-color'
-    @model.get('calEvent')?.view.setStatus status
-    console.log @model.get('calEvent')?.view.$el.css 'background-color'
-    console.log css
+    console.log "onChangeStatus (#{@model.get 'name'}) #{status}"
+    @$el.css backgroundColor: switch status
+      when 'satisfies' then 'rgb(132, 186, 101)'
+      when 'unmatched' then 'rgb(223, 90, 54)'
+      else 'rgb(240, 144, 0)'
+    # 
+    # css =
+    #   backgroundColor: SupplicantView.STATUS_COLORS[status]
+    # @$el.css css
+    # console.log "changing background on #{@model.get('calEvent')?.get('name')}"
+    # console.log @model.get('calEvent')?.view.$el.css 'background-color'
+    # @model.get('calEvent')?.view.setStatus status
+    # console.log @model.get('calEvent')?.view.$el.css 'background-color'
+    # console.log css
     
 # show an outline of possible constraints on the calendar
 class SupplicantConstraintView extends Backbone.View

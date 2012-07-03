@@ -5,6 +5,27 @@ Useful Utilities
 # create a "module" called util
 util = util ? {}
 
+util.assertion = (condition, err_msg) ->
+  (throw new Error err_msg) unless condition
+
+# Flips the arguments to a function
+util.flip = (func) ->
+  (args...) ->
+    func args[...].reverse()...
+
+# converts a string To Title Case
+util.titleCase = (str) ->
+  str.replace /\w\S*/g, (txt) ->
+    txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+
+# perform an action later (in 1ms), but not in the current thread
+util.later = (func) ->
+  setTimeout func, 1
+  
+###########
+# OBJECTS #
+###########
+
 # Converts: [[k1,v1], [k2,v2], ...]
 # To:       {k1:v1, k2:v2, ...}
 util.mash = (array) ->
@@ -14,26 +35,12 @@ util.mash = (array) ->
     dict[key] = value
   return dict
 
-util.assertion = (condition, err_msg) ->
-  (throw new Error err_msg) unless condition
-
-# Flips the arguments to a function
-util.flip = (func) ->
-  (args...) ->
-    func args[...].reverse()...
-
 # returns true if the argument is an integer
 util.isInteger = (obj) ->
   _.isNumber(obj) and (obj % 1 == 0)
-  
-# converts a string To Title Case
-util.titleCase = (str) ->
-  str.replace /\w\S*/g, (txt) ->
-    txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
 
-# perform an action later (in 1ms), but not in the current thread
-util.later = (func) ->
-  setTimeout func, 1
+util.typeName = (obj) ->
+  return obj.__proto__.constructor.name
   
 ########
 # DATE #

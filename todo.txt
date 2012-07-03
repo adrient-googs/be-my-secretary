@@ -13,8 +13,10 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
     [x] get rid of moods
     [x] hover event
 
-  [ ] separate out rabble -> rabble
-  [ ] fix satisfaction bug
+  [x] show duration when not dragging
+  [ ] color errors
+    [ ] change checkStatus semantics
+    [ ] change the gui rendering code
   
   [ ] scroll to show supplicant
 

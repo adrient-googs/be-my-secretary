@@ -73,7 +73,7 @@ class CalEventView extends Backbone.View
     # bind events
     @model.on 'change', (model, arg) => @onModelChange arg.changes
     @model.on 'error', (model, type) => @onError type 
-    @on 'stop', => @model.set @posToDate()
+    @on 'stop', => @onStop()
     @$el.on 'click', (event) => @onClick(event)
           
   # converts position to day/time/length
@@ -110,16 +110,24 @@ class CalEventView extends Backbone.View
       
   # render the time
   renderTime: (date) ->
-    from_time = util.timeStr(date.time)
-    to_time = util.timeStr(date.time + date.length)
-    coord_str = "#{util.WEEKDAYS[date.day]} #{from_time} - #{to_time}"
-    @$el.find('#time').text coord_str    
+    is_dragging = @$el.hasClass 'ui-draggable-dragging'
+    time_div = @$el.find('#time')
+    if is_dragging
+      from_time = util.timeStr(date.time)
+      to_time = util.timeStr(date.time + date.length)
+      coord_str = "#{util.WEEKDAYS[date.day]} #{from_time} - #{to_time}"
+      time_div.text coord_str    
+    else
+      duration = if (date.length == 1) then '1 hr' \
+        else "#{date.length} hrs"
+      time_div.text "Duration: #{duration}"
     
   setStatus: (status) ->
+    @$el.css backgroundColor: switch status
+      when 'satisfies' then 'rgb(132, 186, 101)'
+      when 'unmatched' then 'rgb(223, 90, 54)'
+      else 'rgb(240, 144, 0)'    
     console.log "SETTING STATUS (#{@model.get 'name'}): #{status}"
-    console.log "new background color: #{SupplicantView.STATUS_COLORS[status]}"
-    # based on the mood
-    @$el.css backgroundColor: SupplicantView.STATUS_COLORS[status]
     
   # called when something changed
   onModelChange: (changes) -> 
@@ -149,6 +157,12 @@ class CalEventView extends Backbone.View
   onClick: (event) ->
     @model.edit_view.show()
     return false
+    
+  # called when the user stopped dragging or resizing
+  onStop: ->
+    @model.set @posToDate()
+    util.later =>
+      @renderTime @model.attributes
     
 # dialog so that the user can edit an event
 class EditCalEventView extends Backbone.View

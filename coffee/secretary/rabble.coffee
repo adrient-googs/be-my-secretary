@@ -91,6 +91,8 @@ class Rabble extends Backbone.Model
         # link supplicant and calEvent
         console.log "linking #{sup.get 'name'} <-> #{calEvent.get 'name'}"
         sup.set 'calEvent', calEvent
+        
+        calEvent.view.setStatus sup.checkStatus calEvent
         calEvent.on 'change', Supplicant::onCalEventChange, sup
         calEvent.view.$el.on 'mouseenter', => sup.constraint_view.fadeIn()
         calEvent.view.$el.on 'mouseleave', => sup.constraint_view.fadeOut()

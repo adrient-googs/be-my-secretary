@@ -13,7 +13,10 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
     [x] get rid of moods
     [x] hover event
 
+  [ ] separate out supplicantGroup -> rabble
   [ ] fix satisfaction bug
+  
+  [ ] scroll to show supplicant
 
   [ ] fixes to eventEditView
     [ ] tab trigger on edit event

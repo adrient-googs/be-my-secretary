@@ -162,7 +162,7 @@ class SupplicantConstraintView extends Backbone.View
     @$el.stop true
     @$el.animate opacity: 0, 200
 
-# the set of supplicants making requests
+# Fundamentally, a SupplicantGroup is a collection of Supplicant objects.
 class SupplicantGroup extends Backbone.Model
   # constructor
   constructor: (@calendar) ->

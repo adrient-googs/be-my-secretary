@@ -1,4 +1,4 @@
-# holds a series of events
+# Fundamentally, a Calendar is a collection of CalEvent objects.
 class Calendar extends Backbone.Model
   defaults:
     calEvents: undefined

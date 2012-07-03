@@ -25,19 +25,19 @@
 .supplicantView #title {
   font-size: 14px;
   top: 0px;
-  left: 114px;
+  left: 100px;
 }
 
-.supplicantView #constraints {
-  font-size: 14px;
+.supplicantView #constraint1 {
+  font-size: 13px;
   top: 15px;
-  left: 114px;
+  left: 100px;
 }
 
-.supplicantView #mood {
-  font-size: 14px; 
+.supplicantView #constraint2 {
+  font-size: 13px; 
   top: 30px;
-  left: 114px; 
+  left: 100px; 
 }
 
 .supplicantView #avatar {
@@ -47,6 +47,24 @@
   position: absolute;
   left: -12px;
   top:-1px;
+}
+
+.supplicantConstraintView {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 630px;
+  height: 320px;
+  background-color: yellow;
+  z-index: -1;
+}
+
+.supplicantConstraintView .satisfyingDate {
+  position: absolute;
+  width: 90px;
+  height: 40px;
+  background-color: black;
+  z-index: 250;
 }
 
 #supplicantContainer {

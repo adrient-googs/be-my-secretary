@@ -3,7 +3,9 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
 -- what do I want for tomorrow --
 
 [ ] requests come in
-  [ ] they have constraints
+  [x] better randomization
+  [x] they have title
+  [x] they have constraints
   [ ] constraints visible on hover
   [ ] they become linked
   [ ] they have moods
@@ -11,7 +13,7 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
     [ ] hover event
   [ ] they come in
   [ ] timer
-  [ ] points
+  [ ] points - SCORE VARIATION
     
 [ ] networked version
   -- BASIC wizard of oz mode

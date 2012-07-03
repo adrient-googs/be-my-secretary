@@ -12,9 +12,9 @@ $ ->
   # debug - begin - create a supplicant
   group = new SupplicantGroup
   group.addRandomSupplicant()
-  group.addRandomSupplicant()
-  group.addRandomSupplicant()
-  group.addRandomSupplicant()
+  # group.addRandomSupplicant()
+  # group.addRandomSupplicant()
+  # group.addRandomSupplicant()
   # debug - end
   
   # debug - begin - create a calendar and add an event

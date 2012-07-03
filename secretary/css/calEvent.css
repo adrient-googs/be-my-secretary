@@ -10,6 +10,8 @@
   
   overflow: visible !important;
   position: absolute !important;
+  
+  z-index: 500;
 }
 
 .calEventView .ui-resizable-handle {

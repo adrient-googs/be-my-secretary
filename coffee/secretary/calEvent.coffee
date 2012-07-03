@@ -113,18 +113,9 @@ class CalEventView extends Backbone.View
       
   # render the time
   renderTime: (date) ->
-    timeStr = (hour) ->
-      return 'noon' if hour == 12
-      [hour, suf] = 
-        if hour < 12 then [hour, 'am']
-        else if hour < 13 then [hour, 'pm'] 
-        else [hour - 12, 'pm'] 
-      if util.isInteger(hour) then "#{hour}#{suf}"
-      else "#{Math.floor(hour)}:30#{suf}"
-    from_time = timeStr(date.time)
-    to_time = timeStr(date.time + date.length)
-    days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-    coord_str = "#{days[date.day]} #{from_time} - #{to_time}"
+    from_time = util.timeStr(date.time)
+    to_time = util.timeStr(date.time + date.length)
+    coord_str = "#{util.WEEKDAYS[date.day]} #{from_time} - #{to_time}"
     @$el.find('#time').text coord_str    
     
   # called when something changed
@@ -279,7 +270,7 @@ class EditCalEventView extends Backbone.View
     
 CalEvent.TITLES = [
   'No Activity'
-  'Dress Up'
+  'Costume Party'
   'Snack'
   'People Watch'
   'Tennis'
@@ -290,7 +281,7 @@ CalEvent.TITLES = [
   'Henna Tattoos'
   'Opera'
   'Paint'
-  'Argue All Day'
+  'Shopping'
   'Ice Cream'
   'Long Walk'
   'Picnic'

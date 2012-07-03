@@ -1,7 +1,6 @@
 # represents someone asking something
 class Supplicant extends Backbone.Model
   defaults:
-    name: undefined     # string name
     mood: 'happy'
     points: 100
     
@@ -15,7 +14,33 @@ class Supplicant extends Backbone.Model
     util.assertion (@cid of SupplicantView.NAMES_AND_AVATARS),
       "Unknown name: #{@cid}."
     @view = new SupplicantView model:@    
+    @constraint_view = new SupplicantConstraintView model:@
     
+  # returns all [day, time] pairs which satisfy this Supplicant
+  getAllSatisfyingDates: ->
+    satisfying_dates = 
+      for day in [0...7]
+        for time in [9...17]
+          unless @isSatifiedBy {day:day, time:time, length:1}
+            continue
+          {day:day, time:time}
+    return _.flatten satisfying_dates
+    
+  # returns true if this date satifies the constraints
+  isSatifiedBy: (date) ->
+    # console.log 'isSatifiedBy'
+    # console.log @attributes
+    [days, start, end, length] = 
+      @get(val) for val in ['days', 'start', 'end', 'length']
+    return false unless (
+      "#{date.day}" in days.split('') and
+      date.length <= length and
+      date.time >= start and
+      date.time + date.length <= end
+    )
+    return true
+    
+# shows a little box that summarizes the supplicant
 class SupplicantView extends Backbone.View
   # manually specify CSS properties for util.verticalAppend
   @HEIGHT: 46
@@ -36,13 +61,32 @@ class SupplicantView extends Backbone.View
     @$el.find('#points').text "#{@model.get 'points'} pts"
     @$el.find('#avatar').attr
       src: SupplicantView.avatarImage(@model.get 'name')
+    @$el.find('#title').text @model.get 'title'
+    @$el.find('#constraint1').text "#{@model.get 'time_str'} (#{@model.get 'length_str'})"
+    @$el.find('#constraint2').text @model.get 'day_str'
     @$el.css backgroundColor: switch @model.get 'mood'
       when 'happy' then 'rgb(132, 186, 101)'
       
+  # returns the filename for a particular avatar
   @avatarImage: (name) ->
     img_file = SupplicantView.NAMES_AND_AVATARS[name]
     return "/imgs/Face-Avatars-by-deleket/#{img_file}"
+    
+# show an outline of possible constraints on the calendar
+class SupplicantConstraintView extends Backbone.View
+  # constructor
+  constructor: (args) ->
+    args.el = $('#prototypes .supplicantConstraintView')
+    super args
+    
+  # after construction
+  initialize: (args) ->
+    for date in @model.getAllSatisfyingDates()
+      @$el.append $('<div class="satisfyingDate">').css
+        left: date.day * CalEventView.DAY_WIDTH_PIXELS
+        top: (date.time - 9) * CalEventView.HOUR_HEIGHT_PIXELS
 
+# the set of supplicants making requests
 class SupplicantGroup extends Backbone.Model
   defaults:
     supplicants: undefined
@@ -65,12 +109,54 @@ class SupplicantGroup extends Backbone.Model
 
   # adds a random supplicant (not in the group)
   addRandomSupplicant: ->
-    possibilities = _.keys SupplicantView.NAMES_AND_AVATARS
-    supplicants = @get 'supplicants'
-    loop
-      name = util.choose possibilities
-      break if name not of supplicants
-    @add new Supplicant name:name
+    attribs = {}
+    
+    # name
+    all_names = _.keys SupplicantView.NAMES_AND_AVATARS
+    used_names = @supplicants.pluck('name')
+    attribs.name = util.choose all_names, used_names
+    
+    # title
+    attribs.title =
+      util.choose CalEvent.TITLES[1...CalEvent.TITLES.length]
+    
+    # day and time
+    util.withProbability [
+      0.8, ->
+        # normal day
+        [attribs.days, attribs.day_str] =
+          util.withProbability [
+            0.40, -> ['12345', 'Weekday'    ]
+            0.15, -> ['06'   , 'Weekend'    ]
+            0.15, -> ['135'  , 'Mon/Wed/Fri']
+            0.15, -> ['24'   , 'Tue/Thu'    ]
+            0.15, -> ['45'   , 'Thu/Fri'    ]
+          ]
+        [attribs.start, attribs.end, attribs.time_str] =
+          util.withProbability [
+            0.25, -> [ 9, 12, 'Morning']
+            0.25, -> [11, 14, 'Midday' ]
+            0.25, -> [15, 17, 'Late'   ]
+            0.25, -> [ 9, 17, 'All day']
+          ]
+      null, ->
+        # weird time
+        attribs.days = "#{util.choose [0...7]}"
+        attribs.day_str = util.WEEKDAYS[parseInt attribs.days]
+        attribs.start = util.choose [9...17]
+        attribs.end = util.choose [(attribs.start+1)..17]
+        attribs.time_str = "#{util.timeStr(attribs.start)}-#{util.timeStr(attribs.end)}"
+    ]
+    
+    # length
+    attribs.length = 0.5 * util.choose [2 .. 2 * (attribs.end - attribs.start)]
+    util.assertion 1 <= attribs.length <= attribs.end - attribs.start,
+      "Invalid length: #{attribs.length} (start:#{attribs.start} end:#{attribs.end})"
+    attribs.length_str = if attribs.length == 1 then "1 hr" else "#{attribs.length} hrs"
+    console.log attribs
+    
+    # add it in
+    @add new Supplicant attribs
 
 class SupplicantGroupView extends Backbone.View
   # constructor
@@ -92,7 +178,8 @@ class SupplicantGroupView extends Backbone.View
   onAddSupplicant: (sup) ->
     util.verticalAppend sup.view.$el, @$el,
       SupplicantView.HEIGHT
-      SupplicantView.VERTICAL_MARGIN    
+      SupplicantView.VERTICAL_MARGIN
+    $('#calendar').append(sup.constraint_view.el)
 
   
 # list of all possible supplicants and thier avatrs

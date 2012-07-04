@@ -3,33 +3,25 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
 -- what do I want for tomorrow --
 
 [ ] requests come in
-  [x] better randomization
-  [x] they have title
-  [x] they have constraints
-  [x] constraints visible on hover
-    [x] fix the add event problem (check how we're figure out where)
 
-  [x] they become linked
-    [x] get rid of moods
-    [x] hover event
+  [ ] game object
+    [ ] they come in
+    [ ] timer
+    [ ] points - SCORE VARIATION : length ** 1.5 / num_slots (??)
 
-  [x] show duration when not dragging
-  [ ] color errors
-    [ ] change checkStatus semantics
-    [ ] change the gui rendering code
-  
-  [ ] scroll to show supplicant
+  [ ] emphasize supplicant  
+    [ ] scroll to show supplicant
+    [ ] nice bounce animation
 
-  [ ] fixes to eventEditView
-    [ ] tab trigger on edit event
-    [ ] double click to launch view
-  [ ] they come in
-  [ ] timer
-  [ ] points - SCORE VARIATION : length ** 1.5 / num_slots (??)
   [ ] they talk to you?
 
   [ ] SHOW LENGTH SATISFACTION
     
+[ ] small fixes
+  [ ] fixes to eventEditView
+    [ ] tab trigger on edit event
+    [ ] double click to launch view
+
 [ ] networked version
   -- BASIC wizard of oz mode
 

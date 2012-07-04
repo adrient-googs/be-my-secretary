@@ -29,7 +29,7 @@ class RemoteModel extends Backbone.Model
         
   # an alternative to toJSON (used by chatter)
   wrap: -> @toJSON()
-    
+
   ###
   To declare a remote static method:
     @funcName: RemoteModel.remoteStaticMethod 'funcName'

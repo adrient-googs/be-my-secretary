@@ -40,33 +40,43 @@ class Supplicant extends Backbone.Model
   # Input:
   #   either a date ({day:., time:.}) or a CalEvent
   # Returns:
-  #   unmatched      - names don't match
-  #   error:title    - title doesn't match
-  #   error:length   - length doesn't match
-  #   error:date     - date doesn't match
-  #   satisfies      - satisfies all constraints
+  #   unmatched           - names don't match
+  #   error:err1,err2,... - error list
+  #   satisfies           - satisfies all constraints
+  # Possible Errors:
+  #   title    - title doesn't match
+  #   length   - length doesn't match
+  #   date     - date doesn't match
   checkStatus: (x) ->
     # make the code cleaner by directly accessig attributes
     [name, title, days, start, end, length] = 
       @get(val) for val in \
         ['name', 'title', 'days', 'start', 'end', 'length']
 
+    # the list of errors
+    errors = []
+
     # check CalEvent attribs and length
     if util.typeName(x) == 'CalEvent'
       console.log "MATCHING: #{x.get 'name'} AND #{name}"
       return 'unmatched' if name != x.get 'name'
-      return 'error:title' if title != x.get 'title'
-      return 'error:length' if length != x.get 'length'
+      errors.push 'title' if title != x.get 'title'
+      errors.push 'length' if length != x.get 'length'
       date = x.attributes
     else
       date = _.extend length:1, x
-      return 'error:length' if date.length > length
 
     # check day/time
-    return 'error:date' if "#{date.day}" not in days.split('')
-    return 'error:date' if date.time < start
-    return 'error:date' if date.time + date.length > end
-    return 'satisfies'
+    errors.push 'date' unless \
+      "#{date.day}" in days.split('') and 
+      date.time >= start and
+      date.time + date.length <= end
+      
+    # return final status
+    if _.isEmpty errors
+      return 'satisfies'
+    else
+      return "error:#{errors.join()}"
     
   onCalEventChange: (calEvent) ->
     console.log "onCalEventChange (#{@get 'name'}): #{calEvent?.get 'name'}"

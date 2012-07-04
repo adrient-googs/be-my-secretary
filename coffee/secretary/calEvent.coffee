@@ -38,12 +38,16 @@ class CalEvent extends Backbone.Model
     return true if start1 <= start2 < end1
     return true if start2 <= start1 < end2
     return false
-  
     
 class CalEventView extends Backbone.View
   # constants
   @DAY_WIDTH_PIXELS: 90
   @HOUR_HEIGHT_PIXELS: 40
+  @COLORS:
+    satisfies: 'rgb(132, 186, 101)'
+    unmatched: 'rgb(223, 90, 54)'
+    error: 'rgb(240, 144, 0)'
+    error_string: 'rgb(226, 1, 61)'
     
   # constructor
   constructor: (args) ->
@@ -112,22 +116,52 @@ class CalEventView extends Backbone.View
   renderTime: (date) ->
     is_dragging = @$el.hasClass 'ui-draggable-dragging'
     time_div = @$el.find('#time')
+    error_color = CalEventView.COLORS.error_string
     if is_dragging
       from_time = util.timeStr(date.time)
       to_time = util.timeStr(date.time + date.length)
-      coord_str = "#{util.WEEKDAYS[date.day]} #{from_time} - #{to_time}"
-      time_div.text coord_str    
+      time_text = "#{util.WEEKDAYS[date.day]} #{from_time} - #{to_time}"
+      time_color = if @hasError 'date' then error_color else 'black'
     else
       duration = if (date.length == 1) then '1 hr' \
         else "#{date.length} hrs"
-      time_div.text "Duration: #{duration}"
+      time_text = "Duration: #{duration}"
+      console.log "status:#{@status} length_error:#{@hasError 'length'}"
+      time_color = if @hasError 'length' then error_color else 'black'
+    time_div.text time_text
+    time_div.css color: time_color
     
   setStatus: (status) ->
-    @$el.css backgroundColor: switch status
-      when 'satisfies' then 'rgb(132, 186, 101)'
-      when 'unmatched' then 'rgb(223, 90, 54)'
-      else 'rgb(240, 144, 0)'    
-    console.log "SETTING STATUS (#{@model.get 'name'}): #{status}"
+    @status = status
+    colors = CalEventView.COLORS
+    switch status
+      when 'satisfies'
+        bg_color = colors.satisfies
+        title_color = 'black'
+      when 'unmatched'
+        bg_color = colors.unmatched
+        title_color = 'black'
+      else
+        bg_color = colors.error
+        title_color = \
+          if @hasError 'title' then colors.error_string \
+          else 'black'
+    @$el.css backgroundColor: bg_color
+    @$el.find('#title').css color: title_color
+    @renderTime @model.attributes
+    
+    # debug - begin
+    console.log "SETTING STATUS (#{@model.get 'name'}): #{status}" # <- debug
+    console.log "bg_color: #{bg_color}"
+    console.log "title_color: #{title_color}"
+    # debug - end
+    
+  # returns true if @status indicates the given error
+  hasError: (error) ->
+    if @status.indexOf('error:') != 0
+      return false
+    else
+      return error in @status[6..].split(',')
     
   # called when something changed
   onModelChange: (changes) -> 

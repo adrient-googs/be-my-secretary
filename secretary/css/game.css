@@ -46,6 +46,17 @@
   top: 313px;
 }
 
+/* timer information */
+
+#remaining {
+  position: absolute;
+  left: 48px;
+  top: 233px;
+  color: #515151;
+  font-weight: bold;
+  font-size: 41px;
+}
+
 /* test game */
 
 #testBackground {

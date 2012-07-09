@@ -2,34 +2,30 @@ from google.appengine.ext import db
 from chatter import RemoteModel, RemoteMethod, StructuredProperty, Channel
 import logging
 
-class Instruction(RemoteModel):
-  """A string to apply to a calendar."""
-  POSSIBLE_STATUSES = ['sending', 'queued']
+class Calendar(RemoteModel):
+  """A collection of calendar events."""
+  calEvents = StructuredProperty(required=True)
   
-  text = db.StringProperty(required=True)
-  uid = db.StringProperty(required=True)
-  status = db.StringProperty(required=True, choices=POSSIBLE_STATUSES)
-
   created_by = db.UserProperty(required=True, auto_current_user_add=True)
   created_on = db.DateTimeProperty(required=True, auto_now_add=True)
   
   # these are the properties which will be serialized to json
-  properties_to_wrap = {'text', 'uid', 'status'}
-  
-  @RemoteMethod(static=True, admin=False)
-  def saveNewInstruction(cls, instruction=None):
-    """Saves a new instruction."""
-    # make sure this instruction really is new
-    query = Instruction.all(keys_only=True).filter('uid =', instruction.uid)
-    assert len(query.fetch(1)) == 0, \
-      'Instruction uid:"%s" not unique.' % instruction.uid
-      
-    # update the status and save
-    assert instruction.status == 'sending', \
-      'Instruction uid:"%s" must have status "sending."' % instruction.uid
-    instruction.status = 'queued'
-    instruction.put()
-    return instruction
+  properties_to_wrap = {'calEvents'}
+
+  # @RemoteMethod(static=True, admin=False)
+  # def saveNewInstruction(cls, instruction=None):
+  #   """Saves a new instruction."""
+  #   # make sure this instruction really is new
+  #   query = Instruction.all(keys_only=True).filter('uid =', instruction.uid)
+  #   assert len(query.fetch(1)) == 0, \
+  #     'Instruction uid:"%s" not unique.' % instruction.uid
+  #     
+  #   # update the status and save
+  #   assert instruction.status == 'sending', \
+  #     'Instruction uid:"%s" must have status "sending."' % instruction.uid
+  #   instruction.status = 'queued'
+  #   instruction.put()
+  #   return instruction
     
     
   # @RemoteMethod(static=True, admin=False)

@@ -6,11 +6,17 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
   [ ] guide
 
     [x] typing creates a new one
-    [ ] server side instruction
-    [ ] do the synch
+    [x] server side instruction
+    [x] do the synch
+      [x] fix the incorrect UID problem
 
     [ ] server side calendar
+      [ ] give the calendars UIDs
+      [ ] get the default calendar
+      [ ] way to "save" the calendar
+      [ ] way to "load" a calendar
       [ ] start with "default" calendar
+      [ ] save subsequent calendars
 
   [ ] full loop
     [ ] load it up in admin view

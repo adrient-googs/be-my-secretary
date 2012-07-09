@@ -57,6 +57,16 @@
   font-size: 41px;
 }
 
+/* debug - begin - add calendar button */
+
+#testAddCalendar {
+  position: absolute;
+  left: 50px;
+  top: 176px;
+}
+
+/* debug - end */
+
 /* test game */
 
 #testBackground {

@@ -14,7 +14,7 @@ from google.appengine.ext import db
 from google.appengine.api import users
 
 # chatter classes
-from jsonProperty import JSONProperty
+from structuredProperty import StructuredProperty
 import chatter
 
 __all__ = ['RemoteException', 'RemoteMethod', 'RemoteModel', 'getAllRemoteHandlers']

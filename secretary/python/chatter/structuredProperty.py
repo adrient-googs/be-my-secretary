@@ -2,8 +2,8 @@ import types
 import json
 from google.appengine.ext import db
 
-class JSONProperty(db.TextProperty):
-  """Looks like a JSON object, but maps transparently down to an AppEngine
+class StructuredProperty(db.TextProperty):
+  """Looks like a chatter (JSON) object, but maps transparently down to an AppEngine
   TextProperty for storage."""
 
   # the data type can be anything that could be in JSON
@@ -18,9 +18,9 @@ class JSONProperty(db.TextProperty):
       return self
     # otherwise, load the string and convert it to a JSON object
     text = db.TextProperty.__get__(self, instance, owner)
-    return json.loads(text)
+    return chatter.unwrap(json.loads(text))
 
   def __set__(self, instance, value):
     # convert the json object to a string and save it
-    text = json.dumps(value)
+    text = chatter.wrap(json.dumps(value))
     db.TextProperty.__set__(self, instance, text)

@@ -8,6 +8,7 @@ class Guide extends Backbone.Model
   initialize: ->
     # manage instructions property through private collection
     @instructions = new Backbone.Collection
+    @instructions.comparator = (instruction) -> instruction.get 'uid'
     @set 'instructions', @instructions.models
     @instructions.on 'all', (args...) => @trigger args...
     
@@ -20,8 +21,17 @@ class Guide extends Backbone.Model
     
   # called when a new instruction is added
   onAdd: (instruction) ->
+    # because instruction can be overriden, we copy it here
     Instruction.saveNewInstruction instruction:instruction, (update) =>
-      instruction.set update.attributes
+      uid = update.get 'uid'
+      results = @instructions.where uid:uid
+      util.assertion (results.length == 1), "UID #{uid} not unique."
+      results[0].set update.attributes
+      
+    # debug - begin - verify the order
+    for index, instruction of @instructions.models
+      console.log "#{index} : #{instruction.get 'uid'} '#{instruction.get 'text'}'"
+    # debug - end
         
 class GuideView extends Backbone.View
   events:

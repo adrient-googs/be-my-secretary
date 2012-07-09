@@ -1,0 +1,23 @@
+#instructionList {
+  width: 286px;
+  height: 154px;
+  position: absolute;
+  left: 426px;
+  top: 89px;
+  overflow-x: visible !important;
+  overflow-y: scroll;
+  background-color: white;
+  border: 1px inset;
+}
+
+#guide {
+  width: 100%;
+}
+
+#instructionInput {
+  width: 289px;
+  position: absolute;
+  left: 426px;
+  top: 246px;
+  font-size: 16px;
+}

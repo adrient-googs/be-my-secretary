@@ -1,50 +1,40 @@
 ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
 
--- what do I want for tomorrow --
+[ ] demand view
+  [x] basic html
+  [x] a single instruction
+  [ ] guide
 
-[ ] requests come in
+    [x] typing creates a new one
+    [ ] server side instruction
+    [ ] do the synch
 
-  [ ] game object
-    [ ] they come in
-    [ ] timer
-    [ ] points - SCORE VARIATION : length ** 1.5 / num_slots (??)
+    [ ] server side calendar
+      [ ] start with "default" calendar
 
-  [ ] emphasize supplicant  
-    [ ] scroll to show supplicant
-    [ ] nice bounce animation
+  [ ] full loop
+    [ ] load it up in admin view
+    [ ] send it back
 
-  [ ] they talk to you?
+[ ] mode dispatch
+[ ] see the demands
 
-  [ ] SHOW LENGTH SATISFACTION
-    
-[ ] small fixes
-  [ ] fixes to eventEditView
-    [ ] tab trigger on edit event
-    [ ] double click to launch view
+-- during the flight  --
 
-[ ] networked version
-  -- BASIC wizard of oz mode
-
-
-[ ] better requests
-  [ ] add constraints
-  [ ] show constraints
-  [ ] connect constraints + requests
-  [ ] periodic add
-  [ ] score
-  [ ] timer
   
--- later --
-  
-[ ] three main modes - implement
-  [ ] test mode
-    [ ] basic requests
-    [ ] link: request <-> event  
-  [ ] type mode
-  [ ] do mode (wizard of oz)
-  [ ] do mode (real)
+-- small fixes --
 
-before launch:
+[ ] points - SCORE VARIATION : length ** 1.5 / num_slots (??)
+[ ] separate out gameView
+[ ] fixes to eventEditView
+  [ ] tab trigger on edit event
+  [ ] double click to launch view
+[ ] emphasize supplicant  
+  [ ] scroll to show supplicant
+  [ ] nice bounce animation
+[ ] when no text in the text area: "(type instruction in here)"
+
+-- before launch -- 
 
 [ ] access permissions for get/post/put/delete
   [ ] RemoteModel

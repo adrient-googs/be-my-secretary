@@ -3,17 +3,15 @@ $ ->
   cal = new Calendar
   rabble = new Rabble cal
   game = new Game cal, rabble
-
-  # debug - begin
-  $('button#bigAddEvent').on 'click', ->
-    cal.addNewEvent()
-    return false
+  
+  # debug - begin - put in a couple instructions
+  guide = new Guide
+  # for ii in [1..4]
+  #   instruction = new Instruction
+  #   $('#guide').append(instruction.view.$el)
   # debug - end
 
-  alert 'Click to start.'
   game.start()
-  
-  # showLayout() # debug
 
 # singleton class w
 class Game extends Backbone.Model
@@ -40,7 +38,11 @@ class Game extends Backbone.Model
   start: ->
     @get('rabble').addRandomSupplicant()
     @get('rabble').addRandomSupplicant()
-    @interval_func_id = setInterval (=> @tick()), 1000
+    # @interval_func_id = setInterval (=> @tick()), 1000 # for now, don't set an interval
+    
+    # # debug - begin - show where everything is
+    # showLayout()
+    # # debug - end
     
   # ticks once per second
   tick: ->

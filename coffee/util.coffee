@@ -58,9 +58,9 @@ util.timeStr = (hour) ->
 
 util.WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
   
-###############
-# PROBABILITY #
-###############
+##########
+# RANDOM #
+##########
   
 # random integer in interval [0,max)
 util.randInt = (max) ->
@@ -71,6 +71,13 @@ util.choose = (array, exclude=[]) ->
   loop
     elt = array[util.randInt array.length]
     return elt unless elt in exclude
+    
+    
+# returns a unique identifier
+util.uid = ->
+  'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace /[xy]/g, (c) ->
+    r = util.randInt 16
+    (if (c == 'x') then r else (r&0x3|0x8)).toString(16)
     
 ###
   Performs each action with a given probability, e.g.

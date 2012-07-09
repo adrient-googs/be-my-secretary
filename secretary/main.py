@@ -6,9 +6,10 @@ import os
 import sys
 import logging
 
-#include the coffeetest libraries
+# include this project's python libraries
 sys.path.append(os.path.join(os.path.dirname(__file__), 'python'))
 import chatter
+import secretary
 
 class MainPage(webapp2.RequestHandler):
   """The principal interface through which the player accesses the game."""

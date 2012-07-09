@@ -1,0 +1,28 @@
+.instructionView {
+  width: 100%;
+  position: static !important;
+  margin-bottom: 5px;
+}
+
+.instructionView #inner {
+  margin-left: 3px;
+  margin-right: 3px;  
+}
+
+.instructionView #text {
+  font-size: 16px;
+  color: black;
+}
+
+.instructionView #bottom {
+  font-size: 12px;
+  color: rgb(128, 128, 128);
+}
+
+.instructionView #status {
+  
+}
+
+.instructionView #actions {
+  float: right;
+}

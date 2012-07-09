@@ -1,8 +1,5 @@
 # fundamentally, a Guide is a collection of Instruction objects.
 class Guide extends Backbone.Model
-  defaults:
-    instructions: undefined
-
   # constructor
   constructor: (args...) ->
     super args...
@@ -16,7 +13,15 @@ class Guide extends Backbone.Model
     
     # create a view
     @view = new GuideView model:@
-    console.log @view # <- debug    
+    console.log @view # <- debug
+    
+    # event handlers
+    @on 'add', (instruction) => @onAdd instruction
+    
+  # called when a new instruction is added
+  onAdd: (instruction) ->
+    Instruction.saveNewInstruction instruction:instruction, (update) =>
+      instruction.set update.attributes
         
 class GuideView extends Backbone.View
   events:
@@ -53,13 +58,12 @@ class GuideView extends Backbone.View
       @input.val '' 
       
       # post the new instruction
-      instruction = new Instruction text:text
-      @model.instructions.add instruction
-      instruction.save()
+      @model.instructions.add new Instruction text:text
 
   # called when a new instruction is added
   onAdd: (instruction) ->
     # add the element
+    instruction.view.render()
     @list.append instruction.view.$el
 
     # scroll to view the element

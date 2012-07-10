@@ -28,25 +28,27 @@
 
 <body>  
 
-<!-- test game -->
-<div id="testBackground" class="gameArea">
+<!-- game area -->
+
+<div id="gameArea">
   <div id="username" class="test-blue">
     {{nickname}}
   </div>
   <div id="logout" class="test-blue">
     (<a href="{{logout_url}}">Logout</a>)
   </div>
-  <div id="rabbleContainer" class="test-blue">
-    <div id="rabble" class="test-orange"></div>
-  </div>
-  
-  <div id="guide">
-    <div id="instructionList" class="test-orange"></div>
-    <input id="instructionInput" type="text">
-  </div>
-  
   <div id="calendar" class="test-purple"></div>
   <div id="remaining" class="test-blue">100</div>
+
+  <div class="modeDependant mode-test">
+    <div id="rabbleContainer" class="test-blue">
+      <div id="rabble" class="test-orange"></div>
+    </div>
+    <div id="guide">
+      <div id="instructionList" class="test-orange"></div>
+      <input id="instructionInput" type="text">
+    </div>
+  </div>  
   
   <!-- debug - begin - a button to save the calendar -->
   <button id="testAddCalendar">Add Calendar</button>

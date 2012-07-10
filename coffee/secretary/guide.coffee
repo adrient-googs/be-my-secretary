@@ -10,6 +10,7 @@ class Guide extends Backbone.Model
     @instructions = new Backbone.Collection
     @instructions.comparator = (instruction) -> instruction.get 'uid'
     @set 'instructions', @instructions.models
+    @instructions.on 'add remove change', => @set 'instructions', @instructions.models
     @instructions.on 'all', (args...) => @trigger args...
     
     # create a view

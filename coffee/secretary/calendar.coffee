@@ -7,6 +7,9 @@ class Calendar extends RemoteModel
         
   # save an instruction
   @saveNewCalendar: RemoteModel.remoteStaticMethod 'saveNewCalendar'
+  
+  # returns the empty calendar
+  @getEmptyCalendar: RemoteModel.remoteStaticMethod 'getEmptyCalendar'
 
   # constructor
   constructor: ->

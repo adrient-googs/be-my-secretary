@@ -10,6 +10,7 @@ class Rabble extends Backbone.Model
     @supplicants = new Backbone.Collection
     @supplicants.comparator = (sup) -> sup.get 'name'
     @set 'supplicants', @supplicants.models
+    @supplicants.on 'add remove change', => @set 'supplicants', @supplicants.models
     @supplicants.on 'all', (args...) => @trigger args...
 
     # create the view

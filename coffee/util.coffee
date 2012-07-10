@@ -40,7 +40,10 @@ util.isInteger = (obj) ->
   _.isNumber(obj) and (obj % 1 == 0)
 
 util.typeName = (obj) ->
+  if !obj?
+    return 'undefined'
   return obj.__proto__.constructor.name
+    
   
 ########
 # DATE #

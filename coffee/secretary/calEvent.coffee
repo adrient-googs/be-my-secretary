@@ -1,5 +1,7 @@
 # stores a single calendar event
-class CalEvent extends Backbone.Model    
+class CalEvent extends RemoteModel
+  chatter.register(@) # registers the model for unpacking
+  
   defaults:
     day: 0
     time: 9

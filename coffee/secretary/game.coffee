@@ -4,11 +4,13 @@ $ ->
   rabble = new Rabble cal
   game = new Game cal, rabble
   
-  # debug - begin - put in a couple instructions
-  guide = new Guide
-  # for ii in [1..4]
-  #   instruction = new Instruction
-  #   $('#guide').append(instruction.view.$el)
+  # debug - begin - put in a button to save the calendar
+  $('#testAddCalendar').on 'click', =>
+    console.log "add calendar clicked"
+    Calendar.saveNewCalendar
+      calendar: game.get 'calendar', (args...) =>
+        console.log 'finished saveNewCalendar'
+        console.log args...
   # debug - end
 
   game.start()

@@ -1,11 +1,21 @@
 # Fundamentally, a Calendar is a collection of CalEvent objects.
-class Calendar extends Backbone.Model
+class Calendar extends RemoteModel
+  chatter.register(@) # registers the model for unpacking
+
   defaults:
     calEvents: undefined
+        
+  # save an instruction
+  @saveNewCalendar: RemoteModel.remoteStaticMethod 'saveNewCalendar'
 
   # constructor
-  constructor: (args...) ->
-    super args...
+  constructor: ->
+    # set the uid
+    @uid = util.uid()
+        
+    # superclass constructor
+    super uid:@uid
+    console.log "new calendar: #{@get 'uid'}"
 
   # after construction
   initialize: ->
@@ -13,7 +23,8 @@ class Calendar extends Backbone.Model
     @calEvents = new Backbone.Collection
     @calEvents.comparator = (event) -> event.get 'name'
     @set 'calEvents', @calEvents.models
-    @calEvents.on 'all', (args...) => @trigger args...
+    @calEvents.on 'add remove change', => @set 'calEvents', @calEvents.models
+    @calEvents.on 'all', (type, args...) => @trigger "calEvents:#{type}", args...
     
     # create a view
     @view = new CalendarView model:@
@@ -21,12 +32,28 @@ class Calendar extends Backbone.Model
     console.log @view
     
     # event handlers
-    @on 'add change', => @onChange()
+    @on 'calEvents:add calEvents:change', => @onChangeCalEvents()
+    @on 'error', (args...) => @onError args...
+    
+  # validate this instruction
+  validate: (attribs) ->
+    # make sure UID is correct
+    if attribs.uid? and attribs.uid != @uid
+      return "Incorrect UID: #{attribs.uid}"
     
   # add an event
   add: (event) ->
     event.parent = @
     @calEvents.add event
+    
+    # debug - begin
+    console.log "ADDDING EVENT len:#{@calEvents.models.length}"
+    console.log event
+    for ii, event of @calEvents.models
+      console.log "-- #{ii}"
+      console.log event
+    # debug - end
+    
     return event
     
   ### 
@@ -58,11 +85,6 @@ class Calendar extends Backbone.Model
           ev = @addNewEvent _.extend day:day, time:time, attribs
           return ev if ev?
     return undefined
-      
-    
-  # triggered when something changed
-  onChange: ->
-    util.assertion not @hasOverlaps(), 'Events cannot overlap.'
     
   # returns true if the event overlaps this calendar
   overlaps: (ev1, exclude) ->
@@ -77,6 +99,21 @@ class Calendar extends Backbone.Model
       return true if @overlaps event
     return false
     
+  # triggered when a calevent changed
+  onChangeCalEvents: ->
+    util.assertion not @hasOverlaps(), 'Events cannot overlap.'
+    
+    console.log "calendars onChangeCalEvents" # <- debug
+    
+    # since calendars are 'immutable' each change sets a new UID
+    @uid = util.uid()
+    @set 'uid', @uid
+    console.log "calendar reset uid : #{@uid}"
+
+  # called in case of error
+  onError: (instruction, error_str) ->
+    throw new Error error_str 
+    
 class CalendarView extends Backbone.View
   # constructor
   constructor: (args) ->
@@ -85,8 +122,8 @@ class CalendarView extends Backbone.View
   
   # after construction
   initialize: ->
-    @model.on 'add', (calEvent) => @addEvent calEvent
-    @model.on 'remove', (calEvent) => @removeEvent calEvent
+    @model.on 'calEvents:add', (calEvent) => @addEvent calEvent
+    @model.on 'calEvents:remove', (calEvent) => @removeEvent calEvent
     @$el.on 'click', (args...) => @onClick args...
       
   # add a new calendar event

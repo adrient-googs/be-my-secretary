@@ -23,6 +23,13 @@ class RemoteModel extends Backbone.Model
   # converts this object to json
   toJSON: ->
     my_name = @__proto__.constructor.name
+    
+    # debug  - begin
+    console.log "RemoteModel wrapping #{my_name} attribs: #{_.keys @attributes}"
+    if @attributes.calEvents?
+      console.log "HAS calEvents, length:#{@attributes.calEvents.length}"
+    # debug - end
+    
     wrapped_attribs = for key, value of @attributes
       [key, chatter.wrap(value)]
     return [my_name, util.mash wrapped_attribs]

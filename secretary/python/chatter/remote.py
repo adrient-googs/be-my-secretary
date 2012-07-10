@@ -166,7 +166,16 @@ class MetaRemoteModel(db.Model.__metaclass__):
     # make the class serializable and deserializable
     def wrap(self):
       """Returns a JSON-encodable version of this instance."""
-      self_json = {'id':chatter.wrap(self.key())}
+      try:
+        self_json = {'id':chatter.wrap(self.key())}
+      except db.NotSavedError:
+        self_json = {}
+      # try:
+      #   self_json = {'id':chatter.wrap(self.key())}
+      # except Exception, e:
+      #   logging.error("%s" % e)
+      #   logging.error("%s" % dir(e))
+      #   raise 
       self_json.update((name, chatter.wrap(getattr(self, name)))
         for name in type(self).properties_to_wrap)
       return self_json

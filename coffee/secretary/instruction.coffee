@@ -5,8 +5,8 @@ class Instruction extends RemoteModel
   defaults:
     status: 'sending'
   
-  # save an instruction
-  @saveNewInstruction: RemoteModel.remoteStaticMethod 'saveNewInstruction'
+  # # save an instruction
+  # @saveNewInstruction: RemoteModel.remoteStaticMethod 'saveNewInstruction'
   
   # constructor
   constructor: (attribs) ->

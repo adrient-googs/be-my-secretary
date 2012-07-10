@@ -5,16 +5,15 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
   [x] a single instruction
   [ ] guide
 
-    [x] typing creates a new one
-    [x] server side instruction
-    [x] do the synch
-      [x] fix the incorrect UID problem
-
     [ ] server side calendar
       [ ] give the calendars UIDs
-      [ ] get the default calendar
       [ ] way to "save" the calendar
+        [ ] save all relevant calEvent properties
+        
+  --- ---
+
       [ ] way to "load" a calendar
+      [ ] get the default calendar
       [ ] start with "default" calendar
       [ ] save subsequent calendars
 

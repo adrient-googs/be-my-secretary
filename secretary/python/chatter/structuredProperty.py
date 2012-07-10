@@ -1,6 +1,8 @@
 import types
 import json
+import chatter
 from google.appengine.ext import db
+from google.appengine.api.datastore_types import Text as text_type
 
 class StructuredProperty(db.TextProperty):
   """Looks like a chatter (JSON) object, but maps transparently down to an AppEngine
@@ -22,5 +24,10 @@ class StructuredProperty(db.TextProperty):
 
   def __set__(self, instance, value):
     # convert the json object to a string and save it
-    text = chatter.wrap(json.dumps(value))
+    text = json.dumps(chatter.wrap(value))
     db.TextProperty.__set__(self, instance, text)
+    
+  def get_value_for_datastore(self, container):
+    # NOTE: Probably could also do...
+    # return db.TextProperty.get_value_for_datastore(self, container)
+    return text_type(db.TextProperty.__get__(self, container, None))

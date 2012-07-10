@@ -63,6 +63,7 @@ register(long, __identity, long)
 register(str, __identity, str)
 register(unicode, __identity, unicode)
 register(bool, __identity, bool)
+register(float, __identity, float)
 register(list,
   lambda python_list: [wrap(x) for x in python_list],
   lambda json_list: [unwrap(x) for x in json_list])

@@ -17,6 +17,10 @@ chatter.register = (type) ->
 
 # serializes to a json object
 chatter.wrap = (obj) ->
+  # console.log "about to wrap: #{util.typeName obj}"
+  # if _.isObject(obj)
+  #   console.log "keys: #{_.keys obj}"
+  
   if _.isFunction(obj?.wrap)
     obj.wrap()
   else if _.isUndefined(obj)
@@ -34,6 +38,7 @@ chatter.wrap = (obj) ->
   else if _.isArray(obj)
     ['list', (chatter.wrap(x) for x in obj)]
   else if _.isObject(obj)
+    console.log "wrapping object keys: #{_.keys obj}"
     ['dict', chatter.wrap ([key, value] for key, value of obj)]
   else
     throw new Error "cannot wrap #{obj}"

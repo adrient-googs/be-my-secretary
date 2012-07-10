@@ -110,11 +110,12 @@ class Rabble extends Backbone.Model
 class RabbleView extends Backbone.View
   # constructor
   constructor: (args) ->
-    args.el = $('#rabble')
+    args.el = $('#prototypes .rabbleView').clone()[0]
     super args
 
   # after all elements have been set
   initialize: ->
+    @container = @$el.find('#container')
     @model.on 'add', (sup) => @onAddSupplicant sup
 
     # # debug - begin
@@ -125,7 +126,7 @@ class RabbleView extends Backbone.View
 
   # called when a upplicant is added
   onAddSupplicant: (sup) ->
-    util.verticalAppend sup.view.$el, @$el,
+    util.verticalAppend sup.view.$el, @container,
       SupplicantView.HEIGHT
       SupplicantView.VERTICAL_MARGIN
-    $('#calendar').prepend(sup.constraint_view.el)
+    @model.calendar.view.$el.prepend(sup.constraint_view.el)

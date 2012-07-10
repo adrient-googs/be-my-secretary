@@ -40,11 +40,13 @@ class GuideView extends Backbone.View
   
   # constructor
   constructor: (args) ->
-    args.el = $('#guide')
+    args.el = $('#prototypes .guideView').clone()[0]
     super args
 
   # after construction
   initialize: ->
+    console.log "INITIALIZING GUIDE VIEW"
+    
     # direct link to html elements
     @input = $ @$el.find '#instructionInput'
     @list = $ @$el.find '#instructionList'
@@ -63,6 +65,7 @@ class GuideView extends Backbone.View
     
   # called when enter is pressed to create a new instruction
   onNewInput: ->
+    console.log "ON NEW INPUT"
     text = $.trim @input.val()
     if text.length > 0
       # empty the text field

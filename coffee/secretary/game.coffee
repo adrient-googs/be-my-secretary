@@ -2,7 +2,8 @@
 $ ->
 	cal = new Calendar
 	rabble = new Rabble cal
-	game = new Game cal, rabble
+	guide = new Guide
+	game = new Game cal, rabble, guide
 	Backbone.history.start()
 
 # singleton class representing the game state
@@ -11,11 +12,11 @@ class Game extends Backbone.Router
 	@the_game: undefined
 	
 	routes:
-		'test'							 : 'routeTest'
-		'getCalendar/:id'		 : 'routeGetCalendar'
+		'test'				 : 'routeTest'     # play the test game
+		'calendar/:id' : 'routeCalendar' # see a calendar
 	
 	# constructor
-	constructor: (cal, rabble) ->
+	constructor: (cal, rabble, guide) ->
 		# ensure this object is a singleton
 		if Game.the_game?
 			throw new Error 'Game is a singleton object.'
@@ -24,6 +25,14 @@ class Game extends Backbone.Router
 		# set instance objects
 		@calendar = cal
 		@rabble = rabble
+		@guide = guide
+		
+		# TODO - begin - move this to an instance class
+		$('#gameArea').append(@calendar.view.$el)
+		$('#gameArea').append(@rabble.view.$el)
+		$('#gameArea').append(@guide.view.$el)
+    # Game.showLayout()
+		# TODO - end
 		
 		# superclass constructor
 		super()
@@ -50,15 +59,18 @@ class Game extends Backbone.Router
 		@setup mode:'test'
 		@start()
 
-	# player playing the test game
-	routeGetCalendar: (id) ->
-		console.log 'GET CALENDAR'
-		console.log "id:#{id}"
+	# see a particular calendar
+	routeCalendar: (id) ->
+    @setup mode:'loading'
+    console.log 'GET CALENDAR'
+    console.log "id:#{id}"
 		
 	# starts the game loop
 	start: ->
-		@rabble.addRandomSupplicant()
-		@rabble.addRandomSupplicant()
+    @rabble.addRandomSupplicant()
+    @rabble.addRandomSupplicant()
+    # @rabble.addRandomSupplicant()
+    # @rabble.addRandomSupplicant()
 		# @interval_func_id = setInterval (=> @tick()), 1000 # for now, don't set an interval
 		
 	# ticks once per second

@@ -120,7 +120,7 @@ class Calendar extends RemoteModel
 class CalendarView extends Backbone.View
   # constructor
   constructor: (args) ->
-    args.el = $('#calendar')
+    args.el = $('#prototypes .calendarView').clone()[0]
     super args
   
   # after construction
@@ -143,7 +143,7 @@ class CalendarView extends Backbone.View
   # called when the user clicks on the calendar
   onClick: (event) ->
     # figure out where the click happened
-    {left: cal_x, top: cal_y} = $('#calendar').offset()
+    {left: cal_x, top: cal_y} = @$el.offset()
     click_x = event.pageX - cal_x
     click_y = event.pageY - cal_y
     new_event = @model.addNewEvent

@@ -19,6 +19,7 @@
 <link rel="stylesheet" type="text/css" href="libs/smoothness/jquery-ui-1.8.21.custom.css"/>
 <link rel="stylesheet" type="text/css" href="css/game.css"/>
 <link rel="stylesheet" type="text/css" href="css/calEvent.css"/>
+<link rel="stylesheet" type="text/css" href="css/calendar.css"/>
 <link rel="stylesheet" type="text/css" href="css/supplicant.css"/>
 <link rel="stylesheet" type="text/css" href="css/rabble.css"/>
 <link rel="stylesheet" type="text/css" href="css/instruction.css"/>
@@ -37,21 +38,17 @@
   <div id="logout" class="test-blue">
     (<a href="{{logout_url}}">Logout</a>)
   </div>
-  <div id="calendar" class="test-purple"></div>
-  <div id="remaining" class="test-blue">100</div>
 
   <div class="modeDependant mode-test">
-    <div id="rabbleContainer" class="test-blue">
-      <div id="rabble" class="test-orange"></div>
-    </div>
-    <div id="guide">
-      <div id="instructionList" class="test-orange"></div>
-      <input id="instructionInput" type="text">
-    </div>
+    <!-- seconds remaining -->
+    <div id="remaining" class="test-blue">100</div>
   </div>  
   
   <!-- debug - begin - a button to save the calendar -->
-  <button id="testAddCalendar">Add Calendar</button>
+  <div class="modeDependant mode-test">
+    <!-- <button id="testAddCalendar">Add Calendar</button> -->
+  </div>
+    <button id="testAddCalendar">Add Calendar</button>
   <!-- debug - end -->
 
   <!-- covers the rest of the UI for dialogs -->
@@ -62,6 +59,9 @@
 
 <!-- game element prototypes -->
 <div id="prototypes">
+  
+  <!-- calendar: a container for calEvents -->
+  <div class="calendarView" class="test-purple"></div>
   
   <!-- a calendar event -->
   <div class="calEventView test-blue">
@@ -83,7 +83,12 @@
           <button id="delete">Delete</button>
       </div>
     </div>
-  </div>  
+  </div>
+  
+  <!-- rabble: container for supplicants -->
+  <div class="rabbleView test-blue">
+    <div id="container" class="test-orange"></div>
+  </div>
   
   <!-- a supplicant -->
   <div class="supplicantView test-purple">
@@ -93,6 +98,12 @@
     <div id="constraint1" class="test-yellow">Constraint 1</div>
     <div id="constraint2" class="test-orange">Constraint 2</div>
     <img id="avatar">
+  </div>
+  
+  <!-- guide: container for instructions -->
+  <div class="guideView">
+    <div id="instructionList" class="test-orange"></div>
+    <input id="instructionInput" type="text">
   </div>
   
   <!-- an instruction -->

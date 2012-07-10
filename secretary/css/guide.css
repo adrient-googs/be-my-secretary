@@ -1,4 +1,8 @@
-#instructionList {
+.guideView {
+  width: 100%;
+}
+
+.guideView #instructionList {
   width: 286px;
   height: 154px;
   position: absolute;
@@ -10,11 +14,8 @@
   border: 1px inset;
 }
 
-#guide {
-  width: 100%;
-}
 
-#instructionInput {
+.guideView #instructionInput {
   width: 289px;
   position: absolute;
   left: 426px;

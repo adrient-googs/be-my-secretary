@@ -44,13 +44,6 @@
   visibility: hidden;
 }
 
-#calendar {
-  width: 630px;
-  height: 320px;
-  left: 82px;
-  top: 313px;
-}
-
 /* timer information */
 
 #remaining {
@@ -63,13 +56,11 @@
 }
 
 /* debug - begin - add calendar button */
-
 #testAddCalendar {
   position: absolute;
   left: 50px;
   top: 176px;
 }
-
 /* debug - end */
 
 /* covers up other elements */
@@ -92,3 +83,18 @@
   visibility: hidden;
 }
 
+/* nice looking, simple scrollbars */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+ 
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2); 
+  border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}

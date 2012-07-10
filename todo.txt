@@ -5,6 +5,17 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
   [x] a single instruction
   [ ] guide
 
+    [x] switch to better mode dispatch
+      [x] move rabble to prototype mode
+      [x] move instructions
+      [x] move calendar
+    [ ] split parent into model / view
+      [ ] externalize the router
+      [ ] swith to model class
+        [ ] make self-constructing...
+      [ ] dispatch based on type
+      [ ] make that a prototype
+
     [ ] server side calendar
       [ ] give the calendars UIDs
       [ ] way to "save" the calendar

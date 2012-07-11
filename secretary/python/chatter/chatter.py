@@ -7,6 +7,7 @@ The basic format for a payload is: [type_name, data].
 import types
 import logging
 from google.appengine.ext import db
+from google.appengine.api.datastore_types import Text as appengine_text_type
 
 __all__ = ['wrap', 'unwrap', 'register']
 
@@ -74,3 +75,4 @@ register(types.NoneType,
   lambda python_None: '',
   lambda json_none: None)
 registerCast(db.Key, str)
+# registerCast(appengine_text_type, str)

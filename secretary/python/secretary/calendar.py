@@ -11,7 +11,7 @@ class Calendar(RemoteModel):
   created_on = db.DateTimeProperty(required=True, auto_now_add=True)
   
   # these are the properties which will be serialized to json
-  properties_to_wrap = {'calEvents'}
+  properties_to_wrap = {'calEvents','uid'}
 
   @RemoteMethod(static=True, admin=False)
   def saveNewCalendar(cls, calendar=None):
@@ -22,7 +22,11 @@ class Calendar(RemoteModel):
       'Instruction uid:"%s" not unique.' % instruction.uid
     
     # debug - begin
-    logging.error("saveNewCalendar: %s" % calendar.uid)
+    try:
+      logging.error("saveNewCalendar: %s (key:%s)" % (calendar.uid, calendar.key()))
+      logging.error("oldID: %s" % Calendar.all().filter('key =', calendar.key()).get().uid)
+    except db.NotSavedError:
+      logging.error("saveNewCalendar: %s (not saved)" % (calendar.uid))
     calEvents = calendar.calEvents
     for ii, event in enumerate(calEvents):
       logging.error("%.2i : %s" % (ii, event))
@@ -35,7 +39,8 @@ class Calendar(RemoteModel):
       
     # save
     calendar.put()
-    return calendar
+    return Calendar.all().filter('uid =', '92e322bc-cc7c-41d0-b137-8d8ba4ffb7dc').get()
+    # return calendar
     
   @RemoteMethod(static=True, admin=False)
   def getEmptyCalendar(cls):

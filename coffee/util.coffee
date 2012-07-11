@@ -44,6 +44,38 @@ util.typeName = (obj) ->
     return 'undefined'
   return obj.__proto__.constructor.name
     
+############
+# BACKBONE #
+############
+
+# sets it up so that the model uses a Backbone.Collection
+# as an attribute, i.e.
+#
+# model[collection_name]    -> the_collection
+# model.get collection_name -> the_collection.models
+#
+# Also sets up event handlers so that:
+#
+# 1. The collection and model stay in synch.
+# 2. Collection events route to the model as "collection_name:event"
+util.setCollectionAsAttribute = (model, collection_name, initial_elts=[]) ->
+  # setup the collection and add is as an attribute
+  collection = new Backbone.Collection initial_elts  
+  model[collection_name] = collection
+  model.set collection_name, collection.models
+  
+  # changes to the collection are reflected in the model
+  collection.on 'add remove change', =>
+    console.log " --- updating #{util.typeName model} based on collection change" # <- debug
+    model.attributes[collection_name] = collection.models
+  
+  # changes to the model are reflected in the collection
+  model.on "change:#{collection_name}", =>
+    console.log " --- updating collection based on #{util.typeName model} change" # <- debug
+    collection.reset model.attributes[collection_name]
+  
+  # send all collection events to the model
+  collection.on 'all', (type, args...) => model.trigger "#{collection_name}:#{type}", args...
   
 ########
 # DATE #

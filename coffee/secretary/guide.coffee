@@ -7,18 +7,15 @@ class Guide extends Backbone.Model
   # after construction
   initialize: ->
     # manage instructions property through private collection
-    @instructions = new Backbone.Collection
+    util.setCollectionAsAttribute @, 'instructions'
     @instructions.comparator = (instruction) -> instruction.get 'uid'
-    @set 'instructions', @instructions.models
-    @instructions.on 'add remove change', => @set 'instructions', @instructions.models
-    @instructions.on 'all', (args...) => @trigger args...
     
     # create a view
     @view = new GuideView model:@
     console.log @view # <- debug
     
     # event handlers
-    @on 'add', (instruction) => @onAdd instruction
+    @on 'instructions:add', (instruction) => @onAdd instruction
     
   # called when a new instruction is added
   onAdd: (instruction) ->
@@ -50,13 +47,7 @@ class GuideView extends Backbone.View
     @list = $ @$el.find '#instructionList'
     
     # figure out which events 
-    @input.on 'change', => console.log "input change"
-    @model.on 'add', (instruction) => @onAdd instruction
-    
-    # put event handlers here
-    # @model.on 'add', (calEvent) => @addEvent calEvent
-    # @model.on 'remove', (calEvent) => @removeEvent calEvent
-    # @$el.on 'click', (args...) => @onClick args...
+    @model.on 'instructions:add', (instruction) => @onAdd instruction
     
   # called when enter is pressed to create a new instruction
   onNewInput: ->

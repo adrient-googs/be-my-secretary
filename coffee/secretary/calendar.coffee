@@ -12,35 +12,38 @@ class Calendar extends RemoteModel
   @getEmptyCalendar: RemoteModel.remoteStaticMethod 'getEmptyCalendar'
 
   # constructor
-  constructor: ->
+  constructor: (attribs={}) ->
     # set the uid
-    @uid = util.uid()
+    @uid = (attribs.uid ?= util.uid())
         
     # superclass constructor
-    super uid:@uid
+    super attribs
     console.log "new calendar: #{@get 'uid'}"
 
   # after construction
-  initialize: ->
+  initialize: (attribs) ->
+    # debug - begin
+    console.log "Calendar initialize #{@get 'uid'}, attributes..."
+    console.log attribs
+    # debug - end
+
     # manage calEvents property through private collection
-    @calEvents = new Backbone.Collection
+    util.setCollectionAsAttribute @, 'calEvents', (attribs.calEvents ? [])
     @calEvents.comparator = (event) -> event.get 'name'
-    @set 'calEvents', @calEvents.models
-    @calEvents.on 'add remove change', => @set 'calEvents', @calEvents.models
-    @calEvents.on 'all', (type, args...) => @trigger "calEvents:#{type}", args...
     
     # create a view
     @view = new CalendarView model:@
     
     # event handlers
-    @on 'calEvents:add calEvents:change', => @onChangeCalEvents()
+    @on 'calEvents:change', => @onChangeCalEvents()
+    @calEvents.on 'all', => @onChangeCalEvents()
     @on 'error', (args...) => @onError args...
     
-  # validate this instruction
-  validate: (attribs) ->
-    # make sure UID is correct
-    if attribs.uid? and attribs.uid != @uid
-      return "Incorrect UID: #{attribs.uid}"
+  # # validate this instruction
+  # validate: (attribs) ->
+  #   # make sure UID is correct
+  #   if attribs.uid? and attribs.uid != @uid
+  #     return "Incorrect UID: #{attribs.uid}"
     
   # add an event
   add: (event) ->
@@ -100,16 +103,53 @@ class Calendar extends RemoteModel
       return true if @overlaps event
     return false
     
+  #####################
+  # network functions #
+  #####################
+
+  # saves this calendar or fails if this calendar has already been saved
+  saveNew: ->
+    console.log " _!_!_ SAVING CALENDAR WITH WITH _!_!_ #{@id}"
+    util.assertion @isNew(), 'Cannot save a calendar twice.'
+    Calendar.saveNewCalendar calendar:@, (new_cal) =>
+      # debug - begin
+      console.log 'finished saving'
+      console.log new_cal
+      # debug - end
+
+      @set new_cal.attributes
+
+      # debug - begin
+      console.log 'set myself'
+      console.log @
+      # debug - end
+      
+  
+  ##################
+  # event handlers #
+  ##################
+    
   # triggered when a calevent changed
   onChangeCalEvents: ->
+    # debug - begin
+    if @hasOverlaps()
+      console.log 'WARNING: HAS OVERLAPS'
+      console.log @calEvents
+    # debug - end
+    
     util.assertion not @hasOverlaps(), 'Events cannot overlap.'
     
     console.log "calendars onChangeCalEvents" # <- debug
     
+    for calEvent in @calEvents.models
+      calEvent.parent = @
+    
     # since calendars are 'immutable' each change sets a new UID
+    console.log "calendar old uid:#{@uid} id:#{@id} getid:#{@get 'id'}"
     @uid = util.uid()
     @set 'uid', @uid
-    console.log "calendar reset uid : #{@uid}"
+    @unset 'id'
+    console.log "calendar reset uid:#{@uid} id:#{@id} getid:#{@get 'id'}"
 
   # called in case of error
   onError: (instruction, error_str) ->
@@ -125,6 +165,7 @@ class CalendarView extends Backbone.View
   initialize: ->
     @model.on 'calEvents:add', (calEvent) => @addEvent calEvent
     @model.on 'calEvents:remove', (calEvent) => @removeEvent calEvent
+    @model.on 'change:calEvents', CalendarView::onChangeCalEvents, @
     @$el.on 'click', (args...) => @onClick args...
       
   # add a new calendar event
@@ -149,3 +190,32 @@ class CalendarView extends Backbone.View
       time: Math.floor(2 * click_y / CalEventView.HOUR_HEIGHT_PIXELS) / 2 + 9
     alert 'Insufficient space to add event.' unless new_event?
     return false
+  
+  # called when all the entire calEvents arrays is replaced
+  onChangeCalEvents: (args...) ->
+    index_by_name = (models) ->
+      util.mash ([model.get('name'), model] for model in models)
+    old_events = index_by_name @model.previous 'calEvents' 
+    new_events = index_by_name @model.get 'calEvents'
+    
+    # transfer view elements to new events
+    for name, new_event of new_events
+      console.log "#{new_event.get('name')} -> #{old_event}" # <- debug
+      old_event = old_events[name]
+      if old_event?
+        new_event.view.$el.css
+          width: old_event.view.$el.css 'width'
+          height: old_event.view.$el.css 'height'
+          left: old_event.view.$el.css 'left'
+          top: old_event.view.$el.css 'top'
+      @$el.append(new_event.view.$el)
+      # force view update
+      new_event.view.onModelChange new_event.attributes  
+
+    # remove view elements for old events
+    for name, old_event of old_events
+      old_event.view.$el.detach()
+
+      
+      
+

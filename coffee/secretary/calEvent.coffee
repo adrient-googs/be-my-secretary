@@ -185,7 +185,12 @@ class CalEventView extends Backbone.View
       
   # called when there's an error
   onError: (type) ->
+    # debug - begin
     console.log "CalEventView: Error type: #{type}"
+    console.log 'THE EVENTS'
+    console.log @model.parent.calEvents.models
+    # debug - end
+    
     # revert to previous position
     @dateToPos() if type == 'overlap'
   

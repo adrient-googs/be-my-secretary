@@ -7,16 +7,14 @@ class Rabble extends Backbone.Model
   # after construction
   initialize: ->
     # manage supplicants property through private collection
-    @supplicants = new Backbone.Collection
+    util.setCollectionAsAttribute @, 'supplicants'
     @supplicants.comparator = (sup) -> sup.get 'name'
-    @set 'supplicants', @supplicants.models
-    @supplicants.on 'add remove change', => @set 'supplicants', @supplicants.models
-    @supplicants.on 'all', (args...) => @trigger args...
 
     # create the view
     @view = new RabbleView model:@
     
     # event handlers
+    @calendar.on 'change:calEvents', => @resetMapping()
     @calendar.calEvents.on 'add remove change:name', => @resetMapping()
     
   # add a supplicant
@@ -31,7 +29,10 @@ class Rabble extends Backbone.Model
     # name
     all_names = _.keys SupplicantView.NAMES_AND_AVATARS
     used_names = @supplicants.pluck('name')
-    attribs.name = util.choose all_names, used_names
+    if 'Ella' not in used_names
+      attribs.name = 'Ella'
+    else
+      attribs.name = util.choose all_names, used_names
     
     # title
     attribs.title =
@@ -76,6 +77,8 @@ class Rabble extends Backbone.Model
     
   # compute the mapping between supplicants and calEvents
   resetMapping: ->
+    console.log "  _!_!_ RESET MAPPING _!_!_"
+    
     # call this function to link/unlink a supplicant/calEvent pair
     link = (sup, calEvent) ->
       if !calEvent?
@@ -116,7 +119,7 @@ class RabbleView extends Backbone.View
   # after all elements have been set
   initialize: ->
     @container = @$el.find('#container')
-    @model.on 'add', (sup) => @onAddSupplicant sup
+    @model.on 'supplicants:add', (sup) => @onAddSupplicant sup
 
     # # debug - begin
     # @model.on 'all', (args...) =>

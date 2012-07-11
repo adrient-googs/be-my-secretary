@@ -68,9 +68,15 @@ class TestGameView extends GameView
     options.el = $('#prototypes .testGameView').clone()[0]
     super options
   
-  # # after construction
-  # initialize: (options) ->
-  #   super options
+  # after construction
+  initialize: (options) ->
+    super options
+    
+    # setup the add calendar button
+    console.log 'TEST ADD CALENDAR'
+    console.log $('#testAddCalendar')
+    @$el.find('button#testAddCalendar').on 'click', =>
+      @model.get('calendar').saveNew()
 
 # # singleton class representing the game state
 # class Game extends Backbone.Router

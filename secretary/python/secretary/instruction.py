@@ -6,7 +6,7 @@ class Instruction(RemoteModel):
   """A string to apply to a calendar."""
   POSSIBLE_STATUSES = ['sending', 'queued']
   
-  text = db.StringProperty(required=True)
+  text = db.StringProperty(required=True, indexed=False)
   uid = db.StringProperty(required=True)
   status = db.StringProperty(required=True, choices=POSSIBLE_STATUSES)
 

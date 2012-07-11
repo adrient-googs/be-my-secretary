@@ -49,11 +49,17 @@ chatter.unwrap = (obj) ->
   type = chatter.unwrap_table[type_name]
   if type?
     attribs = util.mash ([key, chatter.unwrap(value)] for key, value of data)
+    
+    # debug - begin
+    console.log "unwrapping!!! #{type.name}"
+    # console.log attribs
+    # debug - end
+    
     return new type attribs
   else switch type_name
     when 'list' then (chatter.unwrap(x) for x in data)
     when 'dict' then util.mash chatter.unwrap data
-    when 'int', 'long', 'unicode', 'str' then data
+    when 'int', 'long', 'unicode', 'str', 'float' then data
     when 'NoneType' then undefined
 
     else throw new Error "type_name \"#{type_name}\" not understood"

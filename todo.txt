@@ -4,17 +4,12 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
   [x] basic html
   [x] a single instruction
   [ ] guide
-    [ ] split parent into model / view
-      [ ] externalize the router
-      [ ] swith to model class
-        [ ] make self-constructing...
-      [ ] dispatch based on type
-      [ ] make that a prototype
-
     [ ] server side calendar
       [ ] give the calendars UIDs
       [ ] way to "save" the calendar
         [ ] save all relevant calEvent properties
+        
+[ ] fix uid <-> issue in CalEvent
         
   --- ---
 
@@ -22,6 +17,8 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
       [ ] get the default calendar
       [ ] start with "default" calendar
       [ ] save subsequent calendars
+
+-- put the instructions in some reasonable order
 
   [ ] full loop
     [ ] load it up in admin view

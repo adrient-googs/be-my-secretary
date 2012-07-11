@@ -31,8 +31,6 @@ class Calendar extends RemoteModel
     
     # create a view
     @view = new CalendarView model:@
-    console.log 'created a calendar view'
-    console.log @view
     
     # event handlers
     @on 'calEvents:add calEvents:change', => @onChangeCalEvents()

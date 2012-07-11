@@ -109,9 +109,9 @@ class Rabble extends Backbone.Model
 
 class RabbleView extends Backbone.View
   # constructor
-  constructor: (args) ->
-    args.el = $('#prototypes .rabbleView').clone()[0]
-    super args
+  constructor: (options) ->
+    options.el = $('#prototypes .rabbleView').clone()[0]
+    super options
 
   # after all elements have been set
   initialize: ->

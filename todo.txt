@@ -4,11 +4,6 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
   [x] basic html
   [x] a single instruction
   [ ] guide
-
-    [x] switch to better mode dispatch
-      [x] move rabble to prototype mode
-      [x] move instructions
-      [x] move calendar
     [ ] split parent into model / view
       [ ] externalize the router
       [ ] swith to model class

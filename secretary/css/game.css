@@ -40,28 +40,11 @@
   color: white;
 }
 
-#gameArea .modeDependant {
+/* game elements */
+
+#prototypes {
   visibility: hidden;
 }
-
-/* timer information */
-
-#remaining {
-  position: absolute;
-  left: 48px;
-  top: 233px;
-  color: #515151;
-  font-weight: bold;
-  font-size: 41px;
-}
-
-/* debug - begin - add calendar button */
-#testAddCalendar {
-  position: absolute;
-  left: 50px;
-  top: 176px;
-}
-/* debug - end */
 
 /* covers up other elements */
 
@@ -77,10 +60,27 @@
   visibility: hidden;
 }
 
-/* game elements */
+/* test game */
 
-#prototypes {
-  visibility: hidden;
+.testGameView {
+  width: 100%;
+  height: 100%;
+  background-image: url('/imgs/background-test.png')
+}
+
+.testGameView #remaining {
+  position: absolute;
+  left: 48px;
+  top: 233px;
+  color: #515151;
+  font-weight: bold;
+  font-size: 41px;
+}
+
+.testGameView #testAddCalendar {
+  position: absolute;
+  left: 50px;
+  top: 176px;
 }
 
 /* nice looking, simple scrollbars */

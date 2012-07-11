@@ -45,15 +45,10 @@ class GuideView extends Backbone.View
 
   # after construction
   initialize: ->
-    console.log "INITIALIZING GUIDE VIEW"
-    
     # direct link to html elements
     @input = $ @$el.find '#instructionInput'
     @list = $ @$el.find '#instructionList'
     
-    console.log "GuideView.initialize..."
-    console.log @list
-
     # figure out which events 
     @input.on 'change', => console.log "input change"
     @model.on 'add', (instruction) => @onAdd instruction

@@ -39,26 +39,19 @@
     (<a href="{{logout_url}}">Logout</a>)
   </div>
 
-  <div class="modeDependant mode-test">
-    <!-- seconds remaining -->
-    <div id="remaining" class="test-blue">100</div>
-  </div>  
-  
-  <!-- debug - begin - a button to save the calendar -->
-  <div class="modeDependant mode-test">
-    <!-- <button id="testAddCalendar">Add Calendar</button> -->
-  </div>
-    <button id="testAddCalendar">Add Calendar</button>
-  <!-- debug - end -->
-
   <!-- covers the rest of the UI for dialogs -->
   <div id="cover" class="test-orange"></div>
-  
 </div>
 
 
 <!-- game element prototypes -->
 <div id="prototypes">
+  
+  <!-- testGame: play without wizard of oz -->
+  <div class="testGameView">
+    <div id="remaining" class="test-blue">--</div>
+    <button id="testAddCalendar">Add Calendar</button>
+  </div>
   
   <!-- calendar: a container for calEvents -->
   <div class="calendarView" class="test-purple"></div>

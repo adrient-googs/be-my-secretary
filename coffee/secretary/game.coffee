@@ -58,8 +58,8 @@ class TestGame extends Game
     @set calendar:cal, rabble:rabble, guide:guide
     
     # add some supplicants
-    @get('rabble').addRandomSupplicant()
-    @get('rabble').addRandomSupplicant()
+    for ii in [1..2]
+      @get('rabble').addRandomSupplicant()
     
 # viewer for the test game
 class TestGameView extends GameView

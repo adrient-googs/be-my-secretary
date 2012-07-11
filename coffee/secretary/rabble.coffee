@@ -29,10 +29,7 @@ class Rabble extends Backbone.Model
     # name
     all_names = _.keys SupplicantView.NAMES_AND_AVATARS
     used_names = @supplicants.pluck('name')
-    if 'Ella' not in used_names
-      attribs.name = 'Ella'
-    else
-      attribs.name = util.choose all_names, used_names
+    attribs.name = util.choose all_names, used_names
     
     # title
     attribs.title =

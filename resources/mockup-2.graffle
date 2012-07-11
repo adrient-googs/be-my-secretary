@@ -10113,7 +10113,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2012-07-10 03:23:22 +0000</string>
+	<string>2012-07-11 22:37:15 +0000</string>
 	<key>Modifier</key>
 	<string>Adrien Treuille</string>
 	<key>NotesVisible</key>
@@ -10451,29 +10451,6 @@
 					<dict>
 						<key>Pad</key>
 						<integer>0</integer>
-						<key>RTFD</key>
-						<data>
-						BAtzdHJlYW10eXBlZIHoA4QBQISE
-						hBJOU0F0dHJpYnV0ZWRTdHJpbmcA
-						hIQITlNPYmplY3QAhZKEhIQITlNT
-						dHJpbmcBlIQBKwdMb2FkaW5nhoQC
-						aUkBB5KEhIQMTlNEaWN0aW9uYXJ5
-						AJSEAWkEkoSWlg5OU09yaWdpbmFs
-						Rm9udIaShISEBk5TRm9udB6UmSiE
-						BVs0MGNdBgAAAB4AAAD//kgAZQBs
-						AHYAZQB0AGkAYwBhAC0AQgBvAGwA
-						ZAAAAIQBZnCEAWMAnQGdAJ0AhpKE
-						lpYQTlNQYXJhZ3JhcGhTdHlsZYaS
-						hISEF05TTXV0YWJsZVBhcmFncmFw
-						aFN0eWxlAISEEE5TUGFyYWdyYXBo
-						U3R5bGUAlIQEQ0NAUwIAhQCGkoSW
-						lgZOU0ZvbnSGkoSbmSibBgAAAB4A
-						AAD//kgAZQBsAHYAZQB0AGkAYwBh
-						AC0AQgBvAGwAZAAAAJyBrgCdAJ0B
-						nQCdAIaShJaWB05TQ29sb3KGkoSE
-						hAdOU0NvbG9yAJSdA4QCZmaDAABA
-						PwGGhoY=
-						</data>
 						<key>Text</key>
 						<string>{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
@@ -16933,11 +16910,11 @@
 						hIQITlNPYmplY3QAhZKEhIQITlNT
 						dHJpbmcBlIQBKw1jbGljayB0byBl
 						ZGl0hoQCaUkBDZKEhIQMTlNEaWN0
-						aW9uYXJ5AJSEAWkGkoSWlgtOU1Vu
-						ZGVybGluZYaShISECE5TTnVtYmVy
-						AISEB05TVmFsdWUAlIQBKoSZmQGG
-						koSWlgZOU0tlcm6GkoSbnISEAWSd
-						AIaShJaWEE5TUGFyYWdyYXBoU3R5
+						aW9uYXJ5AJSEAWkGkoSWlgZOU0tl
+						cm6GkoSEhAhOU051bWJlcgCEhAdO
+						U1ZhbHVlAJSEASqEhAFknQCGkoSW
+						lgtOU1VuZGVybGluZYaShJuchJmZ
+						AYaShJaWEE5TUGFyYWdyYXBoU3R5
 						bGWGkoSEhBBOU1BhcmFncmFwaFN0
 						eWxlAJSEBENDQFMBAISEhAdOU0Fy
 						cmF5AJSZDJKEhIQJTlNUZXh0VGFi
@@ -21750,7 +21727,7 @@ Error.}</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
-					<string>YES</string>
+					<string>NO</string>
 				</dict>
 				<dict>
 					<key>Lock</key>
@@ -21760,7 +21737,7 @@ Error.}</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
-					<string>YES</string>
+					<string>NO</string>
 				</dict>
 				<dict>
 					<key>Lock</key>
@@ -21780,7 +21757,7 @@ Error.}</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
-					<string>NO</string>
+					<string>YES</string>
 				</dict>
 				<dict>
 					<key>Lock</key>
@@ -21790,7 +21767,7 @@ Error.}</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
-					<string>NO</string>
+					<string>YES</string>
 				</dict>
 				<dict>
 					<key>Lock</key>
@@ -21800,7 +21777,7 @@ Error.}</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
-					<string>NO</string>
+					<string>YES</string>
 				</dict>
 				<dict>
 					<key>Lock</key>

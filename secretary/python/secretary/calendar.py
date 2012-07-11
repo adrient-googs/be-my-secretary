@@ -39,8 +39,7 @@ class Calendar(RemoteModel):
       
     # save
     calendar.put()
-    return Calendar.all().filter('uid =', '92e322bc-cc7c-41d0-b137-8d8ba4ffb7dc').get()
-    # return calendar
+    return calendar
     
   @RemoteMethod(static=True, admin=False)
   def getEmptyCalendar(cls):

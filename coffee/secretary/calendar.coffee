@@ -35,15 +35,15 @@ class Calendar extends RemoteModel
     @view = new CalendarView model:@
     
     # event handlers
-    @on 'calEvents:change', => @onChangeCalEvents()
-    @calEvents.on 'all', => @onChangeCalEvents()
+    @on 'change:calEvents', => @onReplaceCalEvents()
+    @calEvents.on 'add remove change', => @onEditCalendar()
     @on 'error', (args...) => @onError args...
     
-  # # validate this instruction
-  # validate: (attribs) ->
-  #   # make sure UID is correct
-  #   if attribs.uid? and attribs.uid != @uid
-  #     return "Incorrect UID: #{attribs.uid}"
+  # validate this instruction
+  validate: (attribs) ->
+    # make sure UID is correct
+    if attribs.uid? and attribs.uid != @uid
+      return "Incorrect UID: #{attribs.uid}"
     
   # add an event
   add: (event) ->
@@ -129,20 +129,23 @@ class Calendar extends RemoteModel
   # event handlers #
   ##################
     
-  # triggered when a calevent changed
-  onChangeCalEvents: ->
-    # debug - begin
-    if @hasOverlaps()
-      console.log 'WARNING: HAS OVERLAPS'
-      console.log @calEvents
-    # debug - end
-    
+  # triggered the entire calEvents array is repalced
+  onReplaceCalEvents: ->
+    # make sure the new calendar is valid
     util.assertion not @hasOverlaps(), 'Events cannot overlap.'
     
-    console.log "calendars onChangeCalEvents" # <- debug
-    
+    # reset the parents
     for calEvent in @calEvents.models
       calEvent.parent = @
+      
+    # debug - begin
+    console.log "calendar rest calevents uid:#{@uid} id:#{@id} getid:#{@get 'id'}"
+    # debug - end
+    
+  # triggered when the user edits the calendar
+  onEditCalendar: ->
+    # make sure this new calendar is valid
+    util.assertion not @hasOverlaps(), 'Events cannot overlap.'
     
     # since calendars are 'immutable' each change sets a new UID
     console.log "calendar old uid:#{@uid} id:#{@id} getid:#{@get 'id'}"
@@ -165,7 +168,7 @@ class CalendarView extends Backbone.View
   initialize: ->
     @model.on 'calEvents:add', (calEvent) => @addEvent calEvent
     @model.on 'calEvents:remove', (calEvent) => @removeEvent calEvent
-    @model.on 'change:calEvents', CalendarView::onChangeCalEvents, @
+    @model.on 'change:calEvents', CalendarView::onReplaceCalEvents, @
     @$el.on 'click', (args...) => @onClick args...
       
   # add a new calendar event
@@ -192,7 +195,7 @@ class CalendarView extends Backbone.View
     return false
   
   # called when all the entire calEvents arrays is replaced
-  onChangeCalEvents: (args...) ->
+  onReplaceCalEvents: (args...) ->
     index_by_name = (models) ->
       util.mash ([model.get('name'), model] for model in models)
     old_events = index_by_name @model.previous 'calEvents' 

@@ -4,19 +4,19 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
   [x] basic html
   [x] a single instruction
   [ ] guide
-    [ ] server side calendar
-      [ ] give the calendars UIDs
-      [ ] way to "save" the calendar
-        [ ] save all relevant calEvent properties
-        
-[ ] fix uid <-> issue in CalEvent
-        
-  --- ---
-
+    [x] server side calendar
+      [x] give the calendars UIDs
+      [x] way to "save" the calendar
+        [x] save all relevant calEvent properties
       [ ] way to "load" a calendar
+        [ ] admin/getCalendar
       [ ] get the default calendar
       [ ] start with "default" calendar
+        [ ] show the UID
+        [ ] share special uid with client and server
       [ ] save subsequent calendars
+        [ ] dual write calendar and save instruction
+        [ ] dual write calendar and load instruction
 
 -- put the instructions in some reasonable order
 

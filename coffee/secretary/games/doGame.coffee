@@ -65,11 +65,20 @@ class DoGameView extends GameView
 
     undo.attr disabled: 'disabled'
     skip.attr disabled: 'disabled'
-    # submit.attr disabled: 'disabled'
+    # submit.focus()
 
     # event handler
     add_event.on 'click', => @model.get('calendar').addNewEvent()
+    skip.on 'click', => @model.dequeueInstruction()
     submit.on 'click', => @model.submitSolution()
+    
+    # focus on the submit button - TODO: this isn't working
+    util.later =>
+      cal = @model.get('calendar')
+      cal.on 'change calEvents:change calEvents:add calEvents:remove', =>
+        util.later => submit.focus()
+        
+
     
     # util.later =>
     #   console.log "ABOUT TO SHOW DEBUG COLORS"

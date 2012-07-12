@@ -17,7 +17,22 @@ class TypeGame extends Game
     rabble = new Rabble cal
     guide = new Guide
     @set calendar:cal, rabble:rabble, guide:guide
-  
+    
+    # debug - begin - add a cover 
+    cover = $('<div id="calendarCover">')
+    cover.css
+      backgroundColor: 'white'
+      width: 630
+      height: 320
+      left: 82
+      top: 313
+      opacity: 0.25
+      zIndex: 10000
+    @view.$el.append(cover)
+    console.log 'APPENDING CALENDAR COVER'
+    console.log cover
+    # debug - end
+      
     # event handlers
     guide.on 'instructions:add', TypeGame::onAddInstruction, @
   
@@ -94,11 +109,7 @@ class TypeGameView extends GameView
   initialize: (options) ->
     super options
     
-    # setup the add calendar button
-    console.log 'TEST ADD CALENDAR'
-    console.log $('#testAddCalendar')
-    @$el.find('button#testAddCalendar').on 'click', =>
-      @model.get('calendar').saveNew()
+    
       
 # # singleton class representing the game state
 # class Game extends Backbone.Router

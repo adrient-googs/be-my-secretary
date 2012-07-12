@@ -2,28 +2,27 @@ Calendar Derby  - adrient@google.com                 - yhorxnzctrqizeyd
 
 ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
 
-EXPECT LOTS OF TROUBLE - you will untangle it -- don't lose faith!!! :)
-    
--- todo --
-[x] get an old puzzle if no new ones exist
-  [x] indicate with a leading comma
-  [x] check whether soln_cal has already been submitted
-[x] figure out the enqueue case when the calendar has already been set
-[x] put in skip button
-[x] test with three people
-[x] make the calendar non-edit-able
-  [x] do this with ugly cover hack
--- end: todo --
+-- hayes simplification --
 
-[x] TEST IT OUT WITHOU admin privilages
-[x] TEST IT OUT ON THE REAL SITE!!
-[ ] make the type game more exciting -- timer
+WHAT CAN I DO IN ONE HOUR?
 
-[ ] cool stuff
-  --- 
+[ ] simplify date selection
+  [ ] all events can only be had on one of two days
+  [ ] all events are four hours long
+    [ ] simplify constraint view
+    [ ] start with default height
+    [ ] events can't be resized
+      [ ] put in validate length == 4
+[ ] get rid of activity
+  [ ] all activities are "no activity"
+  [ ] prove it in validate
+[ ] both
+  [ ] update the edit UI
+  [ ] update the request UI
+  [ ] get the submit focus working
+  [ ] auto open for 
 
-  
-  
+-- old simplified interface --  
   
   [ ] make it so that you can only add a single event
     [ ] color the events properly in "do mode"

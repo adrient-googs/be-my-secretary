@@ -35,36 +35,31 @@ class Rabble extends Backbone.Model
     attribs.title =
       util.choose CalEvent.TITLES[1...CalEvent.TITLES.length]
     
-    # day and time
-    util.withProbability [
-      0.9, ->
-        # normal day
-        [attribs.days, attribs.day_str] =
-          util.withProbability [
-            0.40, -> ['12345', 'Weekday'    ]
-            0.15, -> ['06'   , 'Weekend'    ]
-            0.15, -> ['135'  , 'M/W/F']
-            0.15, -> ['24'   , 'Tue/Thu'    ]
-            0.15, -> ['45'   , 'Thu/Fri'    ]
-          ]
-        [attribs.start, attribs.end, attribs.time_str] =
-          util.withProbability [
-            0.25, -> [ 9, 12, 'Morning']
-            0.25, -> [11, 14, 'Midday' ]
-            0.25, -> [15, 17, 'Late'   ]
-            0.25, -> [ 9, 17, 'Any Time']
-          ]
-      null, ->
-        # otherwise, pick a weird time
-        attribs.days = "#{util.choose [0...7]}"
-        attribs.day_str = util.WEEKDAYS[parseInt attribs.days]
-        attribs.start = util.choose [9...17]
-        attribs.end = util.choose [(attribs.start+1)..17]
-        attribs.time_str = "#{util.timeStr(attribs.start)}-#{util.timeStr(attribs.end)}"
-    ]
+    [attribs.days, attribs.day_str] =
+      util.withProbability [
+        0.08, -> ['1',     '--']
+        0.08, -> ['2',     '--']
+        0.08, -> ['3',     '--']
+        0.08, -> ['4',     '--']
+        0.08, -> ['5',     '--']
+        0.08, -> ['12',    '--']
+        0.08, -> ['23',    '--']
+        0.08, -> ['34',    '--']
+        0.08, -> ['45',    '--']
+        0.08, -> ['123',   '--']
+        0.08, -> ['234',   '--']
+        0.08, -> ['345',   '--']
+        null, -> ['1',     '--']
+      ]
+    [attribs.start, attribs.end, attribs.time_str] =
+      util.withProbability [
+        0.25, -> [ 9, 13, 'Morning']
+        0.25, -> [13, 17, 'Afternoon']
+        0.50, -> [ 9, 17, 'Any Time']
+      ]
     
     # length
-    attribs.length = 0.5 * util.choose [2 .. 2 * (attribs.end - attribs.start)]
+    attribs.length = 4
     util.assertion 1 <= attribs.length <= attribs.end - attribs.start,
       "Invalid length: #{attribs.length} (start:#{attribs.start} end:#{attribs.end})"
     attribs.length_str = if attribs.length == 1 then "1 hr" else "#{attribs.length} hrs"

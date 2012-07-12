@@ -6,19 +6,19 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
 
 WHAT CAN I DO IN ONE HOUR?
 
-[ ] simplify date selection
-  [ ] all events can only be had on one of two days
-  [ ] all events are four hours long
-    [ ] simplify constraint view
-    [ ] start with default height
-    [ ] events can't be resized
-      [ ] put in validate length == 4
+[x] simplify date selection
+  [x] all events can only be had on one of two days
+  [x] all events are four hours long
+    [x] start with default height
+    [x] events can't be resized
+      [x] put in validate length == 4
 [ ] get rid of activity
   [ ] all activities are "no activity"
   [ ] prove it in validate
 [ ] both
+  [ ] simplify constraint view
   [ ] update the edit UI
-  [ ] update the request UI
+  [ ] &#x2191;date the request UI
   [ ] get the submit focus working
   [ ] auto open for 
 

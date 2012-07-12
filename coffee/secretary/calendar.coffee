@@ -88,15 +88,15 @@ class Calendar extends RemoteModel
       if attribs.length?
         return undefined if @overlaps attribs
         return @add new CalEvent attribs
-      for length in [2, 1.5, 1]
+      for length in [4]
         length = Math.min length, 17 - attribs.time
-        continue if length < 1
+        continue if length < 4
         ev = @addNewEvent _.extend length:length, attribs
         return ev if ev?
       return undefined
     for day in [0...7]
-      for hour in [9...17]
-        for time in [hour, hour+0.5]
+      for hour in [9,13]
+        for time in [hour]
           ev = @addNewEvent _.extend day:day, time:time, attribs
           return ev if ev?
     return undefined
@@ -201,7 +201,7 @@ class CalendarView extends Backbone.View
     click_y = event.pageY - cal_y
     new_event = @model.addNewEvent
       day: Math.floor(click_x / CalEventView.DAY_WIDTH_PIXELS)
-      time: Math.floor(2 * click_y / CalEventView.HOUR_HEIGHT_PIXELS) / 2 + 9
+      time: Math.floor(click_y / (CalEventView.HOUR_HEIGHT_PIXELS * 4)) * 4 + 9
     alert 'Insufficient space to add event.' unless new_event?
     return false
   

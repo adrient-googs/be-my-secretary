@@ -5,7 +5,7 @@ class CalEvent extends RemoteModel
   defaults:
     day: 0
     time: 9
-    length: 2
+    length: 4
     name: 'Alan'
     title: 'No Activity'
   
@@ -20,6 +20,9 @@ class CalEvent extends RemoteModel
     # invalid in case of overlap
     if @parent.overlaps attribs, @
       return 'overlap'
+    # invalid if length is not 4
+    if attribs.length != 4
+      return 'length must be 4'
       
   ###
   Returns true if this event overaps another.
@@ -66,14 +69,14 @@ class CalEventView extends Backbone.View
       containment: 'parent'
       drag: => @posToDate()
       stop: => @trigger 'stop'
-    @$el.resizable
-      minWidth: CalEventView.DAY_WIDTH_PIXELS
-      maxWidth: CalEventView.DAY_WIDTH_PIXELS
-      minHeight: CalEventView.HOUR_HEIGHT_PIXELS
-      containment: 'parent'
-      handles: 'n,s,se'
-      resize: => @posToDate()
-      stop: => @trigger 'stop'
+    # @$el.resizable
+    #   minWidth: CalEventView.DAY_WIDTH_PIXELS
+    #   maxWidth: CalEventView.DAY_WIDTH_PIXELS
+    #   minHeight: CalEventView.HOUR_HEIGHT_PIXELS
+    #   containment: 'parent'
+    #   handles: 'n,s,se'
+    #   resize: => @posToDate()
+    #   stop: => @trigger 'stop'
     @$el.css position: 'absolute'
 
     # bind events
@@ -95,8 +98,8 @@ class CalEventView extends Backbone.View
     # convert to coordinates
     new_date = 
       day:    Math.floor(x / CalEventView.DAY_WIDTH_PIXELS + 0.5)
-      time:   Math.floor(2 * y / CalEventView.HOUR_HEIGHT_PIXELS + 0.5) / 2 + 9
-      length: Math.floor(2 * h / CalEventView.HOUR_HEIGHT_PIXELS + 0.5) / 2
+      time:   Math.floor(y / (CalEventView.HOUR_HEIGHT_PIXELS * 4) + 0.5) * 4 + 9
+      length: 4 # Math.floor(2 * h / CalEventView.HOUR_HEIGHT_PIXELS + 0.5) / 2
     new_date.length = Math.max(new_date.length, 1.0)
     @renderTime new_date
     return new_date
@@ -192,7 +195,7 @@ class CalEventView extends Backbone.View
     # debug - end
     
     # revert to previous position
-    @dateToPos() if type == 'overlap'
+    @dateToPos()
   
   # called when the user clicks on this event
   onClick: (event) ->

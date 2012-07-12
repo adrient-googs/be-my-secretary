@@ -72,7 +72,7 @@ class InstructionView extends Backbone.View
     # set the text fields
     @text.text @model.get 'text'
     @state.text @model.get 'state'
-    @actions.text "cancel"  
+    @actions.text "" #cancel" # <- debug - for now no actions
 
   # called when the state chages
   onChangeStatus: (model, new_state) ->

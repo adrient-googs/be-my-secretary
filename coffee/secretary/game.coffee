@@ -2,8 +2,9 @@
 $ ->
   # routing strings
   routes =
-    'test'                    : TestGame
     'do'                      : DoGame
+    'type'                    : TypeGame
+    'test'                    : TestGame
     'admin'                   : AdminGame
     'admin/:func'             : AdminGame
     'admin/:func/:arg0'       : AdminGame

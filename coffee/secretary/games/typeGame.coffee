@@ -7,18 +7,39 @@ class TypeGame extends Game
     # setup a view
     @view = new TypeGameView model:@
     
+    # only perform initialization after getting channel token
+    Player.getMyChannelToken (token) =>
+      console.log "Recieved channel token: #{token}"
+      openChannel token, @
+      
     # create some elements
     cal = new Calendar
     rabble = new Rabble cal
     guide = new Guide
     @set calendar:cal, rabble:rabble, guide:guide
-
+  
     # event handlers
     guide.on 'instructions:add', TypeGame::onAddInstruction, @
-    
+  
     # add some supplicants
     for ii in [1..2]
       @get('rabble').addRandomSupplicant()
+      
+  # called when instructions have been updated
+  postSolution: (args) ->
+    # debug - begin
+    console.log 'TypeGame.updateInstructions'
+    console.log args
+    # debug - end
+
+    # update the guide
+    guide = @get 'guide'
+    guide.updateInstruction args.solved_instruction
+    guide.updateInstruction args.next_instruction
+    
+    # update the calendar
+    cal = @get 'calendar'
+    cal.set args.solved_calendar.attributes
 
   # called when a new instruction is added
   onAddInstruction: (new_instruction) ->
@@ -66,7 +87,7 @@ class TypeGame extends Game
 class TypeGameView extends GameView
   # constructor
   constructor: (options) ->
-    options.el = $('#prototypes .TypeGameView').clone()[0]
+    options.el = $('#prototypes .typeGameView').clone()[0]
     super options
   
   # after construction

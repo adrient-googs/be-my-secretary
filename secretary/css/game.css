@@ -45,6 +45,16 @@
   height: 100%;
 }
 
+/* shows the remaining seconds */
+#gameArea .gameView #remaining {
+  position: absolute;
+  left: 48px;
+  top: 233px;
+  color: #515151;
+  font-weight: bold;
+  font-size: 41px;
+}
+
 /* game elements */
 
 #prototypes {
@@ -83,19 +93,16 @@
   font-size: 14px;
 }
 
+/* type game */
+
+.typeGameView {
+  background-image: url('/imgs/background-type.png');
+}
+
 /* test game */
 
 .testGameView {
   background-image: url('/imgs/background-test.png')
-}
-
-.testGameView #remaining {
-  position: absolute;
-  left: 48px;
-  top: 233px;
-  color: #515151;
-  font-weight: bold;
-  font-size: 41px;
 }
 
 .testGameView #testAddCalendar {

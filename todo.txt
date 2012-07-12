@@ -4,22 +4,25 @@ EXPECT LOTS OF TROUBLE - you will untangle it -- don't lose faith!!! :)
 
 [x] repeat "do mode"
 [ ] type mode
-  [ ] split from "test mode"
+  [x] split from "test mode"
   [ ] update based on what happened in the queue
     [ ] store a channel for the player
     [ ] reverse channel
     [ ] load the channel and the instruction at the same time
   [ ] make the calendar non-edit-able
+    [ ] do this with ugly cover hack
     
 -- todo --
 [ ] get an old puzzle if no new ones exist
 [ ] check whether soln_cal has already been submitted
+[ ] figure out the enqueue case when the calendar has already been set
 -- end: todo --
 
 [ ] TEST IT OUT WITHOU admin privilages
 [ ] TEST IT OUT ON THE REAL SITE!!
 
 [ ] cool stuff
+  [ ] make the type game more exciting -- timer
   [ ] make it so that you can only add a single event
     [ ] color the events properly in "do mode"
   [ ] score things properly

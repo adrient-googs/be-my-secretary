@@ -4,7 +4,7 @@
   Opens a channel to the server and delegates message calls to the
   delegate object.
 ###
-open_channel = (token, delegate) ->
+openChannel = (token, delegate) ->
   channel = new goog.appengine.Channel token
   channel.open
     onopen:              -> delegate.channel_open?()

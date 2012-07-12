@@ -13,7 +13,14 @@ class Guide extends Backbone.Model
     # create a view
     @view = new GuideView model:@
     console.log @view # <- debug
-
+    
+  # updates the instructions with this new_instruction
+  updateInstruction: (new_instruction) ->
+    return unless new_instruction?
+    uid = new_instruction.get('uid')
+    results = @instructions.where uid:uid
+    util.assertion (results.length == 1), "UID #{uid} not unique."
+    results[0].set new_instruction.attributes
         
 class GuideView extends Backbone.View
   events:

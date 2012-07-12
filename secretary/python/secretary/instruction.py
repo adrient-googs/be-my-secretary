@@ -118,7 +118,9 @@ class Instruction(RemoteModel):
     # get the instruction (and the next instruction if it extists)
     instruction = Instruction.getBy('uid', instruction_uid)
     next_instruction = Instruction.getBy('previous_uid', instruction_uid)
-    
+    if next_instruction:
+      assert instruction.created_by == next_instruction.created_by
+      
     # store the calendar
     calendar.put()
 
@@ -134,7 +136,13 @@ class Instruction(RemoteModel):
       next_instruction.put()
     db.run_in_transaction(pass_batton, instruction, next_instruction, calendar)
 
-    # TODO - update the player with a channel
+    # update the player who typed this instruction
+    logging.error('notifying: %s' % instruction.created_by)
+    player_to_notify = Player.getByUser(instruction.created_by)
+    player_channel = player_to_notify.getChannel()
+    player_channel.postSolution(solved_instruction=instruction, 
+      solved_calendar=calendar, next_instruction=next_instruction)
+    
     logging.error("TODO: update the player with a channel")
     # 
     

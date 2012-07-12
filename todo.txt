@@ -16,7 +16,7 @@ WHAT CAN I DO IN ONE HOUR?
   [x] all activities are "no activity"
   [x] prove it in validate
 [ ] both
-  [ ] simplify constraint view
+  [ ] simplify constraint vieww
   [x] change the request UI
   [x] update the edit UI
   [ ] get the submit focus working

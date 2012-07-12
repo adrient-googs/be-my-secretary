@@ -1,3 +1,5 @@
+Calendar Derby  - adrient@google.com                 - yhorxnzctrqizeyd
+
 ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
 
 EXPECT LOTS OF TROUBLE - you will untangle it -- don't lose faith!!! :)
@@ -13,11 +15,16 @@ EXPECT LOTS OF TROUBLE - you will untangle it -- don't lose faith!!! :)
   [x] do this with ugly cover hack
 -- end: todo --
 
-[ ] TEST IT OUT WITHOU admin privilages
-[ ] TEST IT OUT ON THE REAL SITE!!
+[x] TEST IT OUT WITHOU admin privilages
+[x] TEST IT OUT ON THE REAL SITE!!
+[ ] make the type game more exciting -- timer
 
 [ ] cool stuff
-  [ ] make the type game more exciting -- timer
+  --- 
+
+  
+  
+  
   [ ] make it so that you can only add a single event
     [ ] color the events properly in "do mode"
   [ ] score things properly

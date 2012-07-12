@@ -47,11 +47,13 @@ def register(serializable_type, wrap_func, unwrap_func):
   __wrap_table[serializable_type] = typed_wrap
   __unwrap_table[type_name] = unwrap_func
   
-def registerCast(serializable_type, cast_to):
+def registerCast(serializable_type, cast_to, conversion_func=None):
   """Registers a class which should be cast to a simpler type. For
   example, keys are mapped to strings."""
   type_name = cast_to.__name__
-  typed_wrap = lambda obj: [type_name, cast_to(obj)]
+  if conversion_func == None:
+    conversion_func = cast_to
+  typed_wrap = lambda obj: [type_name, conversion_func(obj)]
   
   # update only the wrap table
   __wrap_table[serializable_type] = typed_wrap
@@ -76,4 +78,4 @@ register(types.NoneType,
   lambda python_None: '',
   lambda json_none: None)
 registerCast(db.Key, str)
-registerCast(users.User, str)
+registerCast(users.User, str, lambda u: str(u.nickname()))

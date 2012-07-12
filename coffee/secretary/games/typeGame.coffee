@@ -1,8 +1,10 @@
 # let's the user play the game without wizard of oz  
 class TypeGame extends Game
   # after construction
-  initialize: (options) ->
-    super options
+  initialize: (game_length) ->
+    super()
+    game_length ?= 180
+    @set 'remaining', game_length
 
     # setup a view
     @view = new TypeGameView model:@
@@ -36,9 +38,26 @@ class TypeGame extends Game
     # event handlers
     guide.on 'instructions:add', TypeGame::onAddInstruction, @
   
-    # add some supplicants
-    for ii in [1..2]
-      @get('rabble').addRandomSupplicant()
+    # in 1/10 second start the game
+    util.later 100, =>
+      alert "You have #{@get 'remaining'} seconds to satisfy as many cosntraints as possible. Click to start."
+
+      # add some supplicants
+      for ii in [1..30]
+        @get('rabble').addRandomSupplicant()
+      
+      # setup the timer
+      @interval_func_id = setInterval (=> @tick()), 1000
+          
+  # ticks once per second
+  tick: ->
+    console.log 'tick'
+    remaining = @get('remaining') - 1
+    @set 'remaining', remaining
+    if remaining <= 0
+      alert 'Game Over!'
+      clearInterval @interval_func_id
+    console.log "remaining: #{remaining}"
       
   # called when instructions have been updated
   postSolution: (args) ->
@@ -109,6 +128,10 @@ class TypeGameView extends GameView
   initialize: (options) ->
     super options
     
+    # show remaining
+    @model.on 'change:remaining', =>
+      @$el.find('#remaining').text @model.get 'remaining'
+    
     
       
 # # singleton class representing the game state
@@ -174,16 +197,5 @@ class TypeGameView extends GameView
 #   start: ->
 #     # @rabble.addRandomSupplicant()
 #     # @rabble.addRandomSupplicant()
-#     # @interval_func_id = setInterval (=> @tick()), 1000 # for now, don't set an interval
-#     
-#   # ticks once per second
-#   tick: ->
-#     console.log 'tick'
-#     util.withProbability [0.1, => @get('rabble').addRandomSupplicant()]
-#     @sec_remaining -= 1
-#     if @sec_remaining <= 0
-#       alert 'Game Over!'
-#       clearInterval @interval_func_id
-#     $('#remaining').text "#{@sec_remaining}"
 
 

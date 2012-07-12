@@ -10,57 +10,11 @@ class TestGame extends Game
     # create some elements
     cal = new Calendar
     rabble = new Rabble cal
-    guide = new Guide
-    @set calendar:cal, rabble:rabble, guide:guide
-
-    # event handlers
-    guide.on 'instructions:add', TestGame::onAddInstruction, @
+    @set calendar:cal, rabble:rabble
     
     # add some supplicants
-    for ii in [1..2]
+    for ii in [1..5]
       @get('rabble').addRandomSupplicant()
-
-  # called when a new instruction is added
-  onAddInstruction: (new_instruction) ->
-    # get some stuff 
-    calendar = @get('calendar')
-    instructions = @get('guide').get('instructions')
-    n_instructions = instructions.length
-    
-    # debug - begin - verify the order
-    for index, inst of instructions
-      console.log "#{index} : #{inst.get 'uid'} '#{inst.get 'text'}'"
-    # debug - end
-
-    # make sure that the new instruction is the last
-    util.assertion n_instructions > 0, \
-      'Added instruction but array still empty.'
-    util.assertion \
-      instructions[n_instructions - 1].get('uid') == new_instruction.get('uid'),
-      'New instruction is not the last.'
-
-    # update the instruction fields
-    if n_instructions == 1
-      # this is the first instruction we add
-      new_instruction.set 'calendar_uid', calendar.get('uid')
-      data_to_send = instruction:new_instruction, calendar:calendar
-    else
-      prev_instruction = instructions[n_instructions - 2]
-      new_instruction.set 'previous_uid', prev_instruction.get('uid')      
-      data_to_send = instruction:new_instruction
-      
-    # enqueue the instruction
-    Instruction.enqueueInstruction data_to_send, (update) =>
-      # debug - begin
-      console.log "got new update"
-      console.log update
-      # debug - end
-
-      # because instruction can be overriden, we copy it here
-      uid = update.get 'uid'
-      results = @get('guide').instructions.where uid:uid
-      util.assertion (results.length == 1), "UID #{uid} not unique."
-      results[0].set update.attributes
     
 # viewer for the test game
 class TestGameView extends GameView
@@ -73,11 +27,11 @@ class TestGameView extends GameView
   initialize: (options) ->
     super options
     
-    # setup the add calendar button
-    console.log 'TEST ADD CALENDAR'
-    console.log $('#testAddCalendar')
-    @$el.find('button#testAddCalendar').on 'click', =>
-      @model.get('calendar').saveNew()
+    # # setup the add calendar button
+    # console.log 'TEST ADD CALENDAR'
+    # console.log $('#testAddCalendar')
+    # @$el.find('button#testAddCalendar').on 'click', =>
+    #   @model.get('calendar').saveNew()
       
 # # singleton class representing the game state
 # class Game extends Backbone.Router

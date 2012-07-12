@@ -10113,7 +10113,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2012-07-12 12:09:21 +0000</string>
+	<string>2012-07-12 16:04:56 +0000</string>
 	<key>Modifier</key>
 	<string>Adrien Treuille</string>
 	<key>NotesVisible</key>
@@ -16081,7 +16081,7 @@
 						<real>23</real>
 					</dict>
 					<key>ID</key>
-					<integer>326</integer>
+					<integer>520</integer>
 					<key>Layer</key>
 					<integer>11</integer>
 					<key>Shape</key>
@@ -16146,7 +16146,7 @@
 						</dict>
 					</dict>
 					<key>ID</key>
-					<integer>323</integer>
+					<integer>523</integer>
 					<key>Layer</key>
 					<integer>11</integer>
 					<key>Shape</key>
@@ -16233,7 +16233,7 @@
 						</dict>
 					</dict>
 					<key>ID</key>
-					<integer>321</integer>
+					<integer>522</integer>
 					<key>Layer</key>
 					<integer>11</integer>
 					<key>Shape</key>
@@ -16349,7 +16349,7 @@
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>ID</key>
-					<integer>325</integer>
+					<integer>521</integer>
 					<key>Layer</key>
 					<integer>11</integer>
 					<key>Shape</key>
@@ -19073,7 +19073,7 @@ Error.}</string>
 						</dict>
 					</dict>
 					<key>ID</key>
-					<integer>413</integer>
+					<integer>534</integer>
 					<key>Layer</key>
 					<integer>14</integer>
 					<key>Shape</key>
@@ -19160,7 +19160,7 @@ Error.}</string>
 						</dict>
 					</dict>
 					<key>ID</key>
-					<integer>411</integer>
+					<integer>535</integer>
 					<key>Layer</key>
 					<integer>14</integer>
 					<key>Shape</key>
@@ -19293,7 +19293,7 @@ Error.}</string>
 						<real>23</real>
 					</dict>
 					<key>ID</key>
-					<integer>514</integer>
+					<integer>530</integer>
 					<key>Layer</key>
 					<integer>14</integer>
 					<key>Shape</key>
@@ -19342,7 +19342,7 @@ Error.}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>ID</key>
-					<integer>513</integer>
+					<integer>531</integer>
 					<key>Layer</key>
 					<integer>14</integer>
 					<key>Shape</key>
@@ -19397,7 +19397,7 @@ Error.}</string>
 						</dict>
 					</dict>
 					<key>ID</key>
-					<integer>154</integer>
+					<integer>533</integer>
 					<key>Layer</key>
 					<integer>14</integer>
 					<key>Shape</key>
@@ -19484,7 +19484,7 @@ Error.}</string>
 						</dict>
 					</dict>
 					<key>ID</key>
-					<integer>152</integer>
+					<integer>532</integer>
 					<key>Layer</key>
 					<integer>14</integer>
 					<key>Shape</key>
@@ -21762,7 +21762,7 @@ Error.}</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
-					<string>NO</string>
+					<string>YES</string>
 				</dict>
 				<dict>
 					<key>Lock</key>
@@ -21812,7 +21812,7 @@ Error.}</string>
 					<key>Print</key>
 					<string>YES</string>
 					<key>View</key>
-					<string>NO</string>
+					<string>YES</string>
 				</dict>
 				<dict>
 					<key>Lock</key>

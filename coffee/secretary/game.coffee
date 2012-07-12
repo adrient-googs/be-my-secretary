@@ -4,6 +4,7 @@ $ ->
   routes =
     'do'                      : DoGame
     'type'                    : TypeGame
+    'type/:game_length'       : TypeGame
     'test'                    : TestGame
     'admin'                   : AdminGame
     'admin/:func'             : AdminGame
@@ -50,7 +51,8 @@ class GameView extends Backbone.View
   onChange: (model, options) ->
     console.log 'TODO: remove the previous version of whatever it was'
     for attrib in _.keys options.changes
-      new_view = @model.get(attrib).view
+      new_view = @model.get(attrib)?.view
+      continue unless new_view?
       console.log "ADDING VIEW: #{util.typeName new_view}"
       @$el.append new_view.$el
       

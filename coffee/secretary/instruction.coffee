@@ -102,7 +102,7 @@ class DoInstructionView extends Backbone.View
 
   # render this instruction
   render: ->
-    @player.text @model.get 'created_by'
+    @player.text util.prettyUsername @model.get 'created_by'
     @text.text @model.get 'text'
 
   # # called when the state chages

@@ -47,6 +47,16 @@
 <!-- game element prototypes -->
 <div id="prototypes">
   
+  <!-- doGame: wizard of oz others! -->
+  <div class="doGameView gameView">
+    <div id="buttonPanel" class="test-green">
+      <button id="addEvent">Add Event</button>
+      <button id="undo">Undo</button>
+      <button id="skip">Skip</button>
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  
   <!-- testGame: play without wizard of oz -->
   <div class="testGameView gameView">
     <div id="remaining" class="test-blue">--</div>
@@ -109,9 +119,20 @@
     <div id="inner">
       <div id="text" class="test-purple">instruction</div>
       <div id="bottom" class="test-red">
-        <span id="status" class="test-purple">status</span>
+        <span id="state" class="test-purple">state</span>
         <span id="actions" class="test-yellow">actions</span>
       </div>
+    </div>
+  </div>
+  
+  <!-- an instruction (in do mode) -->
+  <div class="doInstructionView">
+    <div id="playerSays" class="test-green">
+      <span id="player" class="test-blue">player</span>
+      <span id="says" class="test-red">says...</span>
+    </div>
+    <div id="textContainer" class="test-orange">
+      <div id="text" class="test-purple">an instruction</div>
     </div>
   </div>
 </div>  

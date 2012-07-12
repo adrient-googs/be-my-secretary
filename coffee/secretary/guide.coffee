@@ -13,23 +13,7 @@ class Guide extends Backbone.Model
     # create a view
     @view = new GuideView model:@
     console.log @view # <- debug
-    
-    # event handlers
-    @on 'instructions:add', (instruction) => @onAdd instruction
-    
-  # called when a new instruction is added
-  onAdd: (instruction) ->
-    # because instruction can be overriden, we copy it here
-    Instruction.saveNewInstruction instruction:instruction, (update) =>
-      uid = update.get 'uid'
-      results = @instructions.where uid:uid
-      util.assertion (results.length == 1), "UID #{uid} not unique."
-      results[0].set update.attributes
-      
-    # debug - begin - verify the order
-    for index, instruction of @instructions.models
-      console.log "#{index} : #{instruction.get 'uid'} '#{instruction.get 'text'}'"
-    # debug - end
+
         
 class GuideView extends Backbone.View
   events:

@@ -3,6 +3,8 @@ $ ->
   # routing strings
   routes =
     'test'                    : TestGame
+    'do'                      : DoGame
+    'admin'                   : AdminGame
     'admin/:func'             : AdminGame
     'admin/:func/:arg0'       : AdminGame
     'admin/:func/:arg0/:arg1' : AdminGame
@@ -48,11 +50,12 @@ class GameView extends Backbone.View
     console.log 'TODO: remove the previous version of whatever it was'
     for attrib in _.keys options.changes
       new_view = @model.get(attrib).view
+      console.log "ADDING VIEW: #{util.typeName new_view}"
       @$el.append new_view.$el
       
   # this debug function draws a background behind every visible element
   # so that they can be laid out
-  @showDebugColors = ->
+  @showDebugColors: ->
     colors = ['blue', 'green', 'red', 'yellow', 'purple', 'orange']
     for color in colors
       $(".test-#{color}").css

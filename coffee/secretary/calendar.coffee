@@ -3,7 +3,7 @@ class Calendar extends RemoteModel
   chatter.register(@) # registers the model for unpacking
 
   # special UID for the empty calendar
-  @EMPTY_UID = "<<empty_calendar>>"
+  @EMPTY_UID = "empty_calendar"
 
   defaults:
     uid: @EMPTY_UID
@@ -86,9 +86,8 @@ class Calendar extends RemoteModel
       'Cannot duplicate name.'
     if attribs.day?
       if attribs.length?
-        ev = new CalEvent attribs
-        return undefined if @overlaps ev
-        return @add ev
+        return undefined if @overlaps attribs
+        return @add new CalEvent attribs
       for length in [2, 1.5, 1]
         length = Math.min length, 17 - attribs.time
         continue if length < 1

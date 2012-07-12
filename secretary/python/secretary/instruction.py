@@ -1,59 +1,123 @@
 from google.appengine.ext import db
+from google.appengine.api import users
 from chatter import RemoteModel, RemoteMethod, StructuredProperty, Channel
+from secretary.player import Player
+from secretary.calendar import Calendar
 import logging
 
 class Instruction(RemoteModel):
   """A string to apply to a calendar."""
-  POSSIBLE_STATUSES = ['sending', 'queued']
-  
-  text = db.StringProperty(required=True, indexed=False)
-  uid = db.StringProperty(required=True)
-  status = db.StringProperty(required=True, choices=POSSIBLE_STATUSES)
+  POSSIBLE_STATES = ['sending', 'processing', 'queued']
 
+  # basic information
+  text = db.StringProperty(required=True, indexed=False)
+  state = db.StringProperty(required=True, choices=POSSIBLE_STATES)
+  calendar_uid = db.StringProperty()
+
+  # uid of this instruction and the previous one in the queue
+  uid = db.StringProperty(required=True)
+  previous_uid = db.StringProperty()
+
+  # information about this instruction
   created_by = db.UserProperty(required=True, auto_current_user_add=True)
   created_on = db.DateTimeProperty(required=True, auto_now_add=True)
   
   # these are the properties which will be serialized to json
-  properties_to_wrap = {'text', 'uid', 'status'}
+  properties_to_wrap = {'text', 'state', 'calendar_uid', 'uid', 'previous_uid', 'created_by'}
+  
+  def __init__(self, *args, **kwargs):
+    """Constructor - ensures ancestor is current user."""
+    if 'created_by' not in kwargs:
+      assert 'parent' not in kwargs
+      current_player = Player.getCurrentPlayer()
+      RemoteModel.__init__(self, *args, parent=current_player, **kwargs)
+    else:
+      RemoteModel.__init__(self, *args, **kwargs)
+    assert self.created_by == self.parent().user
+    
+  def log(self):
+    """Logs information about this insruction."""
+    logging.error("instruction: %s", self)
+    logging.error(" - text: %s", self.text)
+    logging.error(" - state: %s", self.state)
+    logging.error(" - calendar_uid: %s", self.calendar_uid)
+    logging.error(" - uid: %s", self.uid)
+    logging.error(" - previous_uid: %s", self.previous_uid)
+    logging.error(" - created_by: %s", self.created_by)
+    logging.error(" - created_on: %s", self.created_on)
+  
+  @classmethod
+  def getBy(cls, field, key):
+    return Instruction.all().filter('%s =' % field, key).get()
+    
+  @RemoteMethod(static=True, admin=True)
+  def getAll(cls):
+    """Get all instructions."""
+    return cls.all().fetch(1000)
   
   @RemoteMethod(static=True, admin=False)
-  def saveNewInstruction(cls, instruction=None):
+  def enqueueInstruction(cls, instruction=None, calendar=None):
     """Saves a new instruction."""
     # make sure this instruction really is new
-    query = Instruction.all(keys_only=True).filter('uid =', instruction.uid)
-    assert len(query.fetch(1)) == 0, \
+    assert Instruction.getBy('uid', instruction.uid) == None, \
       'Instruction uid:"%s" not unique.' % instruction.uid
-      
-    # update the status and save
-    assert instruction.status == 'sending', \
-      'Instruction uid:"%s" must have status "sending."' % instruction.uid
-    instruction.status = 'queued'
-    instruction.put()
+
+    # debug - begin
+    instruction.log()
+    # debug - end
+    
+    if instruction.previous_uid == None:
+      # first instruction for this game
+      assert instruction.calendar_uid == calendar.uid
+      def save_instruction_and_calendar(instruction, calendar):
+        instruction.state = 'processing'
+        instruction.put()
+        calendar.save()
+      db.run_in_transaction(save_instruction_and_calendar, instruction, calendar)
+    else:
+      # there are previous instructions in this game
+      instruction.state = 'queued'
+      instruction.put()
     return instruction
+
+  @RemoteMethod(static=True, admin=False)
+  def dequeueInstruction(cls):
+    """Returns an instruction and calendar which is being processed."""
+    # get the processing instructions, sorted by time added
+    instructions = Instruction.all()
+    instructions.filter('state =', 'processing')
+    instructions.order('created_on') # earliest first
+    
+    # debug - begin
+    for ii, instruction in enumerate(instructions.fetch(1000)):
+      logging.error("%.2i - %s" % (ii, instruction.uid))
+      logging.error("   - text:%s" % instruction.text)
+      logging.error("   - created_on:%s" % instruction.created_on)
+      logging.error("   - created_by:%s" % instruction.created_by)
+    # debug - end
+    
+    # dequeue the first one
+    instruction = instructions.get()
+    
+    # get the associated calendar
+    calendar = Calendar.all().filter('uid =', instruction.calendar_uid).get()
+    assert calendar, 'Instruction does not have associated calendar: %s' % \
+      instruction.calendar_uid
+
+    # return both
+    return [instruction, calendar]
+    
+  @RemoteMethod(static=True, admin=False)
+  def submitSolution(cls, instruction_uid=None, calendar=None):
+    """Submits a solution to this do-puzzle, returns information
+    about whether the solution is correct."""
+    # get the instruction (and the next instruction if it extists)
+    instruction = Instruction.getBy('uid', instruction_uid)
+    next_instruction = Instruction.getBy('previous_uid', instruction_uid)
+    logging.error('submitSolution')
+    logging.error('current instruction:')
+    instruction.log()
+    logging.error('next instruction:')
+    next_instruction.log()
     
     
-  # @RemoteMethod(static=True, admin=False)
-  # def getChannelToken(cls):
-  #   return channel.create_channel('dummy_client')
-  #   
-  # @RemoteMethod(static=True, admin=False)
-  # def sendMessage(cls, a_message='<dummy message>'):
-  #   logging.error('about to do a call on Channel')
-  #   my_channel = Channel('dummy_client')
-  #   my_channel.hello(msg=a_message.upper())
-  #   my_channel.goodbye(msg=a_message.upper())
-  #   for ii in xrange(10):
-  #     my_channel.goodbye(msg=str(ii))
-  #   logging.error('just finished call on Channel')
-  #   
-  # @RemoteMethod(admin=False)
-  # def mungeUp(self, mungeString=False):
-  #   if mungeString:
-  #     self.a_string = self.a_string.upper()
-  #   self.put()
-  #   return '//%s//%s//' % (self.an_int, self.a_string)
-  #   
-  # @RemoteMethod(admin=False)
-  # def sortList(self):
-  #   self.an_int_list = list(sorted(self.an_int_list))
-  #   self.put()

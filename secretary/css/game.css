@@ -65,6 +65,24 @@
   visibility: hidden;
 }
 
+/* do game */
+
+.doGameView {
+  background-image: url('/imgs/background-do.png')
+}
+
+.doGameView #buttonPanel {
+  position: absolute;
+  left: 165px;
+  top: 241px;
+  width: 290px;
+  text-align: center;
+}
+
+.doGameView #buttonPanel button {
+  font-size: 14px;
+}
+
 /* test game */
 
 .testGameView {

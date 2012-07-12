@@ -1,11 +1,12 @@
 from google.appengine.ext import db
 from chatter import RemoteModel, RemoteMethod, StructuredProperty, Channel
+from secretary.player import Player
 import logging
 
 class Calendar(RemoteModel):
   """A collection of calendar events."""
   # special UID for the empty calendar
-  EMPTY_UID = "<<empty_calendar>>"
+  EMPTY_UID = "empty_calendar"
   
   calEvents = StructuredProperty(required=True)
   uid = db.StringProperty(required=True)
@@ -15,6 +16,33 @@ class Calendar(RemoteModel):
   
   # these are the properties which will be serialized to json
   properties_to_wrap = {'calEvents','uid'}
+  
+  def __init__(self, *args, **kwargs):
+    """Constructor - ensures ancestor is current user."""
+    if 'created_by' not in kwargs:
+      assert 'parent' not in kwargs
+      current_player = Player.getCurrentPlayer()
+      RemoteModel.__init__(self, *args, parent=current_player, **kwargs)
+    else:
+      RemoteModel.__init__(self, *args, **kwargs)
+    assert self.created_by == self.parent().user
+    
+  def save(self):
+    """Like put(), but prevents overwriting EMPTY_UID."""
+    if self.uid != Calendar.EMPTY_UID:
+      self.put()
+      
+  def log(self):
+    """Logs information about this calendar."""
+    logging.error('calendar uid:%s' % self.uid)
+    for ii, event in enumerate(self.calEvents):
+      logging.error(" %.2i ->" % ii)
+      logging.error("  day    : %s" % event.day)
+      logging.error("  time   : %s" % event.time)
+      logging.error("  length : %s" % event.length)
+      logging.error("  name   : %s" % event.name)
+      logging.error("  title  : %s" % event.title)
+    
 
   @RemoteMethod(static=True, admin=False)
   def saveNewCalendar(cls, calendar=None):
@@ -31,13 +59,6 @@ class Calendar(RemoteModel):
     except db.NotSavedError:
       logging.error("saveNewCalendar: %s (not saved)" % (calendar.uid))
     calEvents = calendar.calEvents
-    for ii, event in enumerate(calEvents):
-      logging.error("%.2i : %s" % (ii, event))
-      logging.error(" day    : %s" % event.day)
-      logging.error(" time   : %s" % event.time)
-      logging.error(" length : %s" % event.length)
-      logging.error(" name   : %s" % event.name)
-      logging.error(" title  : %s" % event.title)
     # debug - end
       
     # save
@@ -47,12 +68,12 @@ class Calendar(RemoteModel):
   @RemoteMethod(static=True, admin=False)
   def getEmptyCalendar(cls):
     """Returns the empty calendar."""
-    query = Calendar.all.filter('uid =', EMPTY_UID)
+    query = Calendar.all().filter('uid =', Calendar.EMPTY_UID).fetch(2)
     if len(query) == 0:
-      empty_calendar = Calendar(calEvents=[], uid=EMPTY_UID)
+      empty_calendar = Calendar(calEvents=[], uid=Calendar.EMPTY_UID)
       empty_calendar.put()
     elif len(query) == 1:
-      empty_calendar = query.get()
+      empty_calendar = query[0]
     else:
       raise RuntimeError, 'The empty calendar should be unique.'
     return empty_calendar

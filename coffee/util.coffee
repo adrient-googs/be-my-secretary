@@ -6,7 +6,9 @@ Useful Utilities
 util = util ? {}
 
 util.assertion = (condition, err_msg) ->
-  (throw new Error err_msg) unless condition
+  unless condition
+    alert err_msg
+    throw new Error err_msg
 
 # Flips the arguments to a function
 util.flip = (func) ->

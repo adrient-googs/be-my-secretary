@@ -19,10 +19,40 @@
   color: rgb(128, 128, 128);
 }
 
-.instructionView #status {
+.instructionView #state {
   
 }
 
 .instructionView #actions {
   float: right;
+}
+
+.doInstructionView #playerSays {
+  position: absolute;
+  left: 165px;
+  top: 91px;
+  width: 290px;
+
+  color: #404040;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.doInstructionView #textContainer {
+  position: absolute;
+  left: 166px;
+  top: 135px;
+  width: 287px;
+  height: 91px;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  display: table;
+  text-align: center;
+}
+
+.doInstructionView #text {
+  position: static;
+  display: table-cell;
+  vertical-align: middle;
 }

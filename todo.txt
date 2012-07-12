@@ -1,32 +1,40 @@
 ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
 
-[ ] demand view
-  [x] basic html
-  [x] a single instruction
-  [ ] guide
-    [x] server side calendar
-      [x] give the calendars UIDs
-      [x] way to "save" the calendar
-        [x] save all relevant calEvent properties
-      [x] way to "load" a calendar
-        [x] admin/getCalendar
-      [x] get the default calendar
-      [ ] save subsequent calendars
-        [ ] dual write calendar and save instruction
-        [ ] dual write calendar and load instruction
+EXPECT LOTS OF TROUBLE - you will untangle it -- don't lose faith!!! :)
 
--- put the instructions in some reasonable order
+[x] save the instruction and the calendar at the same time
+  [x] the send code should actually be in testGame
+  [x] make the instructions store calendar_uid's
+  [x] make the instruction store previous instructions
+[ ] create a "do mode" where you can see the calendar
+  [x] get an instruction and a calendar
+  [x] submit button, etc.
+  [ ] send in the calendar
+  [ ] get the next one
+  [ ] prevent edits after the first (maybe move this down)
+[ ] better instructions queuing
+  [ ] set flags properly on the queued instructions
+    [ ] set instruction ancestors to be the current user
+    [ ] do everything in a transaction
+[ ] repeat "do mode"
+[ ] type mode
+  [ ] split from "test mode"
+  [ ] update based on what happened in the queue
+    [ ] store a channel for the player
+    [ ] reverse channel
+    [ ] load the channel and the instruction at the same time
 
-  [ ] full loop
-    [ ] load it up in admin view
-    [ ] send it back
-
-[ ] mode dispatch
-[ ] see the demands
+[ ] TEST IT OUT WITHOU admin privilages
+[ ] TEST IT OUT ON THE REAL SITE!!
 
 [ ] cool stuff
+  [ ] make it so that you can only add a single event
+    [ ] color the events properly in "do mode"
+  [ ] score things properly
+  [ ] events are cancel-able
   [ ] new calendar events are completely undefined
-[ ] TEST IT OUT WITHOU admin privilages
+  [ ] small fixes below
+  [ ] johnny's comments
 
 -- during the flight  --
 

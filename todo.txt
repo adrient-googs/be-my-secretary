@@ -2,27 +2,19 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
 
 EXPECT LOTS OF TROUBLE - you will untangle it -- don't lose faith!!! :)
 
-[x] save the instruction and the calendar at the same time
-  [x] the send code should actually be in testGame
-  [x] make the instructions store calendar_uid's
-  [x] make the instruction store previous instructions
-[ ] create a "do mode" where you can see the calendar
-  [x] get an instruction and a calendar
-  [x] submit button, etc.
-  [ ] send in the calendar
-  [ ] get the next one
-  [ ] prevent edits after the first (maybe move this down)
-[ ] better instructions queuing
-  [ ] set flags properly on the queued instructions
-    [ ] set instruction ancestors to be the current user
-    [ ] do everything in a transaction
-[ ] repeat "do mode"
+[x] repeat "do mode"
 [ ] type mode
   [ ] split from "test mode"
   [ ] update based on what happened in the queue
     [ ] store a channel for the player
     [ ] reverse channel
     [ ] load the channel and the instruction at the same time
+  [ ] make the calendar non-edit-able
+    
+-- todo --
+[ ] get an old puzzle if no new ones exist
+[ ] check whether soln_cal has already been submitted
+-- end: todo --
 
 [ ] TEST IT OUT WITHOU admin privilages
 [ ] TEST IT OUT ON THE REAL SITE!!

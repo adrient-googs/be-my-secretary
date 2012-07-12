@@ -77,15 +77,18 @@ class Calendar(RemoteModel):
     else:
       raise RuntimeError, 'The empty calendar should be unique.'
     return empty_calendar
+
+  @classmethod
+  def getBy(cls, field, value):
+    """Returns the first calendar where field=value"""
+    if field == 'key':
+      field, value = '__key__', db.Key(value)
+    return Calendar.all().filter('%s =' % field, value).get()
     
   @RemoteMethod(static=True, admin=True)
   def getCalendar(cls, field=None, value=None):
     """Returns the first calendar where field=value"""
-    if field == 'key':
-      field, value = '__key__', db.Key(value)
-    logging.error('getting calendar with %s=%s' % (field, value))
-    logging.error(str(Calendar.all().filter('%s =' % field, value).get()))
-    return Calendar.all().filter('%s =' % field, value).get()
+    return Calendar.getBy(field, value)
     
   # @RemoteMethod(static=True, admin=False)
   # def getChannelToken(cls):
@@ -100,15 +103,4 @@ class Calendar(RemoteModel):
   #   for ii in xrange(10):
   #     my_channel.goodbye(msg=str(ii))
   #   logging.error('just finished call on Channel')
-  #   
-  # @RemoteMethod(admin=False)
-  # def mungeUp(self, mungeString=False):
-  #   if mungeString:
-  #     self.a_string = self.a_string.upper()
-  #   self.put()
-  #   return '//%s//%s//' % (self.an_int, self.a_string)
-  #   
-  # @RemoteMethod(admin=False)
-  # def sortList(self):
-  #   self.an_int_list = list(sorted(self.an_int_list))
-  #   self.put()
+

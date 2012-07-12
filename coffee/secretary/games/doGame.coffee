@@ -19,13 +19,16 @@ class DoGame extends Game
   # gets a new instruction and calendar from the server
   dequeueInstruction: ->
     console.log "ABOUT TO DEQUEUE INSTRUCTION"
-    Instruction.dequeueInstruction (rv) =>
-      [instruction, calendar] = rv
-      util.assertion instruction.get('state') == 'processing',
-        "Dequeued instruction with incorrect state " + \
-        "'#{instruction.get('state')}' (uid:#{instruction.get('uid')})"
-      @get('instruction').set instruction.attributes
-      @get('calendar').set calendar.attributes
+    Instruction.dequeueInstruction (args) =>
+      @setPuzzle args...
+      
+  # sets the puzzle
+  setPuzzle: (instruction, calendar) ->
+    util.assertion instruction.get('state') == 'processing',
+      "Dequeued instruction with incorrect state " + \
+      "'#{instruction.get('state')}' (uid:#{instruction.get('uid')})"
+    @get('instruction').set instruction.attributes
+    @get('calendar').set calendar.attributes
     
   # send in the current solution
   submitSolution: ->
@@ -33,9 +36,11 @@ class DoGame extends Game
     Instruction.submitSolution
       instruction_uid: @get('instruction').get('uid')
       calendar: @get('calendar')
-      (args...) =>
-        console.log "finished submitting solution rv..."
-        console.log args
+      (rv) =>
+        util.assertion rv.submission == 'success', \
+          'Unsuccessful submission.'
+        alert 'Great job!'
+        @setPuzzle (rv.next_puzzle)...
     
 # viewer for the test game
 class DoGameView extends GameView

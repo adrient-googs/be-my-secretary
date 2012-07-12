@@ -7,12 +7,13 @@ import logging
 
 class Instruction(RemoteModel):
   """A string to apply to a calendar."""
-  POSSIBLE_STATES = ['sending', 'processing', 'queued']
+  POSSIBLE_STATES = ['sending', 'processing', 'queued', 'done']
 
   # basic information
   text = db.StringProperty(required=True, indexed=False)
   state = db.StringProperty(required=True, choices=POSSIBLE_STATES)
-  calendar_uid = db.StringProperty()
+  calendar_uid = db.StringProperty() # input calendar
+  soln_cal_uid = db.StringProperty() # output calendar
 
   # uid of this instruction and the previous one in the queue
   uid = db.StringProperty(required=True)
@@ -111,13 +112,36 @@ class Instruction(RemoteModel):
   def submitSolution(cls, instruction_uid=None, calendar=None):
     """Submits a solution to this do-puzzle, returns information
     about whether the solution is correct."""
+    # make sure the calendar doesn't exist
+    assert Calendar.getBy('uid', calendar.uid) == None
+    
     # get the instruction (and the next instruction if it extists)
     instruction = Instruction.getBy('uid', instruction_uid)
     next_instruction = Instruction.getBy('previous_uid', instruction_uid)
-    logging.error('submitSolution')
-    logging.error('current instruction:')
-    instruction.log()
-    logging.error('next instruction:')
-    next_instruction.log()
+    
+    # store the calendar
+    calendar.put()
+
+    # indicate that the next instruction should be processed
+    def pass_batton(instruction, next_instruction, solution):
+      instruction.soln_cal_uid = solution.uid
+      instruction.state = 'done'
+      instruction.put()
+      if not next_instruction:
+        return
+      next_instruction.calendar_uid = solution.uid
+      next_instruction.state = 'processing'
+      next_instruction.put()
+    db.run_in_transaction(pass_batton, instruction, next_instruction, calendar)
+
+    # TODO - update the player with a channel
+    logging.error("TODO: update the player with a channel")
+    # 
+    
+    # return a new puzzle
+    return {'submission':'success', 'next_puzzle':cls.dequeueInstruction()}
+    
+
+    
     
     

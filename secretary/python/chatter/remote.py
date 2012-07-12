@@ -222,7 +222,8 @@ class RemoteModel(db.Model):
   __subclass_handlers = []
   
   def __init__(self, *args, **kwargs):
-    db.Model.__init__(self, *args, **kwargs)
+    db.Model.__init__(self, *args, **kwargs)    
+
 
 def getAllRemoteHandlers():
   """Returns a list with elements of type (url_string,

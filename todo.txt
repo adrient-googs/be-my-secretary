@@ -8,12 +8,9 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
       [x] give the calendars UIDs
       [x] way to "save" the calendar
         [x] save all relevant calEvent properties
-      [ ] way to "load" a calendar
-        [ ] admin/getCalendar
-      [ ] get the default calendar
-      [ ] start with "default" calendar
-        [ ] show the UID
-        [ ] share special uid with client and server
+      [x] way to "load" a calendar
+        [x] admin/getCalendar
+      [x] get the default calendar
       [ ] save subsequent calendars
         [ ] dual write calendar and save instruction
         [ ] dual write calendar and load instruction
@@ -27,6 +24,8 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
 [ ] mode dispatch
 [ ] see the demands
 
+[ ] cool stuff
+  [ ] new calendar events are completely undefined
 [ ] TEST IT OUT WITHOU admin privilages
 
 -- during the flight  --

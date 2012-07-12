@@ -18,9 +18,17 @@ util.titleCase = (str) ->
   str.replace /\w\S*/g, (txt) ->
     txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
 
-# perform an action later (in 1ms), but not in the current thread
-util.later = (func) ->
-  setTimeout func, 1
+# perform an action later, but not in the current thread
+# util.later 1000, func - peform the action in 1 second
+# util.later func       - peform the action in 1 millisecond
+util.later = (args...) ->
+  if args.length == 1
+    [func, ms] = [args[0], 1]
+  else if args.length == 2
+    [func, ms] = [args[1], args[0]]
+  else
+    throw new Error 'util.later takes 1 or 2 arguments only.'
+  setTimeout func, ms
   
 ###########
 # OBJECTS #

@@ -18,8 +18,12 @@ class AdminGame extends Game
     
   # gets a calendar where field=id
   getCalendar: (field, id) ->
-    for ii in [1..3]
-      @view.log 'hello world abcdefghijklmnopqrstuv 0123456789 abcdefghijklmnopqrstuv 0123456789'
+    Calendar.getCalendar field:field, value:id, (cal) =>
+      if cal?
+        @get('calendar').set cal.attributes
+        @view.log "uid: #{cal.uid}"
+      else
+        alert "No calendar with #{field}=#{id}."
     
 # viewer for the test game
 class AdminGameView extends GameView

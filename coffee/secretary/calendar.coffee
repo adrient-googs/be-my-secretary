@@ -14,12 +14,14 @@ class Calendar extends RemoteModel
   
   # returns the empty calendar
   @getEmptyCalendar: RemoteModel.remoteStaticMethod 'getEmptyCalendar'
+  
+  @getCalendar: RemoteModel.remoteStaticMethod 'getCalendar'
 
   # constructor
   constructor: (attribs={}) ->
     # set the uid
     if attribs.calEvents?
-      util.assertion !attribs.uid?, 'Cannot define calEvents without UID.' # DEBUG - remove !
+      util.assertion attribs.uid?, 'Cannot define calEvents without UID.'
       @uid = attribs.uid
     else
       util.assertion !attribs.uid?, 'Cannot define UID without calEvents'
@@ -50,9 +52,10 @@ class Calendar extends RemoteModel
     
   # validate this instruction
   validate: (attribs) ->
-    # make sure UID is correct
-    if attribs.uid? and attribs.uid != @uid
-      return "Incorrect UID: #{attribs.uid}"
+    # unless we're also setting the calEvents, make sure UID is correct
+    unless attribs.calEvents?
+      if attribs.uid? and attribs.uid != @uid
+        return "Incorrect UID: #{attribs.uid}"
     
   # add an event
   add: (event) ->

@@ -57,8 +57,14 @@ class Calendar(RemoteModel):
       raise RuntimeError, 'The empty calendar should be unique.'
     return empty_calendar
     
-  @RemoteMethod(static=True, admin=true)
-  def getCalendar(cls ):
+  @RemoteMethod(static=True, admin=True)
+  def getCalendar(cls, field=None, value=None):
+    """Returns the first calendar where field=value"""
+    if field == 'key':
+      field, value = '__key__', db.Key(value)
+    logging.error('getting calendar with %s=%s' % (field, value))
+    logging.error(str(Calendar.all().filter('%s =' % field, value).get()))
+    return Calendar.all().filter('%s =' % field, value).get()
     
   # @RemoteMethod(static=True, admin=False)
   # def getChannelToken(cls):

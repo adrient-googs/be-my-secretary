@@ -3,7 +3,9 @@ from google.appengine.api import users
 from chatter import RemoteModel, RemoteMethod, StructuredProperty, Channel
 from secretary.player import Player
 from secretary.calendar import Calendar
+
 import logging
+import random
 
 class Instruction(RemoteModel):
   """A string to apply to a calendar."""
@@ -47,9 +49,22 @@ class Instruction(RemoteModel):
     logging.error(" - created_by: %s", self.created_by)
     logging.error(" - created_on: %s", self.created_on)
   
+  def previousChainAllDone(self):
+    """Returns true if all antecedent instructions are done."""
+    prev = Instruction.getBy('uid', self.previous_uid, ancestor=self.parent())
+    while True:
+      if prev == None:
+        return True
+      elif prev.state != 'done':
+        return False
+      prev = Instruction.getBy('uid', prev.previous_uid, ancestor=self.parent())
+  
   @classmethod
-  def getBy(cls, field, key):
-    return Instruction.all().filter('%s =' % field, key).get()
+  def getBy(cls, field, key, ancestor=None):
+    query = Instruction.all().filter('%s =' % field, key)
+    if ancestor:
+      query.ancestor(ancestor)
+    return query.get()
     
   @RemoteMethod(static=True, admin=True)
   def getAll(cls):
@@ -71,34 +86,38 @@ class Instruction(RemoteModel):
       # first instruction for this game
       assert instruction.calendar_uid == calendar.uid
       def save_instruction_and_calendar(instruction, calendar):
+        assert instruction.previousChainAllDone()
         instruction.state = 'processing'
         instruction.put()
         calendar.save()
       db.run_in_transaction(save_instruction_and_calendar, instruction, calendar)
     else:
       # there are previous instructions in this game
-      instruction.state = 'queued'
+      previous = Instruction.getBy('uid', instruction.previous_uid)
+      if previous.state == 'done':
+        instruction.calendar_uid = previous.soln_cal_uid
+        assert instruction.previousChainAllDone()
+        instruction.state = 'processing'
+      else:
+        instruction.state = 'queued'
       instruction.put()
     return instruction
 
   @RemoteMethod(static=True, admin=False)
   def dequeueInstruction(cls):
     """Returns an instruction and calendar which is being processed."""
-    # get the processing instructions, sorted by time added
+    # get the earliest-created instruction to process
     instructions = Instruction.all()
     instructions.filter('state =', 'processing')
     instructions.order('created_on') # earliest first
-    
-    # debug - begin
-    for ii, instruction in enumerate(instructions.fetch(1000)):
-      logging.error("%.2i - %s" % (ii, instruction.uid))
-      logging.error("   - text:%s" % instruction.text)
-      logging.error("   - created_on:%s" % instruction.created_on)
-      logging.error("   - created_by:%s" % instruction.created_by)
-    # debug - end
-    
-    # dequeue the first one
     instruction = instructions.get()
+    
+    # if none could be found, then recycle an old one
+    if instruction == None:
+      instructions = Instruction.all()
+      instructions.filter('state =', 'done')
+      index = random.randint(0, instructions.count()-1)
+      instruction = instructions[index]    
     
     # get the associated calendar
     calendar = Calendar.all().filter('uid =', instruction.calendar_uid).get()
@@ -111,15 +130,22 @@ class Instruction(RemoteModel):
   @RemoteMethod(static=True, admin=False)
   def submitSolution(cls, instruction_uid=None, calendar=None):
     """Submits a solution to this do-puzzle, returns information
-    about whether the solution is correct."""
-    # make sure the calendar doesn't exist
-    assert Calendar.getBy('uid', calendar.uid) == None
-    
+    about whether the solution is correct."""    
     # get the instruction (and the next instruction if it extists)
     instruction = Instruction.getBy('uid', instruction_uid)
     next_instruction = Instruction.getBy('previous_uid', instruction_uid)
     if next_instruction:
       assert instruction.created_by == next_instruction.created_by
+      
+    # if the instruction was already completed, then we're done
+    if instruction.state == 'done':
+      return {
+        'submission'  : 'success',
+        'next_puzzle' : cls.dequeueInstruction()
+      }
+      
+    # make sure the calendar doesn't exist
+    assert Calendar.getBy('uid', calendar.uid) == None
       
     # store the calendar
     calendar.put()
@@ -132,6 +158,7 @@ class Instruction(RemoteModel):
       if not next_instruction:
         return
       next_instruction.calendar_uid = solution.uid
+      assert instruction.previousChainAllDone() # <- debug
       next_instruction.state = 'processing'
       next_instruction.put()
     db.run_in_transaction(pass_batton, instruction, next_instruction, calendar)
@@ -147,7 +174,10 @@ class Instruction(RemoteModel):
     # 
     
     # return a new puzzle
-    return {'submission':'success', 'next_puzzle':cls.dequeueInstruction()}
+    return {
+      'submission'  : 'success',
+      'next_puzzle' : cls.dequeueInstruction()
+    }
     
 
     

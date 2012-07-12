@@ -24,9 +24,13 @@ class DoGame extends Game
       
   # sets the puzzle
   setPuzzle: (instruction, calendar) ->
-    util.assertion instruction.get('state') == 'processing',
+    util.assertion instruction.get('state') in ['processing', 'done'],
       "Dequeued instruction with incorrect state " + \
       "'#{instruction.get('state')}' (uid:#{instruction.get('uid')})"
+    # debug - begin
+    if instruction.get('state') == 'done'
+      instruction.attributes.text = "#{instruction.attributes.text}..."
+    # debug - end
     @get('instruction').set instruction.attributes
     @get('calendar').set calendar.attributes
     

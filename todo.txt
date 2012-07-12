@@ -14,7 +14,9 @@ EXPECT LOTS OF TROUBLE - you will untangle it -- don't lose faith!!! :)
     
 -- todo --
 [ ] get an old puzzle if no new ones exist
-[ ] check whether soln_cal has already been submitted
+  [ ] indicate with a leading comma
+  [ ] put in skip button
+  [ ] check whether soln_cal has already been submitted
 [ ] figure out the enqueue case when the calendar has already been set
 -- end: todo --
 

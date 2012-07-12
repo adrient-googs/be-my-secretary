@@ -5,6 +5,7 @@ COMPILE_ORDER=""
 COMPILE_ORDER="${COMPILE_ORDER} coffee/util.coffee"
 COMPILE_ORDER="${COMPILE_ORDER} coffee/chatter/*.coffee"
 COMPILE_ORDER="${COMPILE_ORDER} coffee/secretary/*.coffee"
+COMPILE_ORDER="${COMPILE_ORDER} coffee/secretary/games/*.coffee"
 
 echo "Coffeescript Compilation Order:${COMPILE_ORDER}"
 coffee --compile --watch --join secretary/js/secretary.js ${COMPILE_ORDER} &

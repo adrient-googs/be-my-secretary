@@ -27,6 +27,8 @@ ALWAYS REMEMBER: what's the minimal interface which has "magic"?!?!
 [ ] mode dispatch
 [ ] see the demands
 
+[ ] TEST IT OUT WITHOU admin privilages
+
 -- during the flight  --
 
   

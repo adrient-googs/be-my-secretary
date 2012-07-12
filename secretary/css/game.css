@@ -40,6 +40,11 @@
   color: white;
 }
 
+#gameArea .gameView {
+  width: 100%;
+  height: 100%;
+}
+
 /* game elements */
 
 #prototypes {
@@ -63,8 +68,6 @@
 /* test game */
 
 .testGameView {
-  width: 100%;
-  height: 100%;
   background-image: url('/imgs/background-test.png')
 }
 
@@ -81,6 +84,34 @@
   position: absolute;
   left: 50px;
   top: 176px;
+}
+
+/* admin game */
+
+.adminGameView {
+  background-image: url('/imgs/background-admin.png')
+}
+
+.adminGameView #console {
+  position: absolute;
+  width: 542px;
+  height: 179px;
+  top: 88px;
+  left: 161px;
+
+  overflow-x: auto;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px inset;
+
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.adminGameView #console div {
+  position: static;
+  margin: 3px;
+  margin-bottom: 5px;
 }
 
 /* nice looking, simple scrollbars */

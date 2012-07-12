@@ -2,7 +2,11 @@
 class Calendar extends RemoteModel
   chatter.register(@) # registers the model for unpacking
 
+  # special UID for the empty calendar
+  @EMPTY_UID = "<<empty_calendar>>"
+
   defaults:
+    uid: @EMPTY_UID
     calEvents: undefined
         
   # save an instruction
@@ -14,7 +18,12 @@ class Calendar extends RemoteModel
   # constructor
   constructor: (attribs={}) ->
     # set the uid
-    @uid = (attribs.uid ?= util.uid())
+    if attribs.calEvents?
+      util.assertion !attribs.uid?, 'Cannot define calEvents without UID.' # DEBUG - remove !
+      @uid = attribs.uid
+    else
+      util.assertion !attribs.uid?, 'Cannot define UID without calEvents'
+      @uid = attribs.uid = Calendar.EMPTY_UID
         
     # superclass constructor
     super attribs

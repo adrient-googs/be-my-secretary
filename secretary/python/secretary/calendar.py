@@ -4,6 +4,9 @@ import logging
 
 class Calendar(RemoteModel):
   """A collection of calendar events."""
+  # special UID for the empty calendar
+  EMPTY_UID = "<<empty_calendar>>"
+  
   calEvents = StructuredProperty(required=True)
   uid = db.StringProperty(required=True)
   
@@ -44,7 +47,6 @@ class Calendar(RemoteModel):
   @RemoteMethod(static=True, admin=False)
   def getEmptyCalendar(cls):
     """Returns the empty calendar."""
-    EMPTY_UID = "empty_calendar"
     query = Calendar.all.filter('uid =', EMPTY_UID)
     if len(query) == 0:
       empty_calendar = Calendar(calEvents=[], uid=EMPTY_UID)
@@ -54,6 +56,9 @@ class Calendar(RemoteModel):
     else:
       raise RuntimeError, 'The empty calendar should be unique.'
     return empty_calendar
+    
+  @RemoteMethod(static=True, admin=true)
+  def getCalendar(cls ):
     
   # @RemoteMethod(static=True, admin=False)
   # def getChannelToken(cls):

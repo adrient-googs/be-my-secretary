@@ -32,8 +32,11 @@ class Rabble extends Backbone.Model
     attribs.name = util.choose all_names, used_names
     
     # title
-    attribs.title =
-      util.choose CalEvent.TITLES[1...CalEvent.TITLES.length]
+    attribs.title = CalEvent.TITLES[0]
+      # util.choose [1...CalEvent.TITLES.length]
+    # # title
+    # attribs.title =
+    #   util.choose CalEvent.TITLES[1...CalEvent.TITLES.length]
     
     [attribs.days, attribs.day_str] =
       util.withProbability [

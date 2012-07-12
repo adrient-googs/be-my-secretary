@@ -20,9 +20,14 @@ class CalEvent extends RemoteModel
     # invalid in case of overlap
     if @parent.overlaps attribs, @
       return 'overlap'
+
     # invalid if length is not 4
     if attribs.length != 4
       return 'length must be 4'
+      
+    # invalid if activity is not "NO ACTIVITY"
+    if attribs.title != CalEvent.TITLES[0]
+      return "activity must be #{CalEvent.TITLES[0]}"
       
   ###
   Returns true if this event overaps another.
@@ -223,13 +228,13 @@ class EditCalEventView extends Backbone.View
     
   # after construction
   initialize: ->
-    @title_input = @$el.find('input#title')
-    @name_input = @$el.find('input#name')
+    @title_select = @$el.find('input#title')
+    @name_select = @$el.find('select#name')
     
     # get tab cycling to work properly
     @$el.find('#delete').on 'keydown', (event) =>
       if event.keyCode == 9 # tab
-        @name_input.select() ; false
+        @name_select.select() ; false
     
   # shows this dialog
   show: ->
@@ -237,24 +242,33 @@ class EditCalEventView extends Backbone.View
     $('#cover').css visibility: 'visible'
     
     # force change event to set the fields
-    @title_input.val @model.get 'title'
-    @name_input.val @model.get 'name'
+    @title_select.val @model.get 'title'
     
     # construct the set of names
     all_names = _.keys SupplicantView.NAMES_AND_AVATARS
     used_names = @model.parent.calEvents.pluck('name')
     available_names = _.difference all_names, used_names
     available_names.push @model.get 'name'
+    available_names.sort()
+
+    my_name = @model.get 'name'
+    for ii, name of available_names
+      @name_select.append("<option value='#{name}'>#{name}</option>")
+      if name == my_name
+        selected_index = ii
+    # @name_select.el.options[selected_index].selected="true"
+    @name_select.val my_name
+    # @name_select.val 
     
     # set autocomplete
     @title_possibe_values = CalEvent.TITLES
     @name_possibe_values = available_names
-    @title_input.autocomplete
-      select: => @onModelChange()
-      source: @title_possibe_values
-    @name_input.autocomplete
-      select: => @onModelChange()
-      source: @name_possibe_values
+    # @title_select.autocomplete
+    #   select: => @onModelChange()
+    #   source: @title_possibe_values
+    # @name_select.autocomplete
+    #   select: => @onModelChange()
+    #   source: @name_possibe_values
     
     # set the dialog position
     view = @model.view.$el
@@ -274,13 +288,14 @@ class EditCalEventView extends Backbone.View
       easing: 'easeOutBounce'
       500, => 
         container.css visibility: 'visible'
-        @name_input.select()
+        @name_select.focus()
 
   # hides this dialog
   hide: ->
     # get rid of autocomplete
-    @title_input.autocomplete('destroy')
-    @name_input.autocomplete('destroy')
+    @title_select.empty()
+    # @title_select.autocomplete('destroy')
+    # @name_select.autocomplete('destroy')
     
     # make it bounce away
     container = @$el.find('#widgets')
@@ -309,20 +324,23 @@ class EditCalEventView extends Backbone.View
   # Sets the model attributes and updates the view to indicate input
   # validity. Returns true if all fields are valid.
   onModelChange: ->
+    console.log 'ON MODEL CHANGE'
     # assume all fields are valid
     @$el.find('#ok').removeAttr 'disabled'
     @$el.find('input').css backgroundColor: 'white'
     
-    # invalidate fields if necessary
-    for field in ['title', 'name']
-      input = @["#{field}_input"]
-      input.val util.titleCase input.val()
-      if input.val() in @["#{field}_possibe_values"]
-        @model.set field, input.val()
-      else
-        input.css backgroundColor: 'rgb(223, 188, 178)'
-        @$el.find('#ok').attr disabled: 'disabled'
-        valid = false
+    @model.set 'name', @name_select.val()
+    
+    # # invalidate fields if necessary
+    # for field in ['title', 'name']
+    #   input = @["#{field}_select"]
+    #   input.val util.titleCase input.val()
+    #   if input.val() in @["#{field}_possibe_values"]
+    #     @model.set field, input.val()
+    #   else
+    #     input.css backgroundColor: 'rgb(223, 188, 178)'
+    #     @$el.find('#ok').attr disabled: 'disabled'
+    #     valid = false
     return false    
     
 CalEvent.TITLES = [

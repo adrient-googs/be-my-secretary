@@ -188,6 +188,9 @@ class CalendarView extends Backbone.View
     @$el.append(calEvent.view.el)
     # force change event
     calEvent.view.onModelChange calEvent.attributes
+    # edit the event
+    util.later 500, =>
+      calEvent.edit_view.show()
     
   # removes a calendar event
   removeEvent: (calEvent) ->

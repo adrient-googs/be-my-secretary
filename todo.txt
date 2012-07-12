@@ -12,15 +12,15 @@ WHAT CAN I DO IN ONE HOUR?
     [x] start with default height
     [x] events can't be resized
       [x] put in validate length == 4
-[ ] get rid of activity
-  [ ] all activities are "no activity"
-  [ ] prove it in validate
+[x] get rid of activity
+  [x] all activities are "no activity"
+  [x] prove it in validate
 [ ] both
   [ ] simplify constraint view
-  [ ] update the edit UI
-  [ ] &#x2191;date the request UI
+  [x] change the request UI
+  [x] update the edit UI
   [ ] get the submit focus working
-  [ ] auto open for 
+  [X] auto open for 
 
 -- old simplified interface --  
   

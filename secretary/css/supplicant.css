@@ -11,30 +11,34 @@
 }
 
 .supplicantView #name {
-  font-size: 20px;
-  top: 0px;
-  left: 34px;
+  font-size: 40px;
+  top: -1px;
+  left: 37px;
 }
 
 .supplicantView #points {
+  visibility: hidden;
   font-size: 16px;
   left: 34px;
   top: 25px;
 }
 
 .supplicantView #title {
+  visibility: hidden;
   font-size: 14px;
   top: 0px;
   left: 100px;
 }
 
 .supplicantView #constraint1 {
+  visibility: hidden;
   font-size: 13px;
   top: 15px;
   left: 100px;
 }
 
 .supplicantView #constraint2 {
+    visibility: hidden;
   font-size: 13px; 
   top: 30px;
   left: 100px; 
